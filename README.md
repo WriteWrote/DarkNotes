@@ -13,3 +13,7 @@ This is a simple text-redactor (WIP), which I decided to create after I tired of
 - the ***actual Task&Instrument Board***!
 - maaaybe it future-future - nice background
 - also "maaaybe" - music background
+
+# Bugs
+
+- When window changes from "fill the screen" mode to "small" mode the opacity changes to full 100%, then goes to 95%
