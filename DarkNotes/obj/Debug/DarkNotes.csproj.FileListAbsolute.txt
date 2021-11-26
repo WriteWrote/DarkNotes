@@ -1,0 +1,11 @@
+D:\XXX\WorkingFiles\C#_2021\DarkNotes\DarkNotes\bin\Debug\DarkNotes.exe.config
+D:\XXX\WorkingFiles\C#_2021\DarkNotes\DarkNotes\bin\Debug\DarkNotes.exe
+D:\XXX\WorkingFiles\C#_2021\DarkNotes\DarkNotes\bin\Debug\DarkNotes.pdb
+D:\XXX\WorkingFiles\C#_2021\DarkNotes\DarkNotes\obj\Debug\DarkNotes.csproj.AssemblyReference.cache
+D:\XXX\WorkingFiles\C#_2021\DarkNotes\DarkNotes\obj\Debug\DarkNotes.csproj.SuggestedBindingRedirects.cache
+D:\XXX\WorkingFiles\C#_2021\DarkNotes\DarkNotes\obj\Debug\DarkNotes.Properties.Resources.resources
+D:\XXX\WorkingFiles\C#_2021\DarkNotes\DarkNotes\obj\Debug\DarkNotes.csproj.GenerateResource.cache
+D:\XXX\WorkingFiles\C#_2021\DarkNotes\DarkNotes\obj\Debug\DarkNotes.csproj.CoreCompileInputs.cache
+D:\XXX\WorkingFiles\C#_2021\DarkNotes\DarkNotes\obj\Debug\DarkNotes.exe
+D:\XXX\WorkingFiles\C#_2021\DarkNotes\DarkNotes\obj\Debug\DarkNotes.pdb
+D:\XXX\WorkingFiles\C#_2021\DarkNotes\DarkNotes\obj\Debug\DarkNotes.Form1.resources
