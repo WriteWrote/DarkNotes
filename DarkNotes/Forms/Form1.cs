@@ -12,12 +12,15 @@ namespace DarkNotes
 {
     public partial class Form1 : Form
     {
-        private Int32 _opacity = 95;
+        private Double _opacity = 95;
         private Int32 _size = 14;
 
         public Form1()
         {
             InitializeComponent();
+            richTextBox1.SelectionIndent = 70;
+            richTextBox1.SelectionHangingIndent = -40;
+            richTextBox1.SelectionRightIndent = 20;
         }
 
         private void richTextBox1_TextChanged(object sender, EventArgs e)
@@ -55,8 +58,9 @@ namespace DarkNotes
                 String s = toolStripTextBox2.Text;
                 try
                 {
-                    Int32 opacity = Convert.ToInt32(s.Trim());
-                    this._opacity = opacity;
+                    Double opacity = Convert.ToDouble(s.Trim());
+                    //this._opacity = opacity;
+                    this.Opacity = opacity/100;
                 }
                 catch (Exception ex)
                 {
