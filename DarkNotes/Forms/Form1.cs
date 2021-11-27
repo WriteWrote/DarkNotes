@@ -12,6 +12,7 @@ namespace DarkNotes
 {
     public partial class Form1 : Form
     {
+        private Int32 _opacity = 95;
         public Form1()
         {
             InitializeComponent();
@@ -19,7 +20,17 @@ namespace DarkNotes
 
         private void richTextBox1_TextChanged(object sender, EventArgs e)
         {
-            //throw new System.NotImplementedException();
+            MessageBox.Show("Fuck!");
+        }
+
+
+        private void toolStripTextBox1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                String size = toolStripTextBox1.Text;
+                MessageBox.Show(size);
+            }
         }
     }
 }

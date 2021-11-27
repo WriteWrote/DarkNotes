@@ -52,6 +52,12 @@
         <Compile Include="Forms\Form1.Designer.cs">
           <DependentUpon>Form1.cs</DependentUpon>
         </Compile>
+        <Compile Include="Forms\IndentsForm.cs">
+          <SubType>Form</SubType>
+        </Compile>
+        <Compile Include="Forms\IndentsForm.Designer.cs">
+          <DependentUpon>IndentsForm.cs</DependentUpon>
+        </Compile>
         <Compile Include="Program.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
         <EmbeddedResource Include="Forms\Form1.resx">

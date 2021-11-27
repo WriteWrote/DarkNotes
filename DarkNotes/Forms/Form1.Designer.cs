@@ -86,7 +86,7 @@ namespace DarkNotes
             this.richTextBox1.Font = new System.Drawing.Font("Century", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (204)));
             this.richTextBox1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.richTextBox1.Location = new System.Drawing.Point(0, 40);
-            this.richTextBox1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.richTextBox1.Margin = new System.Windows.Forms.Padding(5, 10, 5, 10);
             this.richTextBox1.MinimumSize = new System.Drawing.Size(263, 300);
             this.richTextBox1.Name = "richTextBox1";
             this.richTextBox1.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
@@ -261,6 +261,7 @@ namespace DarkNotes
             this.toolStripTextBox1.Margin = new System.Windows.Forms.Padding(1);
             this.toolStripTextBox1.Name = "toolStripTextBox1";
             this.toolStripTextBox1.Size = new System.Drawing.Size(30, 40);
+            this.toolStripTextBox1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.toolStripTextBox1_KeyDown);
             // 
             // toolStripButton1
             // 
