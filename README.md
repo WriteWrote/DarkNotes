@@ -11,6 +11,9 @@ This is a simple text-redactor (WIP), which I decided to create after I tired of
 - make a "red-line"
 - make a nice borders
 - выравнивание текста
+- Размер текста
+- Цвет текста
+- междустрочный интервал
 - поиск строки в тексте
 - статистика текста (слова, символы, абзацы)
 - статистика удобочитаемости текста
