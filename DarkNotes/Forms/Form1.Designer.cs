@@ -319,6 +319,7 @@ namespace DarkNotes
             this.toolStripTextBox2.Margin = new System.Windows.Forms.Padding(1);
             this.toolStripTextBox2.Name = "toolStripTextBox2";
             this.toolStripTextBox2.Size = new System.Drawing.Size(30, 40);
+            this.toolStripTextBox2.KeyDown += new System.Windows.Forms.KeyEventHandler(this.toolStripTextBox2_KeyDown);
             // 
             // toolStripLabel3
             // 
