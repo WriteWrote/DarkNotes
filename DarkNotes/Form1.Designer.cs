@@ -215,12 +215,13 @@ namespace DarkNotes
             this.toolStrip.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.toolStrip.Dock = System.Windows.Forms.DockStyle.None;
             this.toolStrip.Font = new System.Drawing.Font("RussianPunk", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (204)));
+            this.toolStrip.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.toolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {this.toolStripComboBox1, this.toolStripLabel1, this.toolStripTextBox1, this.toolStripButton1, this.toolStripButton2, this.toolStripButton3, this.toolStripButton4});
             this.toolStrip.Location = new System.Drawing.Point(345, 0);
-            this.toolStrip.MinimumSize = new System.Drawing.Size(515, 40);
+            this.toolStrip.MinimumSize = new System.Drawing.Size(515, 42);
             this.toolStrip.Name = "toolStrip";
             this.toolStrip.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.toolStrip.Size = new System.Drawing.Size(515, 40);
+            this.toolStrip.Size = new System.Drawing.Size(515, 42);
             this.toolStrip.TabIndex = 4;
             this.toolStrip.Text = "toolStrip";
             // 
@@ -231,12 +232,12 @@ namespace DarkNotes
             this.toolStripComboBox1.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (204)));
             this.toolStripComboBox1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.toolStripComboBox1.Name = "toolStripComboBox1";
-            this.toolStripComboBox1.Size = new System.Drawing.Size(121, 40);
+            this.toolStripComboBox1.Size = new System.Drawing.Size(121, 42);
             // 
             // toolStripLabel1
             // 
             this.toolStripLabel1.Name = "toolStripLabel1";
-            this.toolStripLabel1.Size = new System.Drawing.Size(63, 37);
+            this.toolStripLabel1.Size = new System.Drawing.Size(63, 39);
             this.toolStripLabel1.Text = "Size:";
             // 
             // toolStripTextBox1
@@ -246,7 +247,7 @@ namespace DarkNotes
             this.toolStripTextBox1.Font = new System.Drawing.Font("RussianPunk", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (204)));
             this.toolStripTextBox1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.toolStripTextBox1.Name = "toolStripTextBox1";
-            this.toolStripTextBox1.Size = new System.Drawing.Size(40, 40);
+            this.toolStripTextBox1.Size = new System.Drawing.Size(40, 42);
             // 
             // toolStripButton1
             // 
@@ -255,7 +256,7 @@ namespace DarkNotes
             this.toolStripButton1.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(42, 37);
+            this.toolStripButton1.Size = new System.Drawing.Size(42, 39);
             this.toolStripButton1.Text = "Ж";
             this.toolStripButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             // 
@@ -266,7 +267,7 @@ namespace DarkNotes
             this.toolStripButton2.Image = ((System.Drawing.Image) (resources.GetObject("toolStripButton2.Image")));
             this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton2.Name = "toolStripButton2";
-            this.toolStripButton2.Size = new System.Drawing.Size(34, 37);
+            this.toolStripButton2.Size = new System.Drawing.Size(34, 39);
             this.toolStripButton2.Text = "К";
             // 
             // toolStripButton3
@@ -276,7 +277,7 @@ namespace DarkNotes
             this.toolStripButton3.Image = ((System.Drawing.Image) (resources.GetObject("toolStripButton3.Image")));
             this.toolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton3.Name = "toolStripButton3";
-            this.toolStripButton3.Size = new System.Drawing.Size(33, 37);
+            this.toolStripButton3.Size = new System.Drawing.Size(33, 39);
             this.toolStripButton3.Text = "П";
             // 
             // toolStripButton4
@@ -286,7 +287,7 @@ namespace DarkNotes
             this.toolStripButton4.Image = ((System.Drawing.Image) (resources.GetObject("toolStripButton4.Image")));
             this.toolStripButton4.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton4.Name = "toolStripButton4";
-            this.toolStripButton4.Size = new System.Drawing.Size(32, 37);
+            this.toolStripButton4.Size = new System.Drawing.Size(32, 39);
             this.toolStripButton4.Text = "З";
             // 
             // Form1
@@ -296,9 +297,9 @@ namespace DarkNotes
             this.BackColor = System.Drawing.SystemColors.Desktop;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.ClientSize = new System.Drawing.Size(859, 603);
-            this.Controls.Add(this.toolStrip);
             this.Controls.Add(this.miniToolStrip);
             this.Controls.Add(this.richTextBox1);
+            this.Controls.Add(this.toolStrip);
             this.Cursor = System.Windows.Forms.Cursors.Default;
             this.Font = new System.Drawing.Font("Century", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (204)));
             this.ForeColor = System.Drawing.SystemColors.ControlLightLight;
