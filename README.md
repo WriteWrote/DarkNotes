@@ -15,6 +15,8 @@ This is a simple text-redactor (WIP), which I decided to create after I tired of
 - also "maaaybe" - music background
 - changing dark-mode to light-mode
 - customizing mode
+- make a .style
+- make a .dnts
 
 # Bugs
 
