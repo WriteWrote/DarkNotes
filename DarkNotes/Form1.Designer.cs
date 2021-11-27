@@ -37,6 +37,7 @@ namespace DarkNotes
             this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveAsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.exportBackgroundStyleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.appearanceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.redLineToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.fontToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -45,13 +46,15 @@ namespace DarkNotes
             this.backmusicToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.backgroundStyleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.documentStyleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // richTextBox1
             // 
             this.richTextBox1.BackColor = System.Drawing.SystemColors.Desktop;
-            this.richTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.richTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.richTextBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.richTextBox1.Font = new System.Drawing.Font("Century", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (204)));
             this.richTextBox1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
@@ -67,7 +70,7 @@ namespace DarkNotes
             // 
             // menuStrip
             // 
-            this.menuStrip.BackColor = System.Drawing.Color.Transparent;
+            this.menuStrip.BackColor = System.Drawing.SystemColors.Desktop;
             this.menuStrip.Font = new System.Drawing.Font("RussianPunk", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (204)));
             this.menuStrip.ForeColor = System.Drawing.Color.Black;
             this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {this.filesToolStripMenuItem, this.appearanceToolStripMenuItem});
@@ -81,7 +84,7 @@ namespace DarkNotes
             // filesToolStripMenuItem
             // 
             this.filesToolStripMenuItem.BackColor = System.Drawing.SystemColors.Desktop;
-            this.filesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {this.openToolStripMenuItem, this.saveToolStripMenuItem, this.saveAsToolStripMenuItem});
+            this.filesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {this.openToolStripMenuItem, this.saveToolStripMenuItem, this.saveAsToolStripMenuItem, this.exportBackgroundStyleToolStripMenuItem});
             this.filesToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.filesToolStripMenuItem.Name = "filesToolStripMenuItem";
             this.filesToolStripMenuItem.Size = new System.Drawing.Size(84, 36);
@@ -110,6 +113,16 @@ namespace DarkNotes
             this.saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
             this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(201, 36);
             this.saveAsToolStripMenuItem.Text = "Save as...";
+            // 
+            // exportBackgroundStyleToolStripMenuItem
+            // 
+            this.exportBackgroundStyleToolStripMenuItem.BackColor = System.Drawing.SystemColors.Desktop;
+            this.exportBackgroundStyleToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {this.backgroundStyleToolStripMenuItem, this.documentStyleToolStripMenuItem});
+            this.exportBackgroundStyleToolStripMenuItem.Enabled = false;
+            this.exportBackgroundStyleToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.exportBackgroundStyleToolStripMenuItem.Name = "exportBackgroundStyleToolStripMenuItem";
+            this.exportBackgroundStyleToolStripMenuItem.Size = new System.Drawing.Size(201, 36);
+            this.exportBackgroundStyleToolStripMenuItem.Text = "Export";
             // 
             // appearanceToolStripMenuItem
             // 
@@ -167,6 +180,22 @@ namespace DarkNotes
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
+            // backgroundStyleToolStripMenuItem
+            // 
+            this.backgroundStyleToolStripMenuItem.BackColor = System.Drawing.SystemColors.Desktop;
+            this.backgroundStyleToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.backgroundStyleToolStripMenuItem.Name = "backgroundStyleToolStripMenuItem";
+            this.backgroundStyleToolStripMenuItem.Size = new System.Drawing.Size(303, 36);
+            this.backgroundStyleToolStripMenuItem.Text = "Background style";
+            // 
+            // documentStyleToolStripMenuItem
+            // 
+            this.documentStyleToolStripMenuItem.BackColor = System.Drawing.SystemColors.Desktop;
+            this.documentStyleToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.documentStyleToolStripMenuItem.Name = "documentStyleToolStripMenuItem";
+            this.documentStyleToolStripMenuItem.Size = new System.Drawing.Size(303, 36);
+            this.documentStyleToolStripMenuItem.Text = "Document style";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -193,6 +222,11 @@ namespace DarkNotes
             this.ResumeLayout(false);
             this.PerformLayout();
         }
+
+        private System.Windows.Forms.ToolStripMenuItem backgroundStyleToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem documentStyleToolStripMenuItem;
+
+        private System.Windows.Forms.ToolStripMenuItem exportBackgroundStyleToolStripMenuItem;
 
         private System.Windows.Forms.MenuStrip menuStrip;
         private System.Windows.Forms.ToolStripMenuItem filesToolStripMenuItem;
