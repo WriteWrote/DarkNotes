@@ -10,6 +10,9 @@ This is a simple text-redactor (WIP), which I decided to create after I tired of
 - changing fonts, sizes of letters
 - make a "red-line"
 - make a nice borders
+- поиск строки в тексте
+- статистика текста (слова, символы, абзацы)
+- статистика удобочитаемости текста
 - the **actual Task&Instrument Board**!
 - maaaybe it future-future - nice background
 - also "maaaybe" - music background
