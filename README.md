@@ -4,12 +4,13 @@ This is a simple text-redactor (WIP), which I decided to create after I tired of
 
 **List of the features ToDo:**
 - Changing transparency (default 95%)
-- sizing of workspace
+- sizing of workspace DONE
 - saving and loading files (oooh I expect here problems w/ encoding)
 - it would be nice to have versioning while you write
 - changing fonts, sizes of letters
 - make a "red-line"
 - make a nice borders
+- выравнивание текста
 - поиск строки в тексте
 - статистика текста (слова, символы, абзацы)
 - статистика удобочитаемости текста
