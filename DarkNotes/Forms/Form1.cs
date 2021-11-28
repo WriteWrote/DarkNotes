@@ -165,5 +165,46 @@ namespace DarkNotes
                 richTextBox1.Font = new Font(_currentFont, _currentSize, FontStyle.Strikeout);
             }
         }
+
+        // ToDo: don't lose! --> richTextBox1.SelectedText
+        //ToDo: don't lose! --> richTextBox1.GetFirstCharIndexOfCurrentLine()
+        /// <summary>
+        /// Sets left alignment to picked text
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void toolStripButton5_Click(object sender, EventArgs e)
+        {
+            if (richTextBox1.SelectionLength > 0)
+            {
+                richTextBox1.SelectionAlignment = HorizontalAlignment.Left;
+            }
+        }
+
+        /// <summary>
+        /// Sets left alignment to picked text.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void toolStripButton6_Click(object sender, EventArgs e)
+        {
+            if (richTextBox1.SelectionLength > 0)
+            {
+                richTextBox1.SelectionAlignment = HorizontalAlignment.Center;
+            }
+        }
+
+        /// <summary>
+        /// Sets right alignment to picked text.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void toolStripButton7_Click(object sender, EventArgs e)
+        {
+            if (richTextBox1.SelectionLength > 0)
+            {
+                richTextBox1.SelectionAlignment = HorizontalAlignment.Right;
+            }
+        }
     }
 }
