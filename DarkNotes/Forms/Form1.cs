@@ -12,8 +12,9 @@ namespace DarkNotes
 {
     public partial class Form1 : Form
     {
-        private Double _opacity = 95;
-        private Int32 _size = 14;
+        public static double DefaultOpacity { get; } = 95;
+        private Int32 _currentSize = 14;
+        private String _currentFont = "Century";
 
         public Form1()
         {
@@ -31,28 +32,37 @@ namespace DarkNotes
 
         private void toolStripTextBox1_KeyDown(object sender, KeyEventArgs e)
         {
-            // ToDo: make equal 5.1 and 5,1 when recieving text
+            // change size
+
             if (e.KeyCode == Keys.Enter)
             {
                 String s = toolStripTextBox1.Text;
                 try
                 {
+                    //s.Replace('.', '.');
                     Int32 size = Convert.ToInt32(s.Trim());
-                    this._size = size;
-                    //richTextBox1.SelectionFont = new Font("Tahoma", this._size, FontStyle.Regular);
-                    richTextBox1.Font = new Font("Tahoma", this._size, FontStyle.Regular);
+                    _currentSize = size;
+                    if (richTextBox1.SelectionLength > 0)
+                    {
+                        richTextBox1.SelectionFont = new Font(_currentFont, size, FontStyle.Regular);
+                    }
+                    else
+                    {
+                        richTextBox1.Font = new Font(_currentFont, size, FontStyle.Regular);
+                    }
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("This is not a number. Or smth is just wrong, I dunno?");
+                    MessageBox.Show("This is not a number. Or smth is just wrong, I dunno? Please use int");
                 }
             }
         }
 
         private void toolStripTextBox2_KeyDown(object sender, KeyEventArgs e)
         {
-            // ToDo: make equal 5.1 and 5,1 when recieving text
+            // change opacity
             // или можно просто сделать, чтобы принимали только инт
+
             if (e.KeyCode == Keys.Enter)
             {
                 String s = toolStripTextBox2.Text;
@@ -60,12 +70,70 @@ namespace DarkNotes
                 {
                     Double opacity = Convert.ToDouble(s.Trim());
                     //this._opacity = opacity;
-                    this.Opacity = opacity/100;
+                    this.Opacity = opacity / 100;
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show("This is not a number. Or smth is just wrong, I dunno? Try int there");
                 }
+            }
+        }
+
+        private void toolStripButton1_Click(object sender, EventArgs e)
+        {
+            // get Bold text
+            // ToDo: make second click on the style button reverse style to normal
+            // ToDo: make styles combinated
+            
+            if (richTextBox1.SelectionLength > 0)
+            {
+                richTextBox1.SelectionFont = new Font(_currentFont, _currentSize, FontStyle.Bold);
+            }
+            else
+            {
+                richTextBox1.Font = new Font(_currentFont, _currentSize, FontStyle.Bold);
+            }
+        }
+
+        private void toolStripButton2_Click(object sender, EventArgs e)
+        {
+            // get italic text
+            
+            if (richTextBox1.SelectionLength > 0)
+            {
+                richTextBox1.SelectionFont = new Font(_currentFont, _currentSize, FontStyle.Italic);
+            }
+            else
+            {
+                richTextBox1.Font = new Font(_currentFont, _currentSize, FontStyle.Italic);
+            }
+        }
+
+        private void toolStripButton3_Click(object sender, EventArgs e)
+        {
+            // get underlined text
+            
+            if (richTextBox1.SelectionLength > 0)
+            {
+                richTextBox1.SelectionFont = new Font(_currentFont, _currentSize, FontStyle.Underline);
+            }
+            else
+            {
+                richTextBox1.Font = new Font(_currentFont, _currentSize, FontStyle.Underline);
+            }
+        }
+
+        private void toolStripButton4_Click(object sender, EventArgs e)
+        {
+            // get strikedOut text
+            
+            if (richTextBox1.SelectionLength > 0)
+            {
+                richTextBox1.SelectionFont = new Font(_currentFont, _currentSize, FontStyle.Strikeout);
+            }
+            else
+            {
+                richTextBox1.Font = new Font(_currentFont, _currentSize, FontStyle.Strikeout);
             }
         }
     }

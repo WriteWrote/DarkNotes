@@ -273,6 +273,7 @@ namespace DarkNotes
             this.toolStripButton1.Size = new System.Drawing.Size(42, 39);
             this.toolStripButton1.Text = "Ж";
             this.toolStripButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
             // 
             // toolStripButton2
             // 
@@ -283,6 +284,7 @@ namespace DarkNotes
             this.toolStripButton2.Name = "toolStripButton2";
             this.toolStripButton2.Size = new System.Drawing.Size(34, 39);
             this.toolStripButton2.Text = "К";
+            this.toolStripButton2.Click += new System.EventHandler(this.toolStripButton2_Click);
             // 
             // toolStripButton3
             // 
@@ -293,6 +295,7 @@ namespace DarkNotes
             this.toolStripButton3.Name = "toolStripButton3";
             this.toolStripButton3.Size = new System.Drawing.Size(33, 39);
             this.toolStripButton3.Text = "П";
+            this.toolStripButton3.Click += new System.EventHandler(this.toolStripButton3_Click);
             // 
             // toolStripButton4
             // 
@@ -303,6 +306,7 @@ namespace DarkNotes
             this.toolStripButton4.Name = "toolStripButton4";
             this.toolStripButton4.Size = new System.Drawing.Size(32, 39);
             this.toolStripButton4.Text = "З";
+            this.toolStripButton4.Click += new System.EventHandler(this.toolStripButton4_Click);
             // 
             // toolStripLabel2
             // 
