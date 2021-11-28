@@ -231,11 +231,18 @@ namespace DarkNotes
         {
             _currentText = richTextBox1.Text;
             System.IO.File.WriteAllText(_currentFilename, _currentText);
+            MessageBox.Show("Your text is safe now!");
         }
 
         private void toolStripMenuItem4_Click(object sender, EventArgs e)
         {
-            throw new System.NotImplementedException();
+            if (saveFileDialog1.ShowDialog() == DialogResult.Cancel)
+                return;
+            _currentFilename = saveFileDialog1.FileName;
+            // сохраняем текст в файл
+            _currentText = richTextBox1.Text;
+            System.IO.File.WriteAllText(_currentFilename, _currentText);
+            MessageBox.Show("Your text's safe! Don't forget the new name of file now and don't lose it");
         }
     }
 }
