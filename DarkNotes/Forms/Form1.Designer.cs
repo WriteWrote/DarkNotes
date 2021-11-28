@@ -107,7 +107,7 @@ namespace DarkNotes
             this.miniToolStrip.MinimumSize = new System.Drawing.Size(260, 40);
             this.miniToolStrip.Name = "miniToolStrip";
             this.miniToolStrip.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.miniToolStrip.Size = new System.Drawing.Size(260, 40);
+            this.miniToolStrip.Size = new System.Drawing.Size(345, 40);
             this.miniToolStrip.TabIndex = 3;
             // 
             // toolStripMenuItem1
@@ -126,6 +126,7 @@ namespace DarkNotes
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
             this.toolStripMenuItem2.Size = new System.Drawing.Size(201, 36);
             this.toolStripMenuItem2.Text = "Open";
+            this.toolStripMenuItem2.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
             // 
             // toolStripMenuItem3
             // 
@@ -134,6 +135,7 @@ namespace DarkNotes
             this.toolStripMenuItem3.Name = "toolStripMenuItem3";
             this.toolStripMenuItem3.Size = new System.Drawing.Size(201, 36);
             this.toolStripMenuItem3.Text = "Save";
+            this.toolStripMenuItem3.Click += new System.EventHandler(this.toolStripMenuItem3_Click);
             // 
             // toolStripMenuItem4
             // 
@@ -142,6 +144,7 @@ namespace DarkNotes
             this.toolStripMenuItem4.Name = "toolStripMenuItem4";
             this.toolStripMenuItem4.Size = new System.Drawing.Size(201, 36);
             this.toolStripMenuItem4.Text = "Save as...";
+            this.toolStripMenuItem4.Click += new System.EventHandler(this.toolStripMenuItem4_Click);
             // 
             // toolStripMenuItem5
             // 

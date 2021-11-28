@@ -15,6 +15,8 @@ namespace DarkNotes
         public static double DefaultOpacity { get; } = 95;
         private Int32 _currentSize = 14;
         private String _currentFont = "Century";
+        private String _currentText = "";
+        private String _currentFilename = "";
 
         public Form1()
         {
@@ -205,6 +207,35 @@ namespace DarkNotes
             {
                 richTextBox1.SelectionAlignment = HorizontalAlignment.Right;
             }
+        }
+
+        /// <summary>
+        /// Opens & displays new file
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void toolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            // toolStripMenuItem1 == "File"
+            // ToDo: set cursor on the first line of new text
+
+            if (openFileDialog1.ShowDialog() == DialogResult.Cancel)
+                return;
+            _currentFilename = openFileDialog1.FileName;
+            string text = System.IO.File.ReadAllText(_currentFilename);
+            _currentText = text;
+            richTextBox1.Text = text;
+        }
+
+        private void toolStripMenuItem3_Click(object sender, EventArgs e)
+        {
+            _currentText = richTextBox1.Text;
+            System.IO.File.WriteAllText(_currentFilename, _currentText);
+        }
+
+        private void toolStripMenuItem4_Click(object sender, EventArgs e)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }
