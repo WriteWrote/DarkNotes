@@ -29,10 +29,15 @@ namespace DarkNotes
             //MessageBox.Show("Fuck!");
         }
 
-
+        ///<summary>
+        /// Changing size of text
+        /// If text's picked, changes size only for picked part
+        /// Receives Int from textBox1 (toolStrip1) + Enter
+        /// <value>Changes the global _currentSize</value>
+        ///</summary>
         private void toolStripTextBox1_KeyDown(object sender, KeyEventArgs e)
         {
-            // change size
+            // ToDo: fix bug that when you click into the textbox for size the visual of picked text goes back to unpicked.
 
             if (e.KeyCode == Keys.Enter)
             {
@@ -58,9 +63,14 @@ namespace DarkNotes
             }
         }
 
+        /// <summary>
+        /// Changes opacity of form
+        /// Receives number from textbox2, toolstrip1
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void toolStripTextBox2_KeyDown(object sender, KeyEventArgs e)
         {
-            // change opacity
             // или можно просто сделать, чтобы принимали только инт
 
             if (e.KeyCode == Keys.Enter)
@@ -79,12 +89,17 @@ namespace DarkNotes
             }
         }
 
+        /// <summary>
+        /// Sets text into bold.
+        /// Can be related to part of text.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void toolStripButton1_Click(object sender, EventArgs e)
         {
-            // get Bold text
             // ToDo: make second click on the style button reverse style to normal
             // ToDo: make styles combinated
-            
+
             if (richTextBox1.SelectionLength > 0)
             {
                 richTextBox1.SelectionFont = new Font(_currentFont, _currentSize, FontStyle.Bold);
@@ -95,10 +110,16 @@ namespace DarkNotes
             }
         }
 
+        /// <summary>
+        /// Sets text into italic.
+        /// Can be related to part of text.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void toolStripButton2_Click(object sender, EventArgs e)
         {
             // get italic text
-            
+
             if (richTextBox1.SelectionLength > 0)
             {
                 richTextBox1.SelectionFont = new Font(_currentFont, _currentSize, FontStyle.Italic);
@@ -109,10 +130,14 @@ namespace DarkNotes
             }
         }
 
+        /// <summary>
+        /// Sets text into underlined.
+        /// Can be related to part of text.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void toolStripButton3_Click(object sender, EventArgs e)
         {
-            // get underlined text
-            
             if (richTextBox1.SelectionLength > 0)
             {
                 richTextBox1.SelectionFont = new Font(_currentFont, _currentSize, FontStyle.Underline);
@@ -123,10 +148,14 @@ namespace DarkNotes
             }
         }
 
+        /// <summary>
+        /// Changes text into strikeout.
+        /// Can be related to part of text.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void toolStripButton4_Click(object sender, EventArgs e)
         {
-            // get strikedOut text
-            
             if (richTextBox1.SelectionLength > 0)
             {
                 richTextBox1.SelectionFont = new Font(_currentFont, _currentSize, FontStyle.Strikeout);
