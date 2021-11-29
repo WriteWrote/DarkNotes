@@ -3,15 +3,15 @@
 This is a simple text-redactor (WIP), which I decided to create after I tired of white light of Word. It's a slowly-build project, but I still hope to manage it.
 
 **List of the features ToDo:**
-- Changing transparency (default 95%)
+- Changing transparency (default 95%) DONE
 - sizing of workspace DONE
-- saving and loading files (oooh I expect here problems w/ encoding)
+- saving and loading files (oooh I expect here problems w/ encoding) DONE txt
 - it would be nice to have versioning while you write
-- changing fonts, sizes of letters
-- make a "red-line"
-- make a nice borders
-- выравнивание текста
-- Размер текста
+- changing fonts
+- make a "red-line" DONE
+- make a nice borders DONE
+- выравнивание текста DONE
+- Размер текста DONE
 - Цвет текста
 - междустрочный интервал
 - поиск строки в тексте
