@@ -17,6 +17,8 @@ namespace DarkNotes
         private String _currentFont = "Century";
         private String _currentText = "";
         private String _currentFilename = "";
+        private FormWindowState _currentWindowState = FormWindowState.Normal;
+        private bool formIsHidden = false;
 
         public Form1()
         {
@@ -246,7 +248,7 @@ namespace DarkNotes
                 MessageBox.Show("Your text is safe now!");
             }
         }
-        
+
         /// <summary>
         /// Saves text to new file using SaveFileDialog
         /// </summary>
@@ -307,6 +309,44 @@ namespace DarkNotes
             }
 
             this.Close();
+        }
+
+        /// <summary>
+        /// Hides window
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        /// <exception cref="NotImplementedException"></exception>
+        private void toolStripButton10_Click(object sender, EventArgs e)
+        {
+            if (formIsHidden)
+            {
+                this.Show();
+            }
+            else
+            {
+                this.Hide();
+            }
+        }
+
+        /// <summary>
+        /// Makes app fill the window. Second press sets app to usual size 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        /// <exception cref="NotImplementedException"></exception>
+        private void toolStripButton11_Click(object sender, EventArgs e)
+        {
+            if (_currentWindowState == FormWindowState.Maximized)
+            {
+                _currentWindowState = FormWindowState.Normal;
+                this.WindowState = FormWindowState.Normal;
+            }
+            else
+            {
+                _currentWindowState = FormWindowState.Maximized;
+                this.WindowState = FormWindowState.Maximized;
+            }
         }
     }
 }
