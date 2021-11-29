@@ -250,6 +250,8 @@ namespace DarkNotes
             this.toolStripComboBox1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.toolStripComboBox1.Name = "toolStripComboBox1";
             this.toolStripComboBox1.Size = new System.Drawing.Size(200, 42);
+            this.toolStripComboBox1.SelectedIndexChanged += new System.EventHandler(this.toolStripComboBox1_SelectedIndexChanged);
+            this.toolStripComboBox1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.toolStripComboBox1_KeyDown);
             // 
             // toolStripLabel1
             // 

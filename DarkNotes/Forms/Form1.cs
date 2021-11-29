@@ -34,6 +34,7 @@ namespace DarkNotes
 
             foreach (FontFamily family in fontFamilies.Families)
             {
+                //toolStripComboBox1.Font = new Font(family.Name, 14);
                 toolStripComboBox1.Items.Add(family.Name);
             }
 
@@ -42,7 +43,6 @@ namespace DarkNotes
 
         private void richTextBox1_TextChanged(object sender, EventArgs e)
         {
-            //MessageBox.Show("Fuck!");
         }
 
         ///<summary>
@@ -351,6 +351,43 @@ namespace DarkNotes
             {
                 //_currentWindowState = FormWindowState.Maximized;
                 this.WindowState = FormWindowState.Maximized;
+            }
+        }
+
+        /// <summary>
+        /// Changes font of text/picked text. Picks the font from combobox (from toolbox)
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void toolStripComboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string selectedFont = toolStripComboBox1.SelectedItem.ToString();
+            if (richTextBox1.SelectionLength > 0)
+            {
+                richTextBox1.SelectionFont = new Font(selectedFont, _currentSize, FontStyle.Regular);
+            }
+            else
+            {
+                richTextBox1.Font = new Font(selectedFont, _currentSize, FontStyle.Regular);
+            }
+
+            _currentFont = selectedFont;
+        }
+
+        /// <summary>
+        /// Invokes method for changing font of text/picked text.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        //ToDo: replace using key codes for "Enter" to the settings of "enter" like the entering the data (at the form)
+        //ToDo: сделать так, чтобы кнопки "выравнивание" работали для строки, а не только для выделения
+        //ToDo: сделать так, чтобы кнопки Ж, К, ... работали для слова
+        //ToDo: сделать так, чтобы при переходе по строкам/ буквам в комбобокс показывался шрифт
+        private void toolStripComboBox1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                toolStripComboBox1_SelectedIndexChanged(sender, e);
             }
         }
     }
