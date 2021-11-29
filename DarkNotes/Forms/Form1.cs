@@ -18,7 +18,6 @@ namespace DarkNotes
         private String _currentText = "";
         private String _currentFilename = "";
         private FormWindowState _currentWindowState = FormWindowState.Normal;
-        private bool formIsHidden = false;
 
         public Form1()
         {
