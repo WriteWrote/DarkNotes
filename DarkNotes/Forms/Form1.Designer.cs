@@ -461,6 +461,7 @@ namespace DarkNotes
             this.Opacity = 0.95D;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.TransparencyKey = System.Drawing.Color.Red;
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
             this.miniToolStrip.ResumeLayout(false);
             this.miniToolStrip.PerformLayout();

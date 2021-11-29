@@ -14,7 +14,7 @@ namespace DarkNotes
         {
             throw new System.NotImplementedException();
         }
-
+/*
         /// <summary>
         /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
@@ -29,6 +29,6 @@ namespace DarkNotes
             this.Name = "IndentsForm";
             this.Load += new System.EventHandler(this.IndentsForm_Load);
             this.ResumeLayout(false);
-        }
+        }*/
     }
 }

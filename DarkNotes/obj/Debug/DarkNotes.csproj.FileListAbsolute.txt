@@ -9,3 +9,4 @@ D:\XXX\WorkingFiles\C#_2021\DarkNotes\DarkNotes\obj\Debug\DarkNotes.csproj.CoreC
 D:\XXX\WorkingFiles\C#_2021\DarkNotes\DarkNotes\obj\Debug\DarkNotes.exe
 D:\XXX\WorkingFiles\C#_2021\DarkNotes\DarkNotes\obj\Debug\DarkNotes.pdb
 D:\XXX\WorkingFiles\C#_2021\DarkNotes\DarkNotes\obj\Debug\DarkNotes.Form1.resources
+D:\XXX\WorkingFiles\C#_2021\DarkNotes\DarkNotes\obj\Debug\DarkNotes.IndentsForm.resources

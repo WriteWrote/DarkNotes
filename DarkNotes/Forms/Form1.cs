@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Text;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -25,6 +26,16 @@ namespace DarkNotes
             richTextBox1.SelectionIndent = 70;
             richTextBox1.SelectionHangingIndent = -40;
             richTextBox1.SelectionRightIndent = 20;
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            InstalledFontCollection fontFamilies = new InstalledFontCollection();
+
+            foreach (FontFamily family in fontFamilies.Families)
+            {
+                toolStripComboBox1.Items.Add(family.Name);
+            }
         }
 
         private void richTextBox1_TextChanged(object sender, EventArgs e)
@@ -329,14 +340,14 @@ namespace DarkNotes
         /// <exception cref="NotImplementedException"></exception>
         private void toolStripButton11_Click(object sender, EventArgs e)
         {
-            if (_currentWindowState == FormWindowState.Maximized)
+            if (this.WindowState == FormWindowState.Maximized)
             {
-                _currentWindowState = FormWindowState.Normal;
+                //_currentWindowState = FormWindowState.Normal;
                 this.WindowState = FormWindowState.Normal;
             }
             else
             {
-                _currentWindowState = FormWindowState.Maximized;
+                //_currentWindowState = FormWindowState.Maximized;
                 this.WindowState = FormWindowState.Maximized;
             }
         }
