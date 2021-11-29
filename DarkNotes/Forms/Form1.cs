@@ -36,6 +36,8 @@ namespace DarkNotes
             {
                 toolStripComboBox1.Items.Add(family.Name);
             }
+
+            toolStripComboBox1.Text = toolStripComboBox1.Items[0].ToString();
         }
 
         private void richTextBox1_TextChanged(object sender, EventArgs e)
