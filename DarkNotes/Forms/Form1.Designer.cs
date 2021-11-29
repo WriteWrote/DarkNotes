@@ -373,7 +373,7 @@ namespace DarkNotes
             this.toolStripButton8.Image = ((System.Drawing.Image) (resources.GetObject("toolStripButton8.Image")));
             this.toolStripButton8.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton8.Name = "toolStripButton8";
-            this.toolStripButton8.Size = new System.Drawing.Size(40, 39);
+            this.toolStripButton8.Size = new System.Drawing.Size(40, 36);
             this.toolStripButton8.Text = "W";
             // 
             // toolStripButton9
@@ -383,7 +383,7 @@ namespace DarkNotes
             this.toolStripButton9.Image = ((System.Drawing.Image) (resources.GetObject("toolStripButton9.Image")));
             this.toolStripButton9.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton9.Name = "toolStripButton9";
-            this.toolStripButton9.Size = new System.Drawing.Size(37, 39);
+            this.toolStripButton9.Size = new System.Drawing.Size(37, 36);
             this.toolStripButton9.Text = "LI";
             this.toolStripButton9.Click += new System.EventHandler(this.toolStripButton9_Click);
             // 
@@ -452,6 +452,7 @@ namespace DarkNotes
             this.Cursor = System.Windows.Forms.Cursors.Default;
             this.Font = new System.Drawing.Font("Century", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (204)));
             this.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.Icon = ((System.Drawing.Icon) (resources.GetObject("$this.Icon")));
             this.Location = new System.Drawing.Point(15, 15);
             this.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.MaximizeBox = false;
@@ -459,7 +460,6 @@ namespace DarkNotes
             this.MinimumSize = new System.Drawing.Size(1000, 300);
             this.Name = "Form1";
             this.Opacity = 0.95D;
-            this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.TransparencyKey = System.Drawing.Color.Red;
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);

@@ -319,14 +319,7 @@ namespace DarkNotes
         /// <exception cref="NotImplementedException"></exception>
         private void toolStripButton10_Click(object sender, EventArgs e)
         {
-            if (formIsHidden)
-            {
-                this.Show();
-            }
-            else
-            {
-                this.Hide();
-            }
+            this.WindowState = FormWindowState.Minimized;
         }
 
         /// <summary>
