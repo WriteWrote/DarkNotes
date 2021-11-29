@@ -174,6 +174,8 @@ namespace DarkNotes
             // 
             // musicBackgroundToolStripMenuItem
             // 
+            this.musicBackgroundToolStripMenuItem.BackColor = System.Drawing.SystemColors.Desktop;
+            this.musicBackgroundToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.musicBackgroundToolStripMenuItem.Name = "musicBackgroundToolStripMenuItem";
             this.musicBackgroundToolStripMenuItem.Size = new System.Drawing.Size(303, 36);
             this.musicBackgroundToolStripMenuItem.Text = "Music Background";
@@ -377,12 +379,12 @@ namespace DarkNotes
             // toolStripButton9
             // 
             this.toolStripButton9.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.toolStripButton9.Enabled = false;
             this.toolStripButton9.Image = ((System.Drawing.Image) (resources.GetObject("toolStripButton9.Image")));
             this.toolStripButton9.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton9.Name = "toolStripButton9";
             this.toolStripButton9.Size = new System.Drawing.Size(37, 39);
             this.toolStripButton9.Text = "LI";
+            this.toolStripButton9.Click += new System.EventHandler(this.toolStripButton9_Click);
             // 
             // toolStrip1
             // 
@@ -429,6 +431,7 @@ namespace DarkNotes
             this.toolStripButton12.Name = "toolStripButton12";
             this.toolStripButton12.Size = new System.Drawing.Size(34, 39);
             this.toolStripButton12.Text = "X";
+            this.toolStripButton12.Click += new System.EventHandler(this.toolStripButton12_Click);
             // 
             // Form1
             // 
@@ -451,6 +454,7 @@ namespace DarkNotes
             this.Opacity = 0.95D;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.TransparencyKey = System.Drawing.Color.Red;
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
             this.miniToolStrip.ResumeLayout(false);
             this.miniToolStrip.PerformLayout();
             this.toolStrip.ResumeLayout(false);

@@ -227,22 +227,86 @@ namespace DarkNotes
             richTextBox1.Text = text;
         }
 
+        /// <summary>
+        /// Saves current file. Can invoke "save as" method
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void toolStripMenuItem3_Click(object sender, EventArgs e)
         {
-            _currentText = richTextBox1.Text;
-            System.IO.File.WriteAllText(_currentFilename, _currentText);
-            MessageBox.Show("Your text is safe now!");
+            if ("".Equals(_currentFilename))
+            {
+                //ToDo: learn about Invoke
+                toolStripMenuItem4_Click(sender, e);
+            }
+            else
+            {
+                _currentText = richTextBox1.Text;
+                System.IO.File.WriteAllText(_currentFilename, _currentText);
+                MessageBox.Show("Your text is safe now!");
+            }
         }
-
+        
+        /// <summary>
+        /// Saves text to new file using SaveFileDialog
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void toolStripMenuItem4_Click(object sender, EventArgs e)
         {
             if (saveFileDialog1.ShowDialog() == DialogResult.Cancel)
                 return;
             _currentFilename = saveFileDialog1.FileName;
-            // сохраняем текст в файл
+
+            if (!_currentFilename.Contains(".txt"))
+                _currentFilename += ".txt";
+
             _currentText = richTextBox1.Text;
             System.IO.File.WriteAllText(_currentFilename, _currentText);
             MessageBox.Show("Your text's safe! Don't forget the new name of file now and don't lose it");
+        }
+
+        private void Form1_KeyDown(object sender, KeyEventArgs e)
+        {
+            // ToDo: место для клавиатурных сокращений
+        }
+
+        /// <summary>
+        /// Болванка для междустрочного интервала
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void toolStripButton9_Click(object sender, EventArgs e)
+        {
+            /*
+            richTextBox1.ScrollToCaret();
+            richTextBox1.CanUndo = true;
+            //richTextBox1.Rtf/richTextBox1.SelectedRtf
+            //richTextBox1.SaveFile();/richTextBox1.LoadFile();
+            //richTextBox1.Find()
+            richTextBox1.Paste();
+            richTextBox1.SelectAll();*/
+        }
+
+        /// <summary>
+        /// Closes the app. Invokes "save" method if there is text in the form.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void toolStripButton12_Click(object sender, EventArgs e)
+        {
+            if (richTextBox1.TextLength > 0)
+            {
+                // ToDo: make the app to understand when text is saved and there is no need in asking for saving 
+                DialogResult result = MessageBox.Show("Do you want to save all of your valuable writing?",
+                    "Closing the app", MessageBoxButtons.YesNo);
+                if (result == DialogResult.Yes)
+                {
+                    this.toolStripMenuItem3_Click(sender, e);
+                }
+            }
+
+            this.Close();
         }
     }
 }
