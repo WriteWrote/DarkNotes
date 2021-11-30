@@ -13,12 +13,13 @@ namespace DarkNotes
 {
     public partial class Form1 : Form
     {
-        public static double DefaultOpacity { get; } = 95;
-        private Int32 _currentSize = 14;
-        private String _currentFont = "Century";
+        public static double DefaultOpacity { get; } = 93;
+        private Int32 _currentSize = 18;
+        private String _currentFont = "Corbel Light";
         private String _currentText = "";
+
         private String _currentFilename = "";
-        private FormWindowState _currentWindowState = FormWindowState.Normal;
+        //private FormWindowState _currentWindowState = FormWindowState.Normal;
 
         public Form1()
         {
@@ -30,15 +31,21 @@ namespace DarkNotes
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            //
+            fontD
+            
+            // Filling the combobox of fonts
             InstalledFontCollection fontFamilies = new InstalledFontCollection();
-
             foreach (FontFamily family in fontFamilies.Families)
             {
                 //toolStripComboBox1.Font = new Font(family.Name, 14);
                 toolStripComboBox1.Items.Add(family.Name);
             }
+            int ind = toolStripComboBox1.Items.IndexOf(_currentFont);
+            toolStripComboBox1.Text = toolStripComboBox1.Items[ind].ToString();
 
-            toolStripComboBox1.Text = toolStripComboBox1.Items[0].ToString();
+            toolStripTextBox1.Text = _currentSize.ToString();
+            toolStripTextBox2.Text = Form1.DefaultOpacity.ToString();
         }
 
         private void richTextBox1_TextChanged(object sender, EventArgs e)
@@ -374,21 +381,31 @@ namespace DarkNotes
             _currentFont = selectedFont;
         }
 
+        //ToDo: replace using key codes for "Enter" to the settings of "enter" like the entering the data (at the form)
+        //ToDo: сделать так, чтобы кнопки "выравнивание" работали для строки, а не только для выделения
+        //ToDo: сделать так, чтобы кнопки Ж, К, ... работали для слова
+        //ToDo: сделать так, чтобы при переходе по строкам/ буквам в комбобокс показывался шрифт
         /// <summary>
         /// Invokes method for changing font of text/picked text.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        //ToDo: replace using key codes for "Enter" to the settings of "enter" like the entering the data (at the form)
-        //ToDo: сделать так, чтобы кнопки "выравнивание" работали для строки, а не только для выделения
-        //ToDo: сделать так, чтобы кнопки Ж, К, ... работали для слова
-        //ToDo: сделать так, чтобы при переходе по строкам/ буквам в комбобокс показывался шрифт
         private void toolStripComboBox1_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
                 toolStripComboBox1_SelectedIndexChanged(sender, e);
             }
+        }
+
+        /// <summary>
+        /// Opens FontDialog
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void toolStripMenuItem10_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }
