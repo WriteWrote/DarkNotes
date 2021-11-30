@@ -25,6 +25,7 @@ This is a simple text-redactor (WIP), which I decided to create after I tired of
 - customizing mode
 - make a .style
 - make a .dnts
+- панель инструментов справа (выбор цвета, режима освещения, поиск строки в тексте, статистика)
 
 # Bugs
 
@@ -33,4 +34,4 @@ This is a simple text-redactor (WIP), which I decided to create after I tired of
 - Непонятка со скачущими размерами
 - Показывать шрифты в списке шрифтов их начертанием
 - Озаботиться поиском бесплатного для коммерческого использования шрифта
-- не помню
+- set to default appearance
