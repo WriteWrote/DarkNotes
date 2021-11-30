@@ -69,6 +69,7 @@ namespace DarkNotes
             this.toolStripButton10 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton11 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton12 = new System.Windows.Forms.ToolStripButton();
+            this.fontDialog = new System.Windows.Forms.FontDialog();
             this.miniToolStrip.SuspendLayout();
             this.toolStrip.SuspendLayout();
             this.toolStrip1.SuspendLayout();
@@ -107,7 +108,7 @@ namespace DarkNotes
             this.miniToolStrip.MinimumSize = new System.Drawing.Size(200, 40);
             this.miniToolStrip.Name = "miniToolStrip";
             this.miniToolStrip.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.miniToolStrip.Size = new System.Drawing.Size(345, 40);
+            this.miniToolStrip.Size = new System.Drawing.Size(253, 40);
             this.miniToolStrip.TabIndex = 3;
             // 
             // toolStripMenuItem1
@@ -475,6 +476,8 @@ namespace DarkNotes
             this.ResumeLayout(false);
             this.PerformLayout();
         }
+
+        private System.Windows.Forms.FontDialog fontDialog;
 
         private System.Windows.Forms.ToolStripButton toolStripButton10;
         private System.Windows.Forms.ToolStripButton toolStripButton11;

@@ -31,9 +31,9 @@ namespace DarkNotes
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            //
-            fontD
-            
+            // sets the ability to choose color of font from font dialog
+            fontDialog.ShowColor = true;
+
             // Filling the combobox of fonts
             InstalledFontCollection fontFamilies = new InstalledFontCollection();
             foreach (FontFamily family in fontFamilies.Families)
@@ -41,11 +41,12 @@ namespace DarkNotes
                 //toolStripComboBox1.Font = new Font(family.Name, 14);
                 toolStripComboBox1.Items.Add(family.Name);
             }
+
             int ind = toolStripComboBox1.Items.IndexOf(_currentFont);
             toolStripComboBox1.Text = toolStripComboBox1.Items[ind].ToString();
 
             toolStripTextBox1.Text = _currentSize.ToString();
-            toolStripTextBox2.Text = Form1.DefaultOpacity.ToString();
+            toolStripTextBox2.Text = DefaultOpacity.ToString();
         }
 
         private void richTextBox1_TextChanged(object sender, EventArgs e)
@@ -94,15 +95,12 @@ namespace DarkNotes
         /// <param name="e"></param>
         private void toolStripTextBox2_KeyDown(object sender, KeyEventArgs e)
         {
-            // или можно просто сделать, чтобы принимали только инт
-
             if (e.KeyCode == Keys.Enter)
             {
                 String s = toolStripTextBox2.Text;
                 try
                 {
                     Double opacity = Convert.ToDouble(s.Trim());
-                    //this._opacity = opacity;
                     this.Opacity = opacity / 100;
                 }
                 catch (Exception ex)
@@ -141,8 +139,6 @@ namespace DarkNotes
         /// <param name="e"></param>
         private void toolStripButton2_Click(object sender, EventArgs e)
         {
-            // get italic text
-
             if (richTextBox1.SelectionLength > 0)
             {
                 richTextBox1.SelectionFont = new Font(_currentFont, _currentSize, FontStyle.Italic);
@@ -405,7 +401,20 @@ namespace DarkNotes
         /// <param name="e"></param>
         private void toolStripMenuItem10_Click(object sender, EventArgs e)
         {
-            
+            if (fontDialog.ShowDialog() == DialogResult.Cancel)
+                return;
+
+            if (richTextBox1.SelectionLength > 0)
+            {
+                richTextBox1.SelectionFont = fontDialog.Font;
+                richTextBox1.SelectionColor = fontDialog.Color;
+            }
+            else
+            {
+                richTextBox1.Font = fontDialog.Font;
+                richTextBox1.SelectAll();
+                richTextBox1.SelectionColor = fontDialog.Color;
+            }
         }
     }
 }
