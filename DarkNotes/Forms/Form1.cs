@@ -233,7 +233,6 @@ namespace DarkNotes
         /// <param name="e"></param>
         private void toolStripMenuItem2_Click(object sender, EventArgs e)
         {
-            // toolStripMenuItem1 == "File"
             // ToDo: set cursor on the first line of new text
 
             if (openFileDialog1.ShowDialog() == DialogResult.Cancel)
@@ -287,14 +286,10 @@ namespace DarkNotes
         {
             // ToDo: место для клавиатурных сокращений
         }
-
-        /// <summary>
-        /// Болванка для междустрочного интервала
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        
         private void toolStripButton9_Click(object sender, EventArgs e)
         {
+            // ToDo: место для междустрочного интервала
             /*
             richTextBox1.ScrollToCaret();
             richTextBox1.CanUndo = true;
@@ -347,12 +342,10 @@ namespace DarkNotes
         {
             if (this.WindowState == FormWindowState.Maximized)
             {
-                //_currentWindowState = FormWindowState.Normal;
                 this.WindowState = FormWindowState.Normal;
             }
             else
             {
-                //_currentWindowState = FormWindowState.Maximized;
                 this.WindowState = FormWindowState.Maximized;
             }
         }
