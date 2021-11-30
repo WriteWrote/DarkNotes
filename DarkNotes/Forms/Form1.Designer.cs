@@ -198,6 +198,7 @@ namespace DarkNotes
             this.toolStripMenuItem9.Name = "toolStripMenuItem9";
             this.toolStripMenuItem9.Size = new System.Drawing.Size(227, 36);
             this.toolStripMenuItem9.Text = "Indents";
+            this.toolStripMenuItem9.Click += new System.EventHandler(this.toolStripMenuItem9_Click);
             // 
             // toolStripMenuItem10
             // 
@@ -400,11 +401,11 @@ namespace DarkNotes
             this.toolStrip1.Font = new System.Drawing.Font("RussianPunk", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (204)));
             this.toolStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {this.toolStripButton10, this.toolStripButton11, this.toolStripButton12});
-            this.toolStrip1.Location = new System.Drawing.Point(879, 0);
+            this.toolStrip1.Location = new System.Drawing.Point(875, 0);
             this.toolStrip1.MinimumSize = new System.Drawing.Size(150, 42);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.toolStrip1.Size = new System.Drawing.Size(150, 42);
+            this.toolStrip1.Size = new System.Drawing.Size(154, 42);
             this.toolStrip1.Stretch = true;
             this.toolStrip1.TabIndex = 5;
             this.toolStrip1.Text = "toolStrip1";

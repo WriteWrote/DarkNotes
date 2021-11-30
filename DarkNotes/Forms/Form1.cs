@@ -388,7 +388,7 @@ namespace DarkNotes
         }
 
         /// <summary>
-        /// Opens FontDialog
+        /// Opens FontDialog for settings
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -408,6 +408,17 @@ namespace DarkNotes
                 richTextBox1.SelectAll();
                 richTextBox1.SelectionColor = fontDialog.Color;
             }
+        }
+
+        /// <summary>
+        /// Invokes IndentsForm to set boundaries and indents
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void toolStripMenuItem9_Click(object sender, EventArgs e)
+        {
+            IndentsForm newForm = new IndentsForm(this);
+            newForm.Show();
         }
     }
 }

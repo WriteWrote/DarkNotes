@@ -1,19 +1,35 @@
 ﻿using System;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace DarkNotes
 {
     public partial class IndentsForm : Form
     {
+        private Form1 _linkToForm;
+
         public IndentsForm()
         {
             InitializeComponent();
         }
 
+        public IndentsForm(Form1 f)
+        {
+            _linkToForm = f;
+        }
+
         private void IndentsForm_Load(object sender, EventArgs e)
         {
-            throw new System.NotImplementedException();
         }
+
+        /// <summary>
+        /// Closes the app. Invokes "save" method if there is text in the form.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        
+
+        
 /*
         /// <summary>
         /// Required method for Designer support - do not modify
