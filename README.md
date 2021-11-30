@@ -33,4 +33,4 @@ This is a simple text-redactor (WIP), which I decided to create after I tired of
 - Непонятка со скачущими размерами
 - Показывать шрифты в списке шрифтов их начертанием
 - Озаботиться поиском бесплатного для коммерческого использования шрифта
-- не помню
+- set to default appearance
