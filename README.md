@@ -28,9 +28,7 @@ This is a simple text-redactor (WIP), which I decided to create after I tired of
 
 # Bugs
 
-- When window changes from "fill the screen" mode to "small" mode the opacity changes to full 100%, then goes to 95%
 - Don't get feature w/ transparency
-- It may be hard, but I need to check if transparency of the form also makes text transparent (of course it makes!) and how to deal w/ it if it's possible
 - Когда текст большой и появляется полоса прокрутки, текст сдвигается влево из-за полей (сделать динамические поля)
 - Непонятка со скачущими размерами
 - Показывать шрифты в списке шрифтов их начертанием
