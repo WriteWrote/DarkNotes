@@ -26,6 +26,7 @@ This is a simple text-redactor (WIP), which I decided to create after I tired of
 - make a .style
 - make a .dnts
 - панель инструментов справа (выбор цвета, режима освещения, поиск строки в тексте, статистика)
+- перетаскивание окна
 
 # Bugs
 
