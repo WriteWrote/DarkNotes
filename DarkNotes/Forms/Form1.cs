@@ -286,7 +286,7 @@ namespace DarkNotes
         {
             // ToDo: место для клавиатурных сокращений
         }
-        
+
         private void toolStripButton9_Click(object sender, EventArgs e)
         {
             // ToDo: место для междустрочного интервала
@@ -417,8 +417,30 @@ namespace DarkNotes
         /// <param name="e"></param>
         private void toolStripMenuItem9_Click(object sender, EventArgs e)
         {
-            IndentsForm newForm = new IndentsForm(this);
+            IndentsForm newForm = new IndentsForm(this.richTextBox1);
             newForm.Show();
+        }
+
+        private void toolStripTextBox3_KeyDown(object sender, KeyEventArgs e)
+        {
+            // ToDo: место для междустрочного интервала
+        }
+
+        private void toolStripTextBox4_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                String s = toolStripTextBox2.Text;
+                try
+                {
+                    Int32 redLine = Convert.ToInt32(s.Trim());
+                    richTextBox1.SelectionHangingIndent = -redLine;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("This is not a number. Or smth is just wrong, I dunno? Try int there. Those are pixels, not sms");
+                }
+            }
         }
     }
 }
