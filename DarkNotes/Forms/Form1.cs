@@ -34,6 +34,14 @@ namespace DarkNotes
         {
             // sets the ability to choose color of font from font dialog
             fontDialog.ShowColor = true;
+            
+            openFileDialog1.CheckFileExists = true;
+            openFileDialog1.CheckPathExists = true;
+            openFileDialog1.Multiselect = false;
+            openFileDialog1.Title = "Выберите файл";
+
+            openFileDialog1.DefaultExt = "*.rtf";
+            openFileDialog1.Filter = "RTF Files|*.rtf";
 
             // Filling the combobox of fonts
             InitializeFonts();
@@ -271,16 +279,12 @@ namespace DarkNotes
         private void toolStripMenuItem2_Click(object sender, EventArgs e)
         {
             // ToDo: set cursor on the first line of new text
-
+            
             if (openFileDialog1.ShowDialog() == DialogResult.Cancel)
                 return;
+
             _currentFilename = openFileDialog1.FileName;
-            /*
-            string text = System.IO.File.ReadAllText(_currentFilename);
-            _currentText = text;
-            richTextBox1.Text = text;
-*/
-            richTextBox1.LoadFile(_currentFilename, RichTextBoxStreamType.RichText);
+            richTextBox1.LoadFile(_currentFilename);
         }
 
         /// <summary>
