@@ -275,9 +275,12 @@ namespace DarkNotes
             if (openFileDialog1.ShowDialog() == DialogResult.Cancel)
                 return;
             _currentFilename = openFileDialog1.FileName;
+            /*
             string text = System.IO.File.ReadAllText(_currentFilename);
             _currentText = text;
             richTextBox1.Text = text;
+*/
+            richTextBox1.LoadFile(_currentFilename, RichTextBoxStreamType.RichText);
         }
 
         /// <summary>
@@ -294,8 +297,17 @@ namespace DarkNotes
             }
             else
             {
-                _currentText = richTextBox1.Text;
-                System.IO.File.WriteAllText(_currentFilename, _currentText);
+                //_currentText = richTextBox1.Text;
+                //System.IO.File.WriteAllText(_currentFilename, _currentText);
+
+                richTextBox1.ForeColor = Color.Black;
+                richTextBox1.SelectAll();
+                richTextBox1.SelectionIndent = 0;
+                richTextBox1.SelectionRightIndent = 0;
+                richTextBox1.ForeColor = Color.White;
+                richTextBox1.DeselectAll();
+                richTextBox1.SaveFile(_currentFilename);
+
                 MessageBox.Show("Your text is safe now!");
             }
         }
@@ -310,12 +322,21 @@ namespace DarkNotes
             if (saveFileDialog1.ShowDialog() == DialogResult.Cancel)
                 return;
             _currentFilename = saveFileDialog1.FileName;
-
+/*
             if (!_currentFilename.Contains(".txt"))
                 _currentFilename += ".txt";
-
+*/
+/*
             _currentText = richTextBox1.Text;
-            System.IO.File.WriteAllText(_currentFilename, _currentText);
+            string rtf = richTextBox1.Rtf;
+            System.IO.File.WriteAllText(_currentFilename, rtf);
+            */
+            richTextBox1.ForeColor = Color.Black;
+            richTextBox1.SelectAll();
+            richTextBox1.SelectionIndent = 0;
+            richTextBox1.SelectionRightIndent = 0;
+            richTextBox1.SelectAll();
+            richTextBox1.SaveFile(_currentFilename);
             MessageBox.Show("Your text's safe! Don't forget the new name of file now and don't lose it");
         }
 
