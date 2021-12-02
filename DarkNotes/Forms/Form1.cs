@@ -284,8 +284,10 @@ namespace DarkNotes
                 return;
 
             _currentFilename = openFileDialog1.FileName;
-            richTextBox1.ForeColor = Color.White;
             richTextBox1.LoadFile(_currentFilename);
+            richTextBox1.SelectAll();
+            richTextBox1.ForeColor = Color.WhiteSmoke;
+            richTextBox1.DeselectAll();
             SetIndents();
         }
 
