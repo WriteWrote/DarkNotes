@@ -478,18 +478,8 @@ namespace DarkNotes
                 {
                     Int32 redLine = Convert.ToInt32(s.Trim());
 
-                    richTextBox1.SelectAll();
-                    //Int32 leftI = richTextBox1.SelectionIndent + richTextBox1.SelectionHangingIndent;
-                    //richTextBox1.SelectionIndent = leftI + redLine;
-                    //richTextBox1.SelectionHangingIndent = -redLine;
-
-                    //richTextBox1.SelectionIndent += redLine + richTextBox1.SelectionHangingIndent;
-                    //richTextBox1.SelectionHangingIndent = -redLine;
-
                     this._redLine = redLine;
                     SetIndents();
-
-                    richTextBox1.DeselectAll();
                 }
                 catch (Exception ex)
                 {

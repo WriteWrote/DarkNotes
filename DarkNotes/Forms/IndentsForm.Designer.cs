@@ -128,7 +128,7 @@ namespace DarkNotes
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.Desktop;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.ClientSize = new System.Drawing.Size(398, 398);
+            this.ClientSize = new System.Drawing.Size(368, 398);
             this.ControlBox = false;
             this.Controls.Add(this.button1);
             this.Controls.Add(this.textBox4);
@@ -145,7 +145,7 @@ namespace DarkNotes
             this.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.MinimumSize = new System.Drawing.Size(400, 400);
+            this.MinimumSize = new System.Drawing.Size(370, 400);
             this.Name = "IndentsForm";
             this.Opacity = 0.95D;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
