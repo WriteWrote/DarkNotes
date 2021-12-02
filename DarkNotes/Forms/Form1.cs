@@ -15,6 +15,10 @@ namespace DarkNotes
     {
         public static double DefaultOpacity { get; } = 93;
         private Int32 _currentSize = 18;
+        private Int32 _leftInd = 25;
+        private Int32 _redLine = 40;
+        private Int32 _rightInd = 20;
+
         private String _currentFont = "Corbel Light";
         private String _currentText = "";
 
@@ -24,9 +28,6 @@ namespace DarkNotes
         public Form1()
         {
             InitializeComponent();
-            richTextBox1.SelectionIndent = 70;
-            richTextBox1.SelectionHangingIndent = -40;
-            richTextBox1.SelectionRightIndent = 20;
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -35,6 +36,36 @@ namespace DarkNotes
             fontDialog.ShowColor = true;
 
             // Filling the combobox of fonts
+            InitializeFonts();
+
+            toolStripTextBox1.Text = _currentSize.ToString();
+            toolStripTextBox2.Text = DefaultOpacity.ToString();
+
+            SetIndents();
+
+            toolStripTextBox4.Text = _redLine.ToString();
+        }
+
+        public int LeftInd
+        {
+            get => _leftInd;
+            set => _leftInd = value;
+        }
+
+        public int RedLine
+        {
+            get => _redLine;
+            set => _redLine = value;
+        }
+
+        public int RightInd
+        {
+            get => _rightInd;
+            set => _rightInd = value;
+        }
+
+        private void InitializeFonts()
+        {
             InstalledFontCollection fontFamilies = new InstalledFontCollection();
             foreach (FontFamily family in fontFamilies.Families)
             {
@@ -44,9 +75,15 @@ namespace DarkNotes
 
             int ind = toolStripComboBox1.Items.IndexOf(_currentFont);
             toolStripComboBox1.Text = toolStripComboBox1.Items[ind].ToString();
+        }
 
-            toolStripTextBox1.Text = _currentSize.ToString();
-            toolStripTextBox2.Text = DefaultOpacity.ToString();
+        public void SetIndents()
+        {
+            richTextBox1.SelectAll();
+            richTextBox1.SelectionIndent = _leftInd + _redLine;
+            richTextBox1.SelectionHangingIndent = -_redLine;
+            richTextBox1.SelectionRightIndent = _rightInd;
+            richTextBox1.DeselectAll();
         }
 
         private void richTextBox1_TextChanged(object sender, EventArgs e)
@@ -411,13 +448,14 @@ namespace DarkNotes
         }
 
         /// <summary>
-        /// Invokes IndentsForm to set boundaries and indents
+        /// Invokes IndentsForm to set boundaries and indents.
+        /// Passes the link to current Form1 instance
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void toolStripMenuItem9_Click(object sender, EventArgs e)
         {
-            IndentsForm newForm = new IndentsForm(this.richTextBox1);
+            IndentsForm newForm = new IndentsForm(this);
             newForm.Show();
         }
 
@@ -426,19 +464,37 @@ namespace DarkNotes
             // ToDo: место для междустрочного интервала
         }
 
+        /// <summary>
+        /// Sets red line to text
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void toolStripTextBox4_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
-                String s = toolStripTextBox2.Text;
+                String s = toolStripTextBox4.Text;
                 try
                 {
                     Int32 redLine = Convert.ToInt32(s.Trim());
-                    richTextBox1.SelectionHangingIndent = -redLine;
+
+                    richTextBox1.SelectAll();
+                    //Int32 leftI = richTextBox1.SelectionIndent + richTextBox1.SelectionHangingIndent;
+                    //richTextBox1.SelectionIndent = leftI + redLine;
+                    //richTextBox1.SelectionHangingIndent = -redLine;
+
+                    //richTextBox1.SelectionIndent += redLine + richTextBox1.SelectionHangingIndent;
+                    //richTextBox1.SelectionHangingIndent = -redLine;
+
+                    this._redLine = redLine;
+                    SetIndents();
+
+                    richTextBox1.DeselectAll();
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("This is not a number. Or smth is just wrong, I dunno? Try int there. Those are pixels, not sms");
+                    MessageBox.Show(
+                        "This is not a number. Or smth is just wrong, I dunno? Try int there. Those are pixels, not sms");
                 }
             }
         }

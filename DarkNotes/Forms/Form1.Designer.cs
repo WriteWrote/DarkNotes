@@ -391,8 +391,8 @@ namespace DarkNotes
             this.toolStripButton9.Image = ((System.Drawing.Image) (resources.GetObject("toolStripButton9.Image")));
             this.toolStripButton9.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton9.Name = "toolStripButton9";
-            this.toolStripButton9.Size = new System.Drawing.Size(37, 36);
-            this.toolStripButton9.Text = "LI";
+            this.toolStripButton9.Size = new System.Drawing.Size(120, 36);
+            this.toolStripButton9.Text = "Line Ind.:";
             this.toolStripButton9.Click += new System.EventHandler(this.toolStripButton9_Click);
             // 
             // toolStripTextBox3
@@ -419,7 +419,7 @@ namespace DarkNotes
             this.toolStripTextBox4.Font = new System.Drawing.Font("RussianPunk", 14F);
             this.toolStripTextBox4.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.toolStripTextBox4.Name = "toolStripTextBox4";
-            this.toolStripTextBox4.Size = new System.Drawing.Size(30, 33);
+            this.toolStripTextBox4.Size = new System.Drawing.Size(40, 33);
             this.toolStripTextBox4.KeyDown += new System.Windows.Forms.KeyEventHandler(this.toolStripTextBox4_KeyDown);
             // 
             // toolStrip1
