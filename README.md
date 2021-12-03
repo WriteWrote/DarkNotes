@@ -14,7 +14,7 @@ This is a simple text-redactor (WIP), which I decided to create after I tired of
 - saving and loading files (oooh I expect here problems w/ encoding) DONE txt
 - it would be nice to have versioning while you write
 - Justify alignment
-- Цвет текста
+- Цвет текста DONE 0.5
 - междустрочный интервал
 - поиск строки в тексте
 - статистика текста (слова, символы, абзацы)
@@ -36,3 +36,6 @@ This is a simple text-redactor (WIP), which I decided to create after I tired of
 - Показывать шрифты в списке шрифтов их начертанием
 - Озаботиться поиском бесплатного для коммерческого использования шрифта
 - set to default appearance
+- Учитывать и не сбивать форматирование старого текста при перемене шрифтов (эти все regular, bold) - шрифт меняет только шрифт и больше ничего, как и размер
+- придумать что-то с полосой прокрутки, потому что она мне не нравится, она не видна вообще считай
+- сделать так, чтобы отображался тот шрифт, цвет текста, размер, который выделен сейчас. И чтобы set indents работали для куска текста, => любое изменение для всего текста начинается с СелектАлл, а сами изменения для СелекшнТекст/СелекшнРТФ
