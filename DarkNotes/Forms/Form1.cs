@@ -118,11 +118,13 @@ namespace DarkNotes
                     _currentSize = size;
                     if (richTextBox1.SelectionLength > 0)
                     {
-                        richTextBox1.SelectionFont = new Font(_currentFont, size, FontStyle.Regular);
+                        var style = richTextBox1.SelectionFont.Style;
+                        richTextBox1.SelectionFont = new Font(_currentFont, size, style);
                     }
                     else
                     {
-                        richTextBox1.Font = new Font(_currentFont, size, FontStyle.Regular);
+                        var style = richTextBox1.SelectionFont.Style;
+                        richTextBox1.Font = new Font(_currentFont, size, style);
                     }
                 }
                 catch (Exception ex)
@@ -230,7 +232,6 @@ namespace DarkNotes
             }
         }
 
-        // ToDo: don't lose! --> richTextBox1.SelectedText
         //ToDo: don't lose! --> richTextBox1.GetFirstCharIndexOfCurrentLine()
         /// <summary>
         /// Sets left alignment to picked text
@@ -296,9 +297,13 @@ namespace DarkNotes
 
             if (openFileDialog1.ShowDialog() == DialogResult.Cancel)
                 return;
-            
+
             _currentFilename = openFileDialog1.FileName;
             richTextBox1.LoadFile(_currentFilename);
+            // wtf is going on there?????
+            _currentFont = richTextBox1.Font.ToString();
+            int ind = toolStripComboBox1.Items.IndexOf(richTextBox1.Font.ToString());
+            toolStripComboBox1.Text = toolStripComboBox1.Items[ind].ToString();
             //richTextBox1.SelectAll();
             //richTextBox1.ForeColor = Color.LightBlue;
             //richTextBox1.DeselectAll();
@@ -430,11 +435,11 @@ namespace DarkNotes
             string selectedFont = toolStripComboBox1.SelectedItem.ToString();
             if (richTextBox1.SelectionLength > 0)
             {
-                richTextBox1.SelectionFont = new Font(selectedFont, _currentSize, FontStyle.Regular);
+                richTextBox1.SelectionFont = new Font(selectedFont, _currentSize);
             }
             else
             {
-                richTextBox1.Font = new Font(selectedFont, _currentSize, FontStyle.Regular);
+                richTextBox1.Font = new Font(selectedFont, _currentSize);
             }
 
             _currentFont = selectedFont;
