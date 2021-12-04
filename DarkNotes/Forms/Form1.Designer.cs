@@ -50,6 +50,7 @@ namespace DarkNotes
             this.toolStripMenuItem10 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem12 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem13 = new System.Windows.Forms.ToolStripMenuItem();
+            this.resetToBasicToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip = new System.Windows.Forms.ToolStrip();
             this.toolStripComboBox1 = new System.Windows.Forms.ToolStripComboBox();
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
@@ -74,7 +75,6 @@ namespace DarkNotes
             this.toolStripButton11 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton12 = new System.Windows.Forms.ToolStripButton();
             this.fontDialog = new System.Windows.Forms.FontDialog();
-            this.resetToBasicToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.miniToolStrip.SuspendLayout();
             this.toolStrip.SuspendLayout();
             this.toolStrip1.SuspendLayout();
@@ -240,6 +240,15 @@ namespace DarkNotes
             this.toolStripMenuItem13.Name = "toolStripMenuItem13";
             this.toolStripMenuItem13.Size = new System.Drawing.Size(293, 36);
             this.toolStripMenuItem13.Text = "Backmusic";
+            // 
+            // resetToBasicToolStripMenuItem
+            // 
+            this.resetToBasicToolStripMenuItem.BackColor = System.Drawing.SystemColors.Desktop;
+            this.resetToBasicToolStripMenuItem.Enabled = false;
+            this.resetToBasicToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.resetToBasicToolStripMenuItem.Name = "resetToBasicToolStripMenuItem";
+            this.resetToBasicToolStripMenuItem.Size = new System.Drawing.Size(293, 36);
+            this.resetToBasicToolStripMenuItem.Text = "Reset to default";
             // 
             // toolStrip
             // 
@@ -481,15 +490,6 @@ namespace DarkNotes
             this.toolStripButton12.Size = new System.Drawing.Size(34, 39);
             this.toolStripButton12.Text = "X";
             this.toolStripButton12.Click += new System.EventHandler(this.toolStripButton12_Click);
-            // 
-            // resetToBasicToolStripMenuItem
-            // 
-            this.resetToBasicToolStripMenuItem.BackColor = System.Drawing.SystemColors.Desktop;
-            this.resetToBasicToolStripMenuItem.Enabled = false;
-            this.resetToBasicToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.resetToBasicToolStripMenuItem.Name = "resetToBasicToolStripMenuItem";
-            this.resetToBasicToolStripMenuItem.Size = new System.Drawing.Size(293, 36);
-            this.resetToBasicToolStripMenuItem.Text = "Reset to default";
             // 
             // Form1
             // 

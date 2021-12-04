@@ -271,6 +271,20 @@ namespace DarkNotes
             }
         }
 
+        private void SaveWithColors(Color left, Color right)
+        {
+            richTextBox1.SelectAll();
+            richTextBox1.ForeColor = left;
+            richTextBox1.SelectionIndent = -richTextBox1.SelectionHangingIndent;
+            richTextBox1.SelectionRightIndent = 0;
+
+            richTextBox1.SaveFile(_currentFilename);
+
+            richTextBox1.ForeColor = right;
+            SetIndents();
+            richTextBox1.DeselectAll();
+        }
+
         /// <summary>
         /// Opens & displays new file
         /// </summary>
@@ -282,12 +296,13 @@ namespace DarkNotes
 
             if (openFileDialog1.ShowDialog() == DialogResult.Cancel)
                 return;
-
+            
             _currentFilename = openFileDialog1.FileName;
             richTextBox1.LoadFile(_currentFilename);
-            richTextBox1.SelectAll();
-            richTextBox1.ForeColor = Color.WhiteSmoke;
-            richTextBox1.DeselectAll();
+            //richTextBox1.SelectAll();
+            //richTextBox1.ForeColor = Color.LightBlue;
+            //richTextBox1.DeselectAll();
+            SaveWithColors(Color.Black, Color.White);
             SetIndents();
         }
 
@@ -305,16 +320,7 @@ namespace DarkNotes
             }
             else
             {
-                richTextBox1.SelectAll();
-                richTextBox1.ForeColor = Color.Black;
-                richTextBox1.SelectionIndent = -richTextBox1.SelectionHangingIndent;
-                richTextBox1.SelectionRightIndent = 0;
-
-                richTextBox1.SaveFile(_currentFilename);
-
-                richTextBox1.ForeColor = Color.White;
-                SetIndents();
-                richTextBox1.DeselectAll();
+                SaveWithColors(Color.Black, Color.White);
 
                 MessageBox.Show("Your text is safe now!");
             }
@@ -329,21 +335,15 @@ namespace DarkNotes
         {
             if (saveFileDialog1.ShowDialog() == DialogResult.Cancel)
                 return;
+
             _currentFilename = saveFileDialog1.FileName;
-
             if (!_currentFilename.Contains(".rtf"))
+            {
+                _currentFilename = _currentFilename.Trim();
                 _currentFilename += ".rtf";
+            }
 
-            richTextBox1.SelectAll();
-            richTextBox1.ForeColor = Color.Black;
-            richTextBox1.SelectionIndent = -richTextBox1.SelectionHangingIndent;
-            richTextBox1.SelectionRightIndent = 0;
-
-            richTextBox1.SaveFile(_currentFilename);
-
-            richTextBox1.ForeColor = Color.White;
-            SetIndents();
-            richTextBox1.DeselectAll();
+            SaveWithColors(Color.Black, Color.White);
             MessageBox.Show("Your text's safe! Don't forget the new name of file now and don't lose it");
         }
 
@@ -522,6 +522,12 @@ namespace DarkNotes
             }
         }
 
+        /// <summary>
+        /// Clears the text-panel.
+        /// If needed, invokes message dialog and save-method.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void newToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (richTextBox1.TextLength > 0)
@@ -533,11 +539,8 @@ namespace DarkNotes
                 {
                     this.toolStripMenuItem3_Click(sender, e);
                 }
-                else
-                {
-                    if (result == DialogResult.Cancel)
-                        return;
-                }
+                else if (result == DialogResult.Cancel)
+                    return;
             }
 
             richTextBox1.Clear();
