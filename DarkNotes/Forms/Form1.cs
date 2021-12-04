@@ -376,10 +376,15 @@ namespace DarkNotes
             {
                 // ToDo: make the app to understand when text is saved and there is no need in asking for saving 
                 DialogResult result = MessageBox.Show("Do you want to save all of your valuable writing?",
-                    "Closing the app", MessageBoxButtons.YesNo);
+                    "Closing the app", MessageBoxButtons.YesNoCancel);
                 if (result == DialogResult.Yes)
                 {
                     this.toolStripMenuItem3_Click(sender, e);
+                }
+                else
+                {
+                    if (result == DialogResult.Cancel)
+                        return;
                 }
             }
 
@@ -515,6 +520,28 @@ namespace DarkNotes
                         "This is not a number. Or smth is just wrong, I dunno? Try int there. Those are pixels, not sms");
                 }
             }
+        }
+
+        private void newToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (richTextBox1.TextLength > 0)
+            {
+                // ToDo: сделать дополнительно кнопку "отмена"
+                DialogResult result = MessageBox.Show("Do you want to save all of your valuable writing?",
+                    "Closing the app", MessageBoxButtons.YesNoCancel);
+                if (result == DialogResult.Yes)
+                {
+                    this.toolStripMenuItem3_Click(sender, e);
+                }
+                else
+                {
+                    if (result == DialogResult.Cancel)
+                        return;
+                }
+            }
+
+            richTextBox1.Clear();
+            // reset to default
         }
     }
 }

@@ -37,6 +37,7 @@ namespace DarkNotes
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.miniToolStrip = new System.Windows.Forms.MenuStrip();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
@@ -73,6 +74,7 @@ namespace DarkNotes
             this.toolStripButton11 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton12 = new System.Windows.Forms.ToolStripButton();
             this.fontDialog = new System.Windows.Forms.FontDialog();
+            this.resetToBasicToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.miniToolStrip.SuspendLayout();
             this.toolStrip.SuspendLayout();
             this.toolStrip1.SuspendLayout();
@@ -88,7 +90,7 @@ namespace DarkNotes
             this.richTextBox1.BackColor = System.Drawing.SystemColors.Desktop;
             this.richTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.richTextBox1.Font = new System.Drawing.Font("Century", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (204)));
-            this.richTextBox1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.richTextBox1.ForeColor = System.Drawing.Color.White;
             this.richTextBox1.Location = new System.Drawing.Point(0, 40);
             this.richTextBox1.Margin = new System.Windows.Forms.Padding(5, 10, 5, 10);
             this.richTextBox1.MinimumSize = new System.Drawing.Size(980, 300);
@@ -117,11 +119,20 @@ namespace DarkNotes
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.BackColor = System.Drawing.SystemColors.Desktop;
-            this.toolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {this.toolStripMenuItem2, this.toolStripMenuItem3, this.toolStripMenuItem4, this.toolStripMenuItem5});
+            this.toolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {this.newToolStripMenuItem, this.toolStripMenuItem2, this.toolStripMenuItem3, this.toolStripMenuItem4, this.toolStripMenuItem5});
             this.toolStripMenuItem1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
             this.toolStripMenuItem1.Size = new System.Drawing.Size(84, 36);
             this.toolStripMenuItem1.Text = "Files";
+            // 
+            // newToolStripMenuItem
+            // 
+            this.newToolStripMenuItem.BackColor = System.Drawing.SystemColors.Desktop;
+            this.newToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.newToolStripMenuItem.Name = "newToolStripMenuItem";
+            this.newToolStripMenuItem.Size = new System.Drawing.Size(201, 36);
+            this.newToolStripMenuItem.Text = "New";
+            this.newToolStripMenuItem.Click += new System.EventHandler(this.newToolStripMenuItem_Click);
             // 
             // toolStripMenuItem2
             // 
@@ -187,7 +198,7 @@ namespace DarkNotes
             // toolStripMenuItem8
             // 
             this.toolStripMenuItem8.BackColor = System.Drawing.SystemColors.Desktop;
-            this.toolStripMenuItem8.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {this.toolStripMenuItem9, this.toolStripMenuItem10, this.toolStripMenuItem12, this.toolStripMenuItem13});
+            this.toolStripMenuItem8.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {this.toolStripMenuItem9, this.toolStripMenuItem10, this.toolStripMenuItem12, this.toolStripMenuItem13, this.resetToBasicToolStripMenuItem});
             this.toolStripMenuItem8.Font = new System.Drawing.Font("RussianPunk", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (204)));
             this.toolStripMenuItem8.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.toolStripMenuItem8.Name = "toolStripMenuItem8";
@@ -199,7 +210,7 @@ namespace DarkNotes
             this.toolStripMenuItem9.BackColor = System.Drawing.SystemColors.Desktop;
             this.toolStripMenuItem9.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.toolStripMenuItem9.Name = "toolStripMenuItem9";
-            this.toolStripMenuItem9.Size = new System.Drawing.Size(227, 36);
+            this.toolStripMenuItem9.Size = new System.Drawing.Size(293, 36);
             this.toolStripMenuItem9.Text = "Indents";
             this.toolStripMenuItem9.Click += new System.EventHandler(this.toolStripMenuItem9_Click);
             // 
@@ -208,7 +219,7 @@ namespace DarkNotes
             this.toolStripMenuItem10.BackColor = System.Drawing.SystemColors.Desktop;
             this.toolStripMenuItem10.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.toolStripMenuItem10.Name = "toolStripMenuItem10";
-            this.toolStripMenuItem10.Size = new System.Drawing.Size(227, 36);
+            this.toolStripMenuItem10.Size = new System.Drawing.Size(293, 36);
             this.toolStripMenuItem10.Text = "Font";
             this.toolStripMenuItem10.Click += new System.EventHandler(this.toolStripMenuItem10_Click);
             // 
@@ -218,7 +229,7 @@ namespace DarkNotes
             this.toolStripMenuItem12.Enabled = false;
             this.toolStripMenuItem12.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.toolStripMenuItem12.Name = "toolStripMenuItem12";
-            this.toolStripMenuItem12.Size = new System.Drawing.Size(227, 36);
+            this.toolStripMenuItem12.Size = new System.Drawing.Size(293, 36);
             this.toolStripMenuItem12.Text = "Background";
             // 
             // toolStripMenuItem13
@@ -227,7 +238,7 @@ namespace DarkNotes
             this.toolStripMenuItem13.Enabled = false;
             this.toolStripMenuItem13.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.toolStripMenuItem13.Name = "toolStripMenuItem13";
-            this.toolStripMenuItem13.Size = new System.Drawing.Size(227, 36);
+            this.toolStripMenuItem13.Size = new System.Drawing.Size(293, 36);
             this.toolStripMenuItem13.Text = "Backmusic";
             // 
             // toolStrip
@@ -471,6 +482,15 @@ namespace DarkNotes
             this.toolStripButton12.Text = "X";
             this.toolStripButton12.Click += new System.EventHandler(this.toolStripButton12_Click);
             // 
+            // resetToBasicToolStripMenuItem
+            // 
+            this.resetToBasicToolStripMenuItem.BackColor = System.Drawing.SystemColors.Desktop;
+            this.resetToBasicToolStripMenuItem.Enabled = false;
+            this.resetToBasicToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.resetToBasicToolStripMenuItem.Name = "resetToBasicToolStripMenuItem";
+            this.resetToBasicToolStripMenuItem.Size = new System.Drawing.Size(293, 36);
+            this.resetToBasicToolStripMenuItem.Text = "Reset to default";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -495,7 +515,7 @@ namespace DarkNotes
             this.Name = "Form1";
             this.Opacity = 0.93D;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.TransparencyKey = System.Drawing.Color.Red;
+            this.TransparencyKey = System.Drawing.Color.DarkSlateGray;
             this.Load += new System.EventHandler(this.Form1_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
             this.miniToolStrip.ResumeLayout(false);
@@ -507,6 +527,10 @@ namespace DarkNotes
             this.ResumeLayout(false);
             this.PerformLayout();
         }
+
+        private System.Windows.Forms.ToolStripMenuItem resetToBasicToolStripMenuItem;
+
+        private System.Windows.Forms.ToolStripMenuItem newToolStripMenuItem;
 
         private System.Windows.Forms.ToolStripTextBox toolStripTextBox4;
 
