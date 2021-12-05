@@ -293,21 +293,41 @@ namespace DarkNotes
         /// <param name="e"></param>
         private void toolStripMenuItem2_Click(object sender, EventArgs e)
         {
-            // ToDo: set cursor on the first line of new text
+            if (!"".Equals(_currentFilename) || !"".Equals(_currentText) || richTextBox1.TextLength > 0)
+            {
+                DialogResult result = MessageBox.Show("Do you want to save all of your valuable writing?",
+                    "Opening new file", MessageBoxButtons.YesNoCancel);
+                if (result == DialogResult.Yes)
+                {
+                    this.toolStripMenuItem3_Click(sender, e);
+                }
+                else if (result == DialogResult.Cancel)
+                    return;
+            }
 
             if (openFileDialog1.ShowDialog() == DialogResult.Cancel)
                 return;
 
+            richTextBox1.ResetForeColor();
             _currentFilename = openFileDialog1.FileName;
             richTextBox1.LoadFile(_currentFilename);
-            // wtf is going on there?????
-            _currentFont = richTextBox1.Font.ToString();
-            int ind = toolStripComboBox1.Items.IndexOf(richTextBox1.Font.ToString());
+            richTextBox1.ForeColor = Color.White;
+/*
+            // sample of the text
+            richTextBox1.Select(0, 1);
+            _currentFont = richTextBox1.SelectionFont.Name;
+            _currentSize = Convert.ToInt32(richTextBox1.SelectionFont.Size);
+            richTextBox1.DeselectAll();
+            _currentText = richTextBox1.Rtf;
+
+            // set combobox
+            int ind = toolStripComboBox1.Items.IndexOf(_currentFont);
             toolStripComboBox1.Text = toolStripComboBox1.Items[ind].ToString();
-            //richTextBox1.SelectAll();
-            //richTextBox1.ForeColor = Color.LightBlue;
-            //richTextBox1.DeselectAll();
-            SaveWithColors(Color.Black, Color.White);
+
+            //set size of text
+            toolStripTextBox1.Text = _currentSize.ToString();
+*/
+            //TODo: void refresh settings for refreshing of _currents' and form values
             SetIndents();
         }
 
