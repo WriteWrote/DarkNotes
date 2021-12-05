@@ -1,0 +1,12 @@
+D:\XXX\WorkingFiles\C#_2021\DarkNotes\DarkNotes\bin\Release\DarkNotes.exe.config
+D:\XXX\WorkingFiles\C#_2021\DarkNotes\DarkNotes\bin\Release\DarkNotes.exe
+D:\XXX\WorkingFiles\C#_2021\DarkNotes\DarkNotes\bin\Release\DarkNotes.pdb
+D:\XXX\WorkingFiles\C#_2021\DarkNotes\DarkNotes\obj\Release\DarkNotes.csproj.AssemblyReference.cache
+D:\XXX\WorkingFiles\C#_2021\DarkNotes\DarkNotes\obj\Release\DarkNotes.csproj.SuggestedBindingRedirects.cache
+D:\XXX\WorkingFiles\C#_2021\DarkNotes\DarkNotes\obj\Release\DarkNotes.Form1.resources
+D:\XXX\WorkingFiles\C#_2021\DarkNotes\DarkNotes\obj\Release\DarkNotes.IndentsForm.resources
+D:\XXX\WorkingFiles\C#_2021\DarkNotes\DarkNotes\obj\Release\DarkNotes.Properties.Resources.resources
+D:\XXX\WorkingFiles\C#_2021\DarkNotes\DarkNotes\obj\Release\DarkNotes.csproj.GenerateResource.cache
+D:\XXX\WorkingFiles\C#_2021\DarkNotes\DarkNotes\obj\Release\DarkNotes.csproj.CoreCompileInputs.cache
+D:\XXX\WorkingFiles\C#_2021\DarkNotes\DarkNotes\obj\Release\DarkNotes.exe
+D:\XXX\WorkingFiles\C#_2021\DarkNotes\DarkNotes\obj\Release\DarkNotes.pdb
