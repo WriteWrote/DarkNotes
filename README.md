@@ -1,6 +1,6 @@
 # DarkNotes
 
-This is a simple text-redactor (WIP), which I decided to create after I tired of white light of Word. It's a slowly-build project, but I still hope to manage it.
+This is a simple text-redactor (WIP), which I decided to create after I became tired of white light of Word. It's a slowly-build project, but I still hope to manage it.
 
 **List of the features ToDo:**
 - Changing transparency (default 95%) DONE
@@ -11,7 +11,7 @@ This is a simple text-redactor (WIP), which I decided to create after I tired of
 - выравнивание текста DONE
 - Размер текста DONE
 - the **actual Task&Instrument Board**! DONE
-- saving and loading files (oooh I expect here problems w/ encoding) DONE txt
+- saving and loading files (oooh I expect here problems w/ encoding) DONE rtf
 - it would be nice to have versioning while you write
 - Justify alignment
 - Цвет текста DONE 0.5
@@ -30,12 +30,10 @@ This is a simple text-redactor (WIP), which I decided to create after I tired of
 
 # Bugs
 
-- Don't get feature w/ transparency
 - Когда текст большой и появляется полоса прокрутки, текст сдвигается влево из-за полей (сделать динамические поля)
 - Непонятка со скачущими размерами
 - Показывать шрифты в списке шрифтов их начертанием
 - Озаботиться поиском бесплатного для коммерческого использования шрифта
-- set to default appearance
 - Учитывать и не сбивать форматирование старого текста при перемене шрифтов (эти все regular, bold) - шрифт меняет только шрифт и больше ничего, как и размер
 - придумать что-то с полосой прокрутки, потому что она мне не нравится, она не видна вообще считай
 - сделать так, чтобы отображался тот шрифт, цвет текста, размер, который выделен сейчас. И чтобы set indents работали для куска текста, => любое изменение для всего текста начинается с СелектАлл, а сами изменения для СелекшнТекст/СелекшнРТФ
