@@ -27,6 +27,7 @@ This is a simple text-redactor (WIP), which I decided to create after I became t
 - make a .dnts
 - панель инструментов справа (выбор цвета, режима освещения, поиск строки в тексте, статистика)
 - перетаскивание окна
+- сериализация последних примененных настроек
 
 # Bugs
 
