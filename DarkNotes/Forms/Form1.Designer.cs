@@ -295,6 +295,7 @@ namespace DarkNotes
             this.toolStripTextBox1.Margin = new System.Windows.Forms.Padding(1);
             this.toolStripTextBox1.Name = "toolStripTextBox1";
             this.toolStripTextBox1.Size = new System.Drawing.Size(30, 40);
+            this.toolStripTextBox1.Text = "16";
             this.toolStripTextBox1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.toolStripTextBox1_KeyDown);
             // 
             // toolStripButton1
@@ -357,6 +358,7 @@ namespace DarkNotes
             this.toolStripTextBox2.Margin = new System.Windows.Forms.Padding(1);
             this.toolStripTextBox2.Name = "toolStripTextBox2";
             this.toolStripTextBox2.Size = new System.Drawing.Size(30, 40);
+            this.toolStripTextBox2.Text = "93";
             this.toolStripTextBox2.KeyDown += new System.Windows.Forms.KeyEventHandler(this.toolStripTextBox2_KeyDown);
             // 
             // toolStripLabel3
@@ -441,6 +443,7 @@ namespace DarkNotes
             this.toolStripTextBox4.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.toolStripTextBox4.Name = "toolStripTextBox4";
             this.toolStripTextBox4.Size = new System.Drawing.Size(40, 33);
+            this.toolStripTextBox4.Text = "40";
             this.toolStripTextBox4.KeyDown += new System.Windows.Forms.KeyEventHandler(this.toolStripTextBox4_KeyDown);
             // 
             // toolStrip1
@@ -452,11 +455,11 @@ namespace DarkNotes
             this.toolStrip1.Font = new System.Drawing.Font("RussianPunk", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (204)));
             this.toolStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {this.toolStripButton10, this.toolStripButton11, this.toolStripButton12});
-            this.toolStrip1.Location = new System.Drawing.Point(879, 0);
+            this.toolStrip1.Location = new System.Drawing.Point(883, 0);
             this.toolStrip1.MinimumSize = new System.Drawing.Size(150, 42);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.toolStrip1.Size = new System.Drawing.Size(154, 42);
+            this.toolStrip1.Size = new System.Drawing.Size(150, 42);
             this.toolStrip1.Stretch = true;
             this.toolStrip1.TabIndex = 5;
             this.toolStrip1.Text = "toolStrip1";
