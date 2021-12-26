@@ -100,6 +100,7 @@ namespace DarkNotes
             this.richTextBox1.TabIndex = 0;
             this.richTextBox1.Text = "";
             this.richTextBox1.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged);
+            this.richTextBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.richTextBox1_KeyPress);
             // 
             // miniToolStrip
             // 
@@ -451,11 +452,11 @@ namespace DarkNotes
             this.toolStrip1.Font = new System.Drawing.Font("RussianPunk", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (204)));
             this.toolStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {this.toolStripButton10, this.toolStripButton11, this.toolStripButton12});
-            this.toolStrip1.Location = new System.Drawing.Point(883, 0);
+            this.toolStrip1.Location = new System.Drawing.Point(879, 0);
             this.toolStrip1.MinimumSize = new System.Drawing.Size(150, 42);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.toolStrip1.Size = new System.Drawing.Size(150, 42);
+            this.toolStrip1.Size = new System.Drawing.Size(154, 42);
             this.toolStrip1.Stretch = true;
             this.toolStrip1.TabIndex = 5;
             this.toolStrip1.Text = "toolStrip1";
@@ -517,7 +518,6 @@ namespace DarkNotes
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.TransparencyKey = System.Drawing.Color.DarkSlateGray;
             this.Load += new System.EventHandler(this.Form1_Load);
-            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
             this.miniToolStrip.ResumeLayout(false);
             this.miniToolStrip.PerformLayout();
             this.toolStrip.ResumeLayout(false);

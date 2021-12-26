@@ -73,6 +73,7 @@ namespace DarkNotes
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(50, 33);
             this.textBox1.TabIndex = 2;
+            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // textBox2
             // 
@@ -84,6 +85,7 @@ namespace DarkNotes
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(50, 33);
             this.textBox2.TabIndex = 3;
+            this.textBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // textBox3
             // 
@@ -95,6 +97,7 @@ namespace DarkNotes
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(50, 33);
             this.textBox3.TabIndex = 4;
+            this.textBox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // textBox4
             // 
@@ -106,6 +109,7 @@ namespace DarkNotes
             this.textBox4.Name = "textBox4";
             this.textBox4.Size = new System.Drawing.Size(50, 33);
             this.textBox4.TabIndex = 5;
+            this.textBox4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // button1
             // 

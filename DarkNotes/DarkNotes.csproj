@@ -1,6 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-    <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
     <PropertyGroup>
         <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
         <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -33,6 +32,23 @@
         <WarningLevel>4</WarningLevel>
     </PropertyGroup>
     <ItemGroup>
+        <Reference Include="PresentationCore" />
+        <Reference Include="Syncfusion.Compression.Portable, Version=19.4200.0.38, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89">
+          <HintPath>..\packages\Syncfusion.Compression.Net.Core.19.4.0.38\lib\netstandard2.0\Syncfusion.Compression.Portable.dll</HintPath>
+          <Private>True</Private>
+        </Reference>
+        <Reference Include="Syncfusion.Licensing, Version=19.4460.0.38, Culture=neutral, PublicKeyToken=632609b4d040f6b4">
+          <HintPath>..\packages\Syncfusion.Licensing.19.4.0.38\lib\net46\Syncfusion.Licensing.dll</HintPath>
+          <Private>True</Private>
+        </Reference>
+        <Reference Include="Syncfusion.OfficeChart.Portable, Version=19.4200.0.38, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89">
+          <HintPath>..\packages\Syncfusion.OfficeChart.Net.Core.19.4.0.38\lib\netstandard2.0\Syncfusion.OfficeChart.Portable.dll</HintPath>
+          <Private>True</Private>
+        </Reference>
+        <Reference Include="Syncfusion.Presentation.Portable, Version=19.4200.0.38, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89">
+          <HintPath>..\packages\Syncfusion.Presentation.Net.Core.19.4.0.38\lib\netstandard2.0\Syncfusion.Presentation.Portable.dll</HintPath>
+          <Private>True</Private>
+        </Reference>
         <Reference Include="System" />
         <Reference Include="System.Core" />
         <Reference Include="System.Xml.Linq" />
@@ -44,6 +60,7 @@
         <Reference Include="System.Net.Http" />
         <Reference Include="System.Windows.Forms" />
         <Reference Include="System.Xml" />
+        <Reference Include="WindowsBase" />
     </ItemGroup>
     <ItemGroup>
         <Compile Include="Forms\Form1.cs">
@@ -58,6 +75,10 @@
         <Compile Include="Forms\IndentsForm.Designer.cs" />
         <Compile Include="Program.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
+        <Compile Include="services\AppearanceService.cs" />
+        <Compile Include="services\AppService.cs" />
+        <Compile Include="services\FileService.cs" />
+        <Compile Include="services\TextService.cs" />
         <EmbeddedResource Include="Forms\Form1.resx">
           <DependentUpon>Form1.cs</DependentUpon>
         </EmbeddedResource>
@@ -87,4 +108,10 @@
         <None Include="App.config" />
     </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+    <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+      <PropertyGroup>
+        <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105.The missing file is {0}.</ErrorText>
+      </PropertyGroup>
+      <Error Condition="!Exists('..\packages\NETStandard.Library.2.0.0\build\netstandard2.0\NETStandard.Library.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\NETStandard.Library.2.0.0\build\netstandard2.0\NETStandard.Library.targets'))" />
+    </Target>
 </Project>

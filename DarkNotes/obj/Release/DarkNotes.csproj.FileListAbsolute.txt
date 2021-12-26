@@ -10,3 +10,12 @@ D:\XXX\WorkingFiles\C#_2021\DarkNotes\DarkNotes\obj\Release\DarkNotes.csproj.Gen
 D:\XXX\WorkingFiles\C#_2021\DarkNotes\DarkNotes\obj\Release\DarkNotes.csproj.CoreCompileInputs.cache
 D:\XXX\WorkingFiles\C#_2021\DarkNotes\DarkNotes\obj\Release\DarkNotes.exe
 D:\XXX\WorkingFiles\C#_2021\DarkNotes\DarkNotes\obj\Release\DarkNotes.pdb
+D:\XXX\WorkingFiles\C#_2021\DarkNotes\DarkNotes\obj\Release\DarkNotes.exe.config
+D:\XXX\WorkingFiles\C#_2021\DarkNotes\DarkNotes\bin\Release\Syncfusion.Compression.Portable.dll
+D:\XXX\WorkingFiles\C#_2021\DarkNotes\DarkNotes\bin\Release\Syncfusion.Licensing.dll
+D:\XXX\WorkingFiles\C#_2021\DarkNotes\DarkNotes\bin\Release\Syncfusion.OfficeChart.Portable.dll
+D:\XXX\WorkingFiles\C#_2021\DarkNotes\DarkNotes\bin\Release\Syncfusion.Presentation.Portable.dll
+D:\XXX\WorkingFiles\C#_2021\DarkNotes\DarkNotes\bin\Release\Syncfusion.Compression.Portable.xml
+D:\XXX\WorkingFiles\C#_2021\DarkNotes\DarkNotes\bin\Release\Syncfusion.OfficeChart.Portable.xml
+D:\XXX\WorkingFiles\C#_2021\DarkNotes\DarkNotes\bin\Release\Syncfusion.Presentation.Portable.xml
+D:\XXX\WorkingFiles\C#_2021\DarkNotes\DarkNotes\obj\Release\DarkNotes.csproj.CopyComplete

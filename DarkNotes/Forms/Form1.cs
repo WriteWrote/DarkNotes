@@ -1,13 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Drawing.Text;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Security.Cryptography;
 using System.Windows.Forms;
+using System.Windows.Input;
+using Color = System.Drawing.Color;
+using Font = System.Drawing.Font;
+using KeyEventArgs = System.Windows.Forms.KeyEventArgs;
 
 namespace DarkNotes
 {
@@ -42,6 +41,7 @@ namespace DarkNotes
 
             openFileDialog1.DefaultExt = "*.rtf";
             openFileDialog1.Filter = "RTF Files|*.rtf";
+            openFileDialog1.AddExtension = true;
 
             // Filling the combobox of fonts
             InitializeFonts();
@@ -340,7 +340,6 @@ namespace DarkNotes
         {
             if ("".Equals(_currentFilename))
             {
-                //ToDo: learn about Invoke
                 toolStripMenuItem4_Click(sender, e);
             }
             else
@@ -362,6 +361,7 @@ namespace DarkNotes
                 return;
 
             _currentFilename = saveFileDialog1.FileName;
+
             if (!_currentFilename.Contains(".rtf"))
             {
                 _currentFilename = _currentFilename.Trim();
@@ -370,11 +370,6 @@ namespace DarkNotes
 
             SaveWithColors(Color.Black, Color.White);
             MessageBox.Show("Your text's safe! Don't forget the new name of file now and don't lose it");
-        }
-
-        private void Form1_KeyDown(object sender, KeyEventArgs e)
-        {
-            // ToDo: место для клавиатурных сокращений
         }
 
         private void toolStripButton9_Click(object sender, EventArgs e)
@@ -464,10 +459,7 @@ namespace DarkNotes
 
             _currentFont = selectedFont;
         }
-
-        //ToDo: replace using key codes for "Enter" to the settings of "enter" like the entering the data (at the form)
-        //ToDo: сделать так, чтобы кнопки "выравнивание" работали для строки, а не только для выделения
-        //ToDo: сделать так, чтобы кнопки Ж, К, ... работали для слова
+        
         //ToDo: сделать так, чтобы при переходе по строкам/ буквам в комбобокс показывался шрифт
         /// <summary>
         /// Invokes method for changing font of text/picked text.
@@ -557,7 +549,6 @@ namespace DarkNotes
         {
             if (richTextBox1.TextLength > 0)
             {
-                // ToDo: сделать дополнительно кнопку "отмена"
                 DialogResult result = MessageBox.Show("Do you want to save all of your valuable writing?",
                     "Closing the app", MessageBoxButtons.YesNoCancel);
                 if (result == DialogResult.Yes)
@@ -570,6 +561,68 @@ namespace DarkNotes
 
             richTextBox1.Clear();
             // reset to default
+        }
+
+        private void findSubstring()
+        {
+            MessageBox.Show("Finding substring");
+        }
+
+        private void changeOpacity()
+        {
+            MessageBox.Show("Changing opacity");
+        }
+
+        /// <summary>
+        /// Hot keys.
+        /// need to make a dict/factory to get rid of ifs. also need to make a library to get rid of invoking handlers.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void richTextBox1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //BUG
+            // if (Keyboard.IsKeyDown(Key.LeftCtrl) || Keyboard.IsKeyDown(Key.RightCtrl))
+            // {
+            //     // save, save as, open, new
+            //     if (Keyboard.IsKeyDown(Key.S))
+            //         toolStripMenuItem3_Click(sender, e);
+            //     if (Keyboard.IsKeyDown(Key.O))
+            //         toolStripMenuItem2_Click(sender, e);
+            //     if ((Keyboard.IsKeyDown(Key.LeftShift) || Keyboard.IsKeyDown(Key.RightShift))
+            //         && Keyboard.IsKeyDown(Key.S))
+            //         toolStripMenuItem4_Click(sender, e);
+            //     if (Keyboard.IsKeyDown(Key.N))
+            //         newToolStripMenuItem_Click(sender, e);
+            //     // find substring
+            //     if (Keyboard.IsKeyDown(Key.F))
+            //         findSubstring();
+            //     // font styles
+            //     if (Keyboard.IsKeyDown(Key.B))
+            //         toolStripButton1_Click(sender, e);
+            //     if (Keyboard.IsKeyDown(Key.I))
+            //         toolStripButton2_Click(sender, e);
+            //     if (Keyboard.IsKeyDown(Key.U))
+            //         toolStripButton3_Click(sender, e);
+            //     if (Keyboard.IsKeyDown(Key.S) && Keyboard.IsKeyDown(Key.T))
+            //         toolStripButton4_Click(sender, e);
+            //     // alignment
+            //     if (Keyboard.IsKeyDown(Key.C))
+            //         toolStripButton6_Click(sender, e);
+            //     if (Keyboard.IsKeyDown(Key.L))
+            //         toolStripButton5_Click(sender, e);
+            //     if (Keyboard.IsKeyDown(Key.R))
+            //         toolStripButton7_Click(sender, e);
+            //     // opacity, hide window, minimize/maximize, close app
+            //     if (Keyboard.IsKeyDown(Key.O))
+            //         changeOpacity();
+            //     if (Keyboard.IsKeyDown(Key.H))
+            //         toolStripButton10_Click(sender, e);
+            //     if (Keyboard.IsKeyDown(Key.M))
+            //         toolStripButton11_Click(sender, e);
+            //     if (Keyboard.IsKeyDown(Key.R))
+            //         toolStripButton12_Click(sender, e);
+            //}
         }
     }
 }
