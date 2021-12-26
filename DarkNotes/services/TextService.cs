@@ -16,7 +16,7 @@ namespace DarkNotes
 
         public void SetFontStyle()
         {
-            
+            //
         }
 
         public void SetAlignment()
