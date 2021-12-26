@@ -18,13 +18,25 @@ namespace DarkNotes
             richTextBox1.DeselectAll();
         }
 
-        public void SetOpacity()
+        public void SetOpacity(String s, KeyEventArgs e, Form1 app)
         {
-            
+            if (e.KeyCode == Keys.Enter)
+            {
+                try
+                {
+                    Double opacity = Convert.ToDouble(s.Trim());
+                    app.Opacity = opacity / 100;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("This is not a number. Or smth is just wrong, I dunno? Try int there");
+                }
+            }
         }
 
         public void FindSubstring()
         {
+            MessageBox.Show("finding substring");
         }
     }
 }

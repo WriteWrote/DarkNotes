@@ -99,7 +99,7 @@ namespace DarkNotes
             richTextBox1.LoadFile(_currentFilename);
             richTextBox1.ForeColor = Color.White;
             //ToDo: посмотреть, как правильно делать инстансы
-            new AppearanceService().SetIndents();
+            new AppearanceService().SetIndents(richTextBox1);
         }
 
         public void NewFile(RichTextBox richTextBox1)
