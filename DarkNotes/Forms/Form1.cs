@@ -197,19 +197,19 @@ namespace DarkNotes
             TextService.SetAlignment(HorizontalAlignment.Right);
         }
 
-        private void SaveWithColors(Color left, Color right)
-        {
-            richTextBox1.SelectAll();
-            richTextBox1.ForeColor = left;
-            richTextBox1.SelectionIndent = -richTextBox1.SelectionHangingIndent;
-            richTextBox1.SelectionRightIndent = 0;
-
-            richTextBox1.SaveFile(_currentFilename);
-
-            richTextBox1.ForeColor = right;
-            SetIndents();
-            richTextBox1.DeselectAll();
-        }
+        // private void SaveWithColors(Color left, Color right)
+        // {
+        //     richTextBox1.SelectAll();
+        //     richTextBox1.ForeColor = left;
+        //     richTextBox1.SelectionIndent = -richTextBox1.SelectionHangingIndent;
+        //     richTextBox1.SelectionRightIndent = 0;
+        //
+        //     richTextBox1.SaveFile(_currentFilename);
+        //
+        //     richTextBox1.ForeColor = right;
+        //     SetIndents();
+        //     richTextBox1.DeselectAll();
+        // }
 
         /// <summary>
         /// Opens & displays new file
@@ -218,26 +218,27 @@ namespace DarkNotes
         /// <param name="e"></param>
         private void toolStripMenuItem2_Click(object sender, EventArgs e)
         {
-            if (!"".Equals(_currentFilename) || !"".Equals(_currentText) || richTextBox1.TextLength > 0)
-            {
-                DialogResult result = MessageBox.Show("Do you want to save all of your valuable writing?",
-                    "Opening new file", MessageBoxButtons.YesNoCancel);
-                if (result == DialogResult.Yes)
-                {
-                    this.toolStripMenuItem3_Click(sender, e);
-                }
-                else if (result == DialogResult.Cancel)
-                    return;
-            }
-
-            if (openFileDialog1.ShowDialog() == DialogResult.Cancel)
-                return;
-
-            richTextBox1.ResetForeColor();
-            _currentFilename = openFileDialog1.FileName;
-            richTextBox1.LoadFile(_currentFilename);
-            richTextBox1.ForeColor = Color.White;
-/*
+            FileService.OpenFile(richTextBox1);
+            // if (!"".Equals(_currentFilename) || !"".Equals(_currentText) || richTextBox1.TextLength > 0)
+            // {
+            //     DialogResult result = MessageBox.Show("Do you want to save all of your valuable writing?",
+            //         "Opening new file", MessageBoxButtons.YesNoCancel);
+            //     if (result == DialogResult.Yes)
+            //     {
+            //         this.toolStripMenuItem3_Click(sender, e);
+            //     }
+            //     else if (result == DialogResult.Cancel)
+            //         return;
+            // }
+            //
+            // if (openFileDialog1.ShowDialog() == DialogResult.Cancel)
+            //     return;
+            //
+            // richTextBox1.ResetForeColor();
+            // _currentFilename = openFileDialog1.FileName;
+            // richTextBox1.LoadFile(_currentFilename);
+            // richTextBox1.ForeColor = Color.White;
+            /*
             // sample of the text
             richTextBox1.Select(0, 1);
             _currentFont = richTextBox1.SelectionFont.Name;
@@ -253,7 +254,7 @@ namespace DarkNotes
             toolStripTextBox1.Text = _currentSize.ToString();
 */
             //TODo: void refresh settings for refreshing of _currents' and form values
-            SetIndents();
+            //SetIndents();
         }
 
         /// <summary>
@@ -263,16 +264,17 @@ namespace DarkNotes
         /// <param name="e"></param>
         private void toolStripMenuItem3_Click(object sender, EventArgs e)
         {
-            if ("".Equals(_currentFilename))
-            {
-                toolStripMenuItem4_Click(sender, e);
-            }
-            else
-            {
-                SaveWithColors(Color.Black, Color.White);
-
-                MessageBox.Show("Your text is safe now!");
-            }
+            FileService.SaveFile();
+            // if ("".Equals(_currentFilename))
+            // {
+            //     toolStripMenuItem4_Click(sender, e);
+            // }
+            // else
+            // {
+            //     SaveWithColors(Color.Black, Color.White);
+            //
+            //     MessageBox.Show("Your text is safe now!");
+            // }
         }
 
         /// <summary>
@@ -282,19 +284,20 @@ namespace DarkNotes
         /// <param name="e"></param>
         private void toolStripMenuItem4_Click(object sender, EventArgs e)
         {
-            if (saveFileDialog1.ShowDialog() == DialogResult.Cancel)
-                return;
-
-            _currentFilename = saveFileDialog1.FileName;
-
-            if (!_currentFilename.Contains(".rtf"))
-            {
-                _currentFilename = _currentFilename.Trim();
-                _currentFilename += ".rtf";
-            }
-
-            SaveWithColors(Color.Black, Color.White);
-            MessageBox.Show("Your text's safe! Don't forget the new name of file now and don't lose it");
+            FileService.SaveAsFile();
+            // if (saveFileDialog1.ShowDialog() == DialogResult.Cancel)
+            //     return;
+            //
+            // _currentFilename = saveFileDialog1.FileName;
+            //
+            // if (!_currentFilename.Contains(".rtf"))
+            // {
+            //     _currentFilename = _currentFilename.Trim();
+            //     _currentFilename += ".rtf";
+            // }
+            //
+            // SaveWithColors(Color.Black, Color.White);
+            // MessageBox.Show("Your text's safe! Don't forget the new name of file now and don't lose it");
         }
 
         private void toolStripButton9_Click(object sender, EventArgs e)
