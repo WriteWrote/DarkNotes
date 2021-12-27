@@ -322,21 +322,9 @@ namespace DarkNotes
         {
             if (richTextBox1.TextLength > 0)
             {
-                // ToDo: make the app to understand when text is saved and there is no need in asking for saving 
-                DialogResult result = MessageBox.Show("Do you want to save all of your valuable writing?",
-                    "Closing the app", MessageBoxButtons.YesNoCancel);
-                if (result == DialogResult.Yes)
-                {
-                    this.toolStripMenuItem3_Click(sender, e);
-                }
-                else
-                {
-                    if (result == DialogResult.Cancel)
-                        return;
-                }
+                // ToDo: make the app to understand when text is saved and there is no need in asking for saving
+                AppService.CloseApp(FileService);
             }
-
-            this.Close();
         }
 
         /// <summary>
@@ -347,7 +335,7 @@ namespace DarkNotes
         /// <exception cref="NotImplementedException"></exception>
         private void toolStripButton10_Click(object sender, EventArgs e)
         {
-            this.WindowState = FormWindowState.Minimized;
+            AppService.HideApp();
         }
 
         /// <summary>
@@ -358,14 +346,7 @@ namespace DarkNotes
         /// <exception cref="NotImplementedException"></exception>
         private void toolStripButton11_Click(object sender, EventArgs e)
         {
-            if (this.WindowState == FormWindowState.Maximized)
-            {
-                this.WindowState = FormWindowState.Normal;
-            }
-            else
-            {
-                this.WindowState = FormWindowState.Maximized;
-            }
+            AppService.ResizeApp();
         }
 
         /// <summary>
