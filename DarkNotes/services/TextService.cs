@@ -1,9 +1,18 @@
-﻿using System.Windows.Forms;
+﻿using System;
+using System.Drawing;
+using System.Windows.Forms;
 
 namespace DarkNotes
 {
     public class TextService
     {
+        private RichTextBox _richTextBox;
+
+        public TextService(RichTextBox richTextBox)
+        {
+            _richTextBox = richTextBox;
+        }
+
         private void SelectMaxWord()
         {
             MessageBox.Show("SelectMaxWord");
@@ -14,9 +23,9 @@ namespace DarkNotes
             MessageBox.Show("SelectMaxParagraph");
         }
 
-        public void SetFontStyle()
+        public void SetFontStyle(FontStyle style)
         {
-            //
+            SelectMaxWord();
         }
 
         public void SetAlignment()
@@ -27,8 +36,30 @@ namespace DarkNotes
         {
         }
 
-        public void SetSize()
+        public void SetSize(String value, KeyEventArgs e)
         {
+            if (e.KeyCode == Keys.Enter)
+            {
+                try
+                {
+                    //s.Replace('.', '.');
+                    Int32 size = Convert.ToInt32(value.Trim());
+                    if (_richTextBox.SelectionLength > 0)
+                    {
+                        //var style = richTextBox1.SelectionFont.Style;
+                        _richTextBox.SelectionFont = new Font(_richTextBox.SelectionFont.Name, size);
+                    }
+                    else
+                    {
+                        //var style = richTextBox1.SelectionFont.Style;
+                        _richTextBox.Font = new Font(_richTextBox.SelectionFont.Name, size);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("This is not a number. Or smth is just wrong, I dunno? Please use int \n" + ex);
+                }
+            }
         }
     }
 }

@@ -12,22 +12,32 @@ namespace DarkNotes
 {
     public partial class Form1 : Form
     {
-        public static double DefaultOpacity { get; } = 93;
-        private Int32 _currentSize = 18;
-        private Int32 _leftInd = 25;
-        private Int32 _redLine = 40;
-        private Int32 _rightInd = 20;
+        public static AppearanceService AppearanceService;
+        public static AppService AppService;
+        public static FileService FileService;
+        public static TextService TextService;
 
-        private String _currentFont = "Corbel Light";
-        private String _currentText = "";
-
-        private String _currentFilename = "";
+        // public static double DefaultOpacity { get; } = 93;
+        // private Int32 _currentSize = 18;
+        // private Int32 _leftInd = 25;
+        // private Int32 _redLine = 40;
+        // private Int32 _rightInd = 20;
+        //
+        // private String _currentFont = "Corbel Light";
+        // private String _currentText = "";
+        //
+        // private String _currentFilename = "";
         //private FormWindowState _currentWindowState = FormWindowState.Normal;
 
         public Form1()
         {
             InitializeComponent();
+            AppearanceService = new AppearanceService();
+            AppService = new AppService(this);
+            FileService = new FileService("", saveFileDialog1, openFileDialog1);
+            TextService = new TextService(richTextBox1);
         }
+
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -37,8 +47,8 @@ namespace DarkNotes
             openFileDialog1.CheckFileExists = true;
             openFileDialog1.CheckPathExists = true;
             openFileDialog1.Multiselect = false;
-            openFileDialog1.Title = "Выберите файл";
 
+            openFileDialog1.Title = "Выберите файл";
             openFileDialog1.DefaultExt = "*.rtf";
             openFileDialog1.Filter = "RTF Files|*.rtf";
             openFileDialog1.AddExtension = true;
@@ -46,30 +56,12 @@ namespace DarkNotes
             // Filling the combobox of fonts
             InitializeFonts();
 
-            toolStripTextBox1.Text = _currentSize.ToString();
-            toolStripTextBox2.Text = DefaultOpacity.ToString();
+            // toolStripTextBox1.Text = _currentSize.ToString();
+            // toolStripTextBox2.Text = DefaultOpacity.ToString();
 
-            SetIndents();
+            AppearanceService.SetIndents(richTextBox1);
 
-            toolStripTextBox4.Text = _redLine.ToString();
-        }
-
-        public int LeftInd
-        {
-            get => _leftInd;
-            set => _leftInd = value;
-        }
-
-        public int RedLine
-        {
-            get => _redLine;
-            set => _redLine = value;
-        }
-
-        public int RightInd
-        {
-            get => _rightInd;
-            set => _rightInd = value;
+//            toolStripTextBox4.Text = _redLine.ToString();
         }
 
         private void InitializeFonts()
@@ -81,18 +73,24 @@ namespace DarkNotes
                 toolStripComboBox1.Items.Add(family.Name);
             }
 
-            int ind = toolStripComboBox1.Items.IndexOf(_currentFont);
+            takeSample();
+            int ind = toolStripComboBox1.Items.IndexOf(richTextBox1.SelectionFont);
             toolStripComboBox1.Text = toolStripComboBox1.Items[ind].ToString();
         }
 
-        public void SetIndents()
+        private void takeSample()
         {
-            richTextBox1.SelectAll();
-            richTextBox1.SelectionIndent = _leftInd + _redLine;
-            richTextBox1.SelectionHangingIndent = -_redLine;
-            richTextBox1.SelectionRightIndent = _rightInd;
-            richTextBox1.DeselectAll();
+            richTextBox1.Select(0, 1);
         }
+
+        // public void SetIndents()
+        // {
+        //     richTextBox1.SelectAll();
+        //     richTextBox1.SelectionIndent = _leftInd + _redLine;
+        //     richTextBox1.SelectionHangingIndent = -_redLine;
+        //     richTextBox1.SelectionRightIndent = _rightInd;
+        //     richTextBox1.DeselectAll();
+        // }
 
         private void richTextBox1_TextChanged(object sender, EventArgs e)
         {
@@ -107,31 +105,7 @@ namespace DarkNotes
         private void toolStripTextBox1_KeyDown(object sender, KeyEventArgs e)
         {
             // ToDo: fix bug that when you click into the textbox for size the visual of picked text goes back to unpicked.
-
-            if (e.KeyCode == Keys.Enter)
-            {
-                String s = toolStripTextBox1.Text;
-                try
-                {
-                    //s.Replace('.', '.');
-                    Int32 size = Convert.ToInt32(s.Trim());
-                    _currentSize = size;
-                    if (richTextBox1.SelectionLength > 0)
-                    {
-                        var style = richTextBox1.SelectionFont.Style;
-                        richTextBox1.SelectionFont = new Font(_currentFont, size, style);
-                    }
-                    else
-                    {
-                        var style = richTextBox1.SelectionFont.Style;
-                        richTextBox1.Font = new Font(_currentFont, size, style);
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("This is not a number. Or smth is just wrong, I dunno? Please use int");
-                }
-            }
+            TextService.SetSize(toolStripTextBox1.Text.Trim(), e);
         }
 
         /// <summary>
@@ -148,11 +122,11 @@ namespace DarkNotes
                 try
                 {
                     Double opacity = Convert.ToDouble(s.Trim());
-                    this.Opacity = opacity / 100;
+                    Opacity = opacity / 100;
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("This is not a number. Or smth is just wrong, I dunno? Try int there");
+                    MessageBox.Show("This is not a number. Or smth is just wrong, I dunno? Try int there \n" + ex);
                 }
             }
         }
@@ -170,11 +144,13 @@ namespace DarkNotes
 
             if (richTextBox1.SelectionLength > 0)
             {
-                richTextBox1.SelectionFont = new Font(_currentFont, _currentSize, FontStyle.Bold);
+                richTextBox1.SelectionFont = new Font(richTextBox1.SelectionFont.Name,
+                    richTextBox1.SelectionFont.Size,
+                    FontStyle.Bold);
             }
             else
             {
-                richTextBox1.Font = new Font(_currentFont, _currentSize, FontStyle.Bold);
+                //richTextBox1.Font = new Font(_currentFont, _currentSize, FontStyle.Bold);
             }
         }
 
@@ -459,7 +435,7 @@ namespace DarkNotes
 
             _currentFont = selectedFont;
         }
-        
+
         //ToDo: сделать так, чтобы при переходе по строкам/ буквам в комбобокс показывался шрифт
         /// <summary>
         /// Invokes method for changing font of text/picked text.
