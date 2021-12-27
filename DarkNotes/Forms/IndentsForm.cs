@@ -6,19 +6,22 @@ namespace DarkNotes
 {
     public partial class IndentsForm : Form
     {
-        private Form1 _linkToF;
+        private AppearanceService _appearanceService;
+        private RichTextBox _richTextBox;
 
         public IndentsForm()
         {
             InitializeComponent();
         }
 
-        public IndentsForm(Form1 f)
+        public IndentsForm(AppearanceService appearanceService, RichTextBox richTextBox)
         {
             InitializeComponent();
-            _linkToF = f;
-            textBox4.Text = _linkToF.LeftInd.ToString();
-            textBox3.Text = _linkToF.RightInd.ToString();
+            _appearanceService = appearanceService;
+            _richTextBox = richTextBox;
+
+            textBox4.Text = _appearanceService.LeftInd.ToString();
+            textBox3.Text = _appearanceService.RightInd.ToString();
             textBox1.Text = "0";
             textBox2.Text = "0";
         }
@@ -59,16 +62,16 @@ namespace DarkNotes
             Int32 right = Convert.ToInt32(textBox3.Text.Trim());
             Int32 up = Convert.ToInt32(textBox1.Text.Trim());
             Int32 down = Convert.ToInt32(textBox2.Text.Trim());
-            
+
             // ToDo: those below we must get from the IndentsForm
             //Int32 redLine = _linkToTextBox.SelectionHangingIndent;
             //Int32 lineIndent = 0;
-            
-            _linkToF.LeftInd = left;
-            _linkToF.RightInd = right;
-            _linkToF.SetIndents();
+
+            _appearanceService.LeftInd = left;
+            _appearanceService.RightInd = right;
+            _appearanceService.SetIndents(_richTextBox);
             //_linkToF.Refresh();
-            
+
             this.Close();
         }
     }

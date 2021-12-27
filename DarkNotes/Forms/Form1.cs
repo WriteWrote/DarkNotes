@@ -12,7 +12,7 @@ namespace DarkNotes
 {
     public partial class Form1 : Form
     {
-        public static AppearanceService AppearanceService;
+        public static AppearanceService AppearanceService { get; set; }
         public static AppService AppService;
         public static FileService FileService;
         public static TextService TextService;
@@ -405,7 +405,7 @@ namespace DarkNotes
         /// <param name="e"></param>
         private void toolStripMenuItem9_Click(object sender, EventArgs e)
         {
-            IndentsForm newForm = new IndentsForm(this);
+            IndentsForm newForm = new IndentsForm(AppearanceService, richTextBox1);
             newForm.Show();
         }
 
