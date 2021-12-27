@@ -47,7 +47,7 @@ namespace DarkNotes
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("This is not a number. Or smth is just wrong, I dunno? Try int there");
+                    MessageBox.Show("This is not a number. Or smth is just wrong, I dunno? Try int there \n" + ex);
                 }
             }
         }

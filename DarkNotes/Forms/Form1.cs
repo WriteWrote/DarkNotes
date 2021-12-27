@@ -116,19 +116,7 @@ namespace DarkNotes
         /// <param name="e"></param>
         private void toolStripTextBox2_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter)
-            {
-                String s = toolStripTextBox2.Text;
-                try
-                {
-                    Double opacity = Convert.ToDouble(s.Trim());
-                    Opacity = opacity / 100;
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("This is not a number. Or smth is just wrong, I dunno? Try int there \n" + ex);
-                }
-            }
+            AppearanceService.SetOpacity(toolStripTextBox2.Text.Trim(), e, this);
         }
 
         /// <summary>
@@ -142,16 +130,7 @@ namespace DarkNotes
             // ToDo: make second click on the style button reverse style to normal
             // ToDo: make styles combinated
 
-            if (richTextBox1.SelectionLength > 0)
-            {
-                richTextBox1.SelectionFont = new Font(richTextBox1.SelectionFont.Name,
-                    richTextBox1.SelectionFont.Size,
-                    FontStyle.Bold);
-            }
-            else
-            {
-                //richTextBox1.Font = new Font(_currentFont, _currentSize, FontStyle.Bold);
-            }
+            TextService.SetFontStyle(FontStyle.Bold);
         }
 
         /// <summary>
@@ -162,14 +141,7 @@ namespace DarkNotes
         /// <param name="e"></param>
         private void toolStripButton2_Click(object sender, EventArgs e)
         {
-            if (richTextBox1.SelectionLength > 0)
-            {
-                richTextBox1.SelectionFont = new Font(_currentFont, _currentSize, FontStyle.Italic);
-            }
-            else
-            {
-                richTextBox1.Font = new Font(_currentFont, _currentSize, FontStyle.Italic);
-            }
+            TextService.SetFontStyle(FontStyle.Italic);
         }
 
         /// <summary>
@@ -180,14 +152,7 @@ namespace DarkNotes
         /// <param name="e"></param>
         private void toolStripButton3_Click(object sender, EventArgs e)
         {
-            if (richTextBox1.SelectionLength > 0)
-            {
-                richTextBox1.SelectionFont = new Font(_currentFont, _currentSize, FontStyle.Underline);
-            }
-            else
-            {
-                richTextBox1.Font = new Font(_currentFont, _currentSize, FontStyle.Underline);
-            }
+            TextService.SetFontStyle(FontStyle.Underline);
         }
 
         /// <summary>
@@ -198,14 +163,7 @@ namespace DarkNotes
         /// <param name="e"></param>
         private void toolStripButton4_Click(object sender, EventArgs e)
         {
-            if (richTextBox1.SelectionLength > 0)
-            {
-                richTextBox1.SelectionFont = new Font(_currentFont, _currentSize, FontStyle.Strikeout);
-            }
-            else
-            {
-                richTextBox1.Font = new Font(_currentFont, _currentSize, FontStyle.Strikeout);
-            }
+            TextService.SetFontStyle(FontStyle.Strikeout);
         }
 
         //ToDo: don't lose! --> richTextBox1.GetFirstCharIndexOfCurrentLine()
@@ -216,23 +174,17 @@ namespace DarkNotes
         /// <param name="e"></param>
         private void toolStripButton5_Click(object sender, EventArgs e)
         {
-            if (richTextBox1.SelectionLength > 0)
-            {
-                richTextBox1.SelectionAlignment = HorizontalAlignment.Left;
-            }
+            TextService.SetAlignment(HorizontalAlignment.Left);
         }
 
         /// <summary>
-        /// Sets left alignment to picked text.
+        /// Sets center alignment to picked text.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void toolStripButton6_Click(object sender, EventArgs e)
         {
-            if (richTextBox1.SelectionLength > 0)
-            {
-                richTextBox1.SelectionAlignment = HorizontalAlignment.Center;
-            }
+            TextService.SetAlignment(HorizontalAlignment.Center);
         }
 
         /// <summary>
@@ -242,10 +194,7 @@ namespace DarkNotes
         /// <param name="e"></param>
         private void toolStripButton7_Click(object sender, EventArgs e)
         {
-            if (richTextBox1.SelectionLength > 0)
-            {
-                richTextBox1.SelectionAlignment = HorizontalAlignment.Right;
-            }
+            TextService.SetAlignment(HorizontalAlignment.Right);
         }
 
         private void SaveWithColors(Color left, Color right)

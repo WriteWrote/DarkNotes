@@ -25,11 +25,27 @@ namespace DarkNotes
 
         public void SetFontStyle(FontStyle style)
         {
-            SelectMaxWord();
+            if (_richTextBox.SelectionLength == 0)
+                SelectMaxWord();
+            if (_richTextBox.SelectionFont.Style.Equals(style))
+            {
+                _richTextBox.SelectionFont = new Font(_richTextBox.SelectionFont.Name,
+                    _richTextBox.SelectionFont.Size,
+                    FontStyle.Regular);
+            }
+            else
+            {
+                _richTextBox.SelectionFont = new Font(_richTextBox.SelectionFont.Name,
+                    _richTextBox.SelectionFont.Size,
+                    style);
+            }
         }
 
-        public void SetAlignment()
+        public void SetAlignment(HorizontalAlignment alignment)
         {
+            if (_richTextBox.SelectionLength == 0)
+                SelectMaxParagraph();
+            _richTextBox.SelectionAlignment = alignment;
         }
 
         public void SetFont()
@@ -49,6 +65,7 @@ namespace DarkNotes
                         //var style = richTextBox1.SelectionFont.Style;
                         _richTextBox.SelectionFont = new Font(_richTextBox.SelectionFont.Name, size);
                     }
+
                     else
                     {
                         //var style = richTextBox1.SelectionFont.Style;
