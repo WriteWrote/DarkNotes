@@ -34,7 +34,7 @@ namespace DarkNotes
             InitializeComponent();
             AppearanceService = new AppearanceService();
             AppService = new AppService(this);
-            FileService = new FileService("", saveFileDialog1, openFileDialog1);
+            FileService = new FileService("", saveFileDialog, openFileDialog);
             TextService = new TextService(richTextBox1);
         }
 
@@ -44,14 +44,14 @@ namespace DarkNotes
             // sets the ability to choose color of font from font dialog
             fontDialog.ShowColor = true;
 
-            openFileDialog1.CheckFileExists = true;
-            openFileDialog1.CheckPathExists = true;
-            openFileDialog1.Multiselect = false;
+            openFileDialog.CheckFileExists = true;
+            openFileDialog.CheckPathExists = true;
+            openFileDialog.Multiselect = false;
 
-            openFileDialog1.Title = "Выберите файл";
-            openFileDialog1.DefaultExt = "*.rtf";
-            openFileDialog1.Filter = "RTF Files|*.rtf";
-            openFileDialog1.AddExtension = true;
+            openFileDialog.Title = "Выберите файл";
+            openFileDialog.DefaultExt = "*.rtf";
+            openFileDialog.Filter = "RTF Files|*.rtf";
+            openFileDialog.AddExtension = true;
 
             // Filling the combobox of fonts
             InitializeFonts();
@@ -356,22 +356,12 @@ namespace DarkNotes
         /// <param name="e"></param>
         private void toolStripComboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string selectedFont = toolStripComboBox1.SelectedItem.ToString();
-            if (richTextBox1.SelectionLength > 0)
-            {
-                richTextBox1.SelectionFont = new Font(selectedFont, _currentSize);
-            }
-            else
-            {
-                richTextBox1.Font = new Font(selectedFont, _currentSize);
-            }
-
-            _currentFont = selectedFont;
+            TextService.SetFont(toolStripComboBox1.SelectedItem.ToString());
         }
 
         //ToDo: сделать так, чтобы при переходе по строкам/ буквам в комбобокс показывался шрифт
         /// <summary>
-        /// Invokes method for changing font of text/picked text.
+        /// Invokes method for changing font of text/picked text, if user taps Enter in font-combobox.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -393,17 +383,18 @@ namespace DarkNotes
             if (fontDialog.ShowDialog() == DialogResult.Cancel)
                 return;
 
-            if (richTextBox1.SelectionLength > 0)
-            {
-                richTextBox1.SelectionFont = fontDialog.Font;
-                richTextBox1.SelectionColor = fontDialog.Color;
-            }
-            else
-            {
-                richTextBox1.Font = fontDialog.Font;
-                richTextBox1.SelectAll();
-                richTextBox1.SelectionColor = fontDialog.Color;
-            }
+            // if (richTextBox1.SelectionLength > 0)
+            // {
+            //     richTextBox1.SelectionFont = fontDialog.Font;
+            //     richTextBox1.SelectionColor = fontDialog.Color;
+            // }
+            // else
+            // {
+            richTextBox1.SelectAll();
+            richTextBox1.SelectionFont = fontDialog.Font;
+            richTextBox1.SelectionColor = fontDialog.Color;
+            richTextBox1.DeselectAll();
+            // }
         }
 
         /// <summary>
@@ -437,8 +428,8 @@ namespace DarkNotes
                 {
                     Int32 redLine = Convert.ToInt32(s.Trim());
 
-                    this._redLine = redLine;
-                    SetIndents();
+                    AppearanceService.RedLine = redLine;
+                    AppearanceService.SetIndents(richTextBox1);
                 }
                 catch (Exception ex)
                 {
@@ -456,30 +447,7 @@ namespace DarkNotes
         /// <param name="e"></param>
         private void newToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (richTextBox1.TextLength > 0)
-            {
-                DialogResult result = MessageBox.Show("Do you want to save all of your valuable writing?",
-                    "Closing the app", MessageBoxButtons.YesNoCancel);
-                if (result == DialogResult.Yes)
-                {
-                    this.toolStripMenuItem3_Click(sender, e);
-                }
-                else if (result == DialogResult.Cancel)
-                    return;
-            }
-
-            richTextBox1.Clear();
-            // reset to default
-        }
-
-        private void findSubstring()
-        {
-            MessageBox.Show("Finding substring");
-        }
-
-        private void changeOpacity()
-        {
-            MessageBox.Show("Changing opacity");
+            FileService.NewFile(richTextBox1);
         }
 
         /// <summary>

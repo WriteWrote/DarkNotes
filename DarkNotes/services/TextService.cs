@@ -48,8 +48,11 @@ namespace DarkNotes
             _richTextBox.SelectionAlignment = alignment;
         }
 
-        public void SetFont()
+        public void SetFont(String fontName)
         {
+            if (_richTextBox.SelectionLength == 0)
+                SelectMaxWord();
+            _richTextBox.SelectionFont = new Font(fontName, _richTextBox.SelectionFont.Size);
         }
 
         public void SetSize(String value, KeyEventArgs e)

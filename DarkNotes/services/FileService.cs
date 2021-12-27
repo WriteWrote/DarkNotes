@@ -117,6 +117,7 @@ namespace DarkNotes
             }
 
             richTextBox1.Clear();
+            _currentFilename = "";
             // reset to default
         }
     }
