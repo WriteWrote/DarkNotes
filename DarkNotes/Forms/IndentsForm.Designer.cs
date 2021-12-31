@@ -110,6 +110,7 @@ namespace DarkNotes
             this.textBox4.Size = new System.Drawing.Size(50, 33);
             this.textBox4.TabIndex = 5;
             this.textBox4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox4.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox4_KeyDown);
             // 
             // button1
             // 

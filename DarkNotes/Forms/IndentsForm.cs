@@ -56,7 +56,7 @@ namespace DarkNotes
             this.Close();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void SetIndentation()
         {
             Int32 left = Convert.ToInt32(textBox4.Text.Trim());
             Int32 right = Convert.ToInt32(textBox3.Text.Trim());
@@ -70,9 +70,17 @@ namespace DarkNotes
             _appearanceService.LeftInd = left;
             _appearanceService.RightInd = right;
             _appearanceService.SetIndents(_richTextBox);
-            //_linkToF.Refresh();
+        }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.SetIndentation();
             this.Close();
+        }
+
+        private void textBox4_KeyDown(object sender, KeyEventArgs e)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

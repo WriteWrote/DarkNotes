@@ -5,23 +5,28 @@ namespace DarkNotes
     public class AppService
     {
         private Form1 app;
+
         public AppService(Form1 app)
         {
             this.app = app;
         }
 
-        public void CloseApp(FileService save)
+        public void CloseApp(FileService save, bool hasNotSavedText)
         {
-            DialogResult result = MessageBox.Show("Do you want to save all of your valuable writing?",
-                "Closing the app", MessageBoxButtons.YesNoCancel);
-            if (result == DialogResult.Yes)
+            if (hasNotSavedText)
             {
-                save.SaveFile();
-            }
-            else
-            {
-                if (result == DialogResult.Cancel)
-                    return;
+                // ToDo: make the app to understand when text is saved and there is no need in asking for saving
+                DialogResult result = MessageBox.Show("Do you want to save all of your valuable writing?",
+                    "Closing the app", MessageBoxButtons.YesNoCancel);
+                if (result == DialogResult.Yes)
+                {
+                    save.SaveFile();
+                }
+                else
+                {
+                    if (result == DialogResult.Cancel)
+                        return;
+                }
             }
 
             app.Close();

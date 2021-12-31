@@ -61,17 +61,14 @@ namespace DarkNotes
             {
                 try
                 {
-                    //s.Replace('.', '.');
                     Int32 size = Convert.ToInt32(value.Trim());
                     if (_richTextBox.SelectionLength > 0)
                     {
-                        //var style = richTextBox1.SelectionFont.Style;
                         _richTextBox.SelectionFont = new Font(_richTextBox.SelectionFont.Name, size);
                     }
 
                     else
                     {
-                        //var style = richTextBox1.SelectionFont.Style;
                         _richTextBox.Font = new Font(_richTextBox.SelectionFont.Name, size);
                     }
                 }

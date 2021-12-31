@@ -29,11 +29,9 @@ namespace DarkNotes
 
         public void SetIndents(RichTextBox richTextBox1)
         {
-            //richTextBox1.SelectAll();
             richTextBox1.SelectionIndent = _leftInd + _redLine;
             richTextBox1.SelectionHangingIndent = -_redLine;
             richTextBox1.SelectionRightIndent = _rightInd;
-            //richTextBox1.DeselectAll();
         }
 
         public void SetOpacity(String s, KeyEventArgs e, Form1 app)

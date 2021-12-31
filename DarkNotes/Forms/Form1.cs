@@ -56,12 +56,7 @@ namespace DarkNotes
             // Filling the combobox of fonts
             InitializeFonts();
 
-            // toolStripTextBox1.Text = _currentSize.ToString();
-            // toolStripTextBox2.Text = DefaultOpacity.ToString();
-
             AppearanceService.SetIndents(richTextBox1);
-
-//            toolStripTextBox4.Text = _redLine.ToString();
         }
 
         private void InitializeFonts()
@@ -82,15 +77,6 @@ namespace DarkNotes
         {
             richTextBox1.Select(0, 1);
         }
-
-        // public void SetIndents()
-        // {
-        //     richTextBox1.SelectAll();
-        //     richTextBox1.SelectionIndent = _leftInd + _redLine;
-        //     richTextBox1.SelectionHangingIndent = -_redLine;
-        //     richTextBox1.SelectionRightIndent = _rightInd;
-        //     richTextBox1.DeselectAll();
-        // }
 
         private void richTextBox1_TextChanged(object sender, EventArgs e)
         {
@@ -127,9 +113,7 @@ namespace DarkNotes
         /// <param name="e"></param>
         private void toolStripButton1_Click(object sender, EventArgs e)
         {
-            // ToDo: make second click on the style button reverse style to normal
             // ToDo: make styles combinated
-
             TextService.SetFontStyle(FontStyle.Bold);
         }
 
@@ -197,20 +181,6 @@ namespace DarkNotes
             TextService.SetAlignment(HorizontalAlignment.Right);
         }
 
-        // private void SaveWithColors(Color left, Color right)
-        // {
-        //     richTextBox1.SelectAll();
-        //     richTextBox1.ForeColor = left;
-        //     richTextBox1.SelectionIndent = -richTextBox1.SelectionHangingIndent;
-        //     richTextBox1.SelectionRightIndent = 0;
-        //
-        //     richTextBox1.SaveFile(_currentFilename);
-        //
-        //     richTextBox1.ForeColor = right;
-        //     SetIndents();
-        //     richTextBox1.DeselectAll();
-        // }
-
         /// <summary>
         /// Opens & displays new file
         /// </summary>
@@ -219,42 +189,7 @@ namespace DarkNotes
         private void toolStripMenuItem2_Click(object sender, EventArgs e)
         {
             FileService.OpenFile(richTextBox1);
-            // if (!"".Equals(_currentFilename) || !"".Equals(_currentText) || richTextBox1.TextLength > 0)
-            // {
-            //     DialogResult result = MessageBox.Show("Do you want to save all of your valuable writing?",
-            //         "Opening new file", MessageBoxButtons.YesNoCancel);
-            //     if (result == DialogResult.Yes)
-            //     {
-            //         this.toolStripMenuItem3_Click(sender, e);
-            //     }
-            //     else if (result == DialogResult.Cancel)
-            //         return;
-            // }
-            //
-            // if (openFileDialog1.ShowDialog() == DialogResult.Cancel)
-            //     return;
-            //
-            // richTextBox1.ResetForeColor();
-            // _currentFilename = openFileDialog1.FileName;
-            // richTextBox1.LoadFile(_currentFilename);
-            // richTextBox1.ForeColor = Color.White;
-            /*
-            // sample of the text
-            richTextBox1.Select(0, 1);
-            _currentFont = richTextBox1.SelectionFont.Name;
-            _currentSize = Convert.ToInt32(richTextBox1.SelectionFont.Size);
-            richTextBox1.DeselectAll();
-            _currentText = richTextBox1.Rtf;
-
-            // set combobox
-            int ind = toolStripComboBox1.Items.IndexOf(_currentFont);
-            toolStripComboBox1.Text = toolStripComboBox1.Items[ind].ToString();
-
-            //set size of text
-            toolStripTextBox1.Text = _currentSize.ToString();
-*/
             //TODo: void refresh settings for refreshing of _currents' and form values
-            //SetIndents();
         }
 
         /// <summary>
@@ -265,16 +200,6 @@ namespace DarkNotes
         private void toolStripMenuItem3_Click(object sender, EventArgs e)
         {
             FileService.SaveFile();
-            // if ("".Equals(_currentFilename))
-            // {
-            //     toolStripMenuItem4_Click(sender, e);
-            // }
-            // else
-            // {
-            //     SaveWithColors(Color.Black, Color.White);
-            //
-            //     MessageBox.Show("Your text is safe now!");
-            // }
         }
 
         /// <summary>
@@ -285,19 +210,6 @@ namespace DarkNotes
         private void toolStripMenuItem4_Click(object sender, EventArgs e)
         {
             FileService.SaveAsFile();
-            // if (saveFileDialog1.ShowDialog() == DialogResult.Cancel)
-            //     return;
-            //
-            // _currentFilename = saveFileDialog1.FileName;
-            //
-            // if (!_currentFilename.Contains(".rtf"))
-            // {
-            //     _currentFilename = _currentFilename.Trim();
-            //     _currentFilename += ".rtf";
-            // }
-            //
-            // SaveWithColors(Color.Black, Color.White);
-            // MessageBox.Show("Your text's safe! Don't forget the new name of file now and don't lose it");
         }
 
         private void toolStripButton9_Click(object sender, EventArgs e)
@@ -320,11 +232,7 @@ namespace DarkNotes
         /// <param name="e"></param>
         private void toolStripButton12_Click(object sender, EventArgs e)
         {
-            if (richTextBox1.TextLength > 0)
-            {
-                // ToDo: make the app to understand when text is saved and there is no need in asking for saving
-                AppService.CloseApp(FileService);
-            }
+            AppService.CloseApp(FileService, richTextBox1.TextLength > 0);
         }
 
         /// <summary>
@@ -369,7 +277,7 @@ namespace DarkNotes
         {
             if (e.KeyCode == Keys.Enter)
             {
-                toolStripComboBox1_SelectedIndexChanged(sender, e);
+                TextService.SetFont(toolStripComboBox1.SelectedItem.ToString());
             }
         }
 
@@ -383,18 +291,10 @@ namespace DarkNotes
             if (fontDialog.ShowDialog() == DialogResult.Cancel)
                 return;
 
-            // if (richTextBox1.SelectionLength > 0)
-            // {
-            //     richTextBox1.SelectionFont = fontDialog.Font;
-            //     richTextBox1.SelectionColor = fontDialog.Color;
-            // }
-            // else
-            // {
             richTextBox1.SelectAll();
             richTextBox1.SelectionFont = fontDialog.Font;
             richTextBox1.SelectionColor = fontDialog.Color;
             richTextBox1.DeselectAll();
-            // }
         }
 
         /// <summary>
@@ -421,6 +321,8 @@ namespace DarkNotes
         /// <param name="e"></param>
         private void toolStripTextBox4_KeyDown(object sender, KeyEventArgs e)
         {
+            //Todo: вызывать метод, мать его. Где он вот?
+            //AppearanceService.SetIndents(richTextBox1);
             if (e.KeyCode == Keys.Enter)
             {
                 String s = toolStripTextBox4.Text;
