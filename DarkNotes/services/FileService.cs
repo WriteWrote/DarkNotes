@@ -79,7 +79,9 @@ namespace DarkNotes
 
         public void OpenFile(RichTextBox richTextBox1)
         {
-            if (!"".Equals(_currentFilename) || !"".Equals(_currentText) || richTextBox1.TextLength > 0)
+            if (!"".Equals(_currentFilename) || 
+                //!"".Equals(_currentText) || 
+                richTextBox1.TextLength > 0)
             {
                 DialogResult result = MessageBox.Show("Do you want to save all of your valuable writing?",
                     "Opening new file", MessageBoxButtons.YesNoCancel);
@@ -94,12 +96,8 @@ namespace DarkNotes
             if (_openFileDialog.ShowDialog() == DialogResult.Cancel)
                 return;
 
-            richTextBox1.ResetForeColor();
             _currentFilename = _openFileDialog.FileName;
             richTextBox1.LoadFile(_currentFilename);
-            richTextBox1.ForeColor = Color.White;
-            //ToDo: посмотреть, как правильно делать инстансы
-            new AppearanceService().SetIndents(richTextBox1);
         }
 
         public void NewFile(RichTextBox richTextBox1)

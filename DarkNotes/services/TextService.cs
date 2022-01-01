@@ -21,7 +21,7 @@ namespace DarkNotes
             int i = 0;
             foreach (char symbol in _richTextBox.Text.Substring(0, index).Reverse())
             {
-                if (symbol == ' ')
+                if (symbol == ' ' || symbol == '\n' || symbol == '\r')
                 {
                     break;
                 }
@@ -49,8 +49,9 @@ namespace DarkNotes
                     _richTextBox.SelectionFont.Size,
                     style);
             }
+
             // ToDO: убрать этот говнокод тоже
-            _richTextBox.DeselectAll();
+            //_richTextBox.DeselectAll();
         }
 
         public void SetAlignment(HorizontalAlignment alignment)
@@ -62,7 +63,16 @@ namespace DarkNotes
         {
             if (_richTextBox.SelectionLength == 0)
                 SelectMaxWord();
-            _richTextBox.SelectionFont = new Font(fontName, _richTextBox.SelectionFont.Size);
+            try
+            {
+                _richTextBox.SelectionFont = new Font(fontName, _richTextBox.SelectionFont.Size);
+            }
+            catch (Exception e)
+            {
+                // Console.WriteLine(e);
+                // throw;
+                MessageBox.Show("Что-то пошло не так. Вам точно нужен этот шрифт? Может, выберете что-то попроще?");
+            }
             // ToDO: убрать этот говнокод
             _richTextBox.DeselectAll();
         }
@@ -74,19 +84,16 @@ namespace DarkNotes
                 try
                 {
                     Int32 size = Convert.ToInt32(value.Trim());
-                    if (_richTextBox.SelectionLength > 0)
+                    if (_richTextBox.SelectionLength == 0)
                     {
-                        _richTextBox.SelectionFont = new Font(_richTextBox.SelectionFont.Name, size);
+                        SelectMaxWord();
                     }
 
-                    else
-                    {
-                        _richTextBox.Font = new Font(_richTextBox.SelectionFont.Name, size);
-                    }
+                    _richTextBox.SelectionFont = new Font(_richTextBox.SelectionFont.Name, size);
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("This is not a number. Or smth is just wrong, I dunno? Please use int \n" + ex);
+                    MessageBox.Show("This is not a number. Or smth is just wrong, I dunno? Please use int \n");
                 }
             }
         }

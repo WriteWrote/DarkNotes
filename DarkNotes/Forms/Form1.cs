@@ -40,7 +40,7 @@ namespace DarkNotes
             openFileDialog.DefaultExt = "*.rtf";
             openFileDialog.Filter = "RTF Files|*.rtf";
             openFileDialog.AddExtension = true;
-            
+
             // makes richtextbox keep visual selection, when focus is lost 
             richTextBox1.HideSelection = false;
 
@@ -144,7 +144,7 @@ namespace DarkNotes
         {
             TextService.SetFontStyle(FontStyle.Strikeout);
         }
-        
+
         /// <summary>
         /// Sets left alignment to picked text
         /// </summary>
@@ -183,12 +183,16 @@ namespace DarkNotes
         private void toolStripMenuItem2_Click(object sender, EventArgs e)
         {
             FileService.OpenFile(richTextBox1);
+
+            richTextBox1.ResetForeColor();
+            richTextBox1.ForeColor = Color.White;
+
+            //AppearanceService.SetIndents(richTextBox1);
+
             refreshCurrFontInCombobox(0, 1);
-            // Int32 position = richTextBox1.GetCharIndexFromPosition(richTextBox1.Cursor.HotSpot);
-            // richTextBox1.Select(position, position+1);
-            //TODo: void refresh settings for refreshing of _currents' and form values
         }
 
+        //TODo: void refresh settings for refreshing of _currents' and form values
         /// <summary>
         /// Saves current file. Can invoke "save as" method
         /// </summary>
