@@ -17,18 +17,6 @@ namespace DarkNotes
         public static FileService FileService;
         public static TextService TextService;
 
-        // public static double DefaultOpacity { get; } = 93;
-        // private Int32 _currentSize = 18;
-        // private Int32 _leftInd = 25;
-        // private Int32 _redLine = 40;
-        // private Int32 _rightInd = 20;
-        //
-        // private String _currentFont = "Corbel Light";
-        // private String _currentText = "";
-        //
-        // private String _currentFilename = "";
-        //private FormWindowState _currentWindowState = FormWindowState.Normal;
-
         public Form1()
         {
             InitializeComponent();
@@ -52,6 +40,9 @@ namespace DarkNotes
             openFileDialog.DefaultExt = "*.rtf";
             openFileDialog.Filter = "RTF Files|*.rtf";
             openFileDialog.AddExtension = true;
+            
+            // makes richtextbox keep visual selection, when focus is lost 
+            richTextBox1.HideSelection = false;
 
             // Filling the combobox of fonts
             InitializeFonts();
