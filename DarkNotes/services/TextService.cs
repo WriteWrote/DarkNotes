@@ -61,20 +61,15 @@ namespace DarkNotes
 
         public void SetFont(String fontName)
         {
-            // if (_richTextBox.SelectionLength == 0)
-            //     SelectMaxWord();
             try
             {
                 _richTextBox.SelectionFont = new Font(fontName, _richTextBox.SelectionFont.Size);
             }
             catch (Exception e)
             {
-                // Console.WriteLine(e);
-                // throw;
-                MessageBox.Show("Что-то пошло не так. Вам точно нужен этот шрифт? Может, выберете что-то попроще?");
+                // ToDo: разобраться
+                MessageBox.Show("Что-то пошло не так.");
             }
-            // ToDO: убрать этот говнокод
-            //_richTextBox.DeselectAll();
         }
 
         public void SetSize(String value, KeyEventArgs e)
@@ -86,6 +81,7 @@ namespace DarkNotes
                     Int32 size = Convert.ToInt32(value.Trim());
                     if (_richTextBox.SelectionLength == 0)
                     {
+                        //ToDo: fix things
                         SelectMaxWord();
                     }
 

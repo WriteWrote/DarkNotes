@@ -31,15 +31,9 @@ namespace DarkNotes
         {
             // sets the ability to choose color of font from font dialog
             fontDialog.ShowColor = true;
-
-            openFileDialog.CheckFileExists = true;
-            openFileDialog.CheckPathExists = true;
-            openFileDialog.Multiselect = false;
-
-            openFileDialog.Title = "Выберите файл";
-            openFileDialog.DefaultExt = "*.rtf";
-            openFileDialog.Filter = "RTF Files|*.rtf";
-            openFileDialog.AddExtension = true;
+            
+            InitializeOpenDialog();
+            InitializeSaveDialog();
 
             // makes richtextbox keep visual selection, when focus is lost 
             richTextBox1.HideSelection = false;
@@ -50,6 +44,20 @@ namespace DarkNotes
             AppearanceService.SetIndents(richTextBox1);
         }
 
+        private void InitializeOpenDialog()
+        {
+            openFileDialog.CheckFileExists = true;
+            openFileDialog.CheckPathExists = true;
+            openFileDialog.Multiselect = false;
+        }
+
+        private void InitializeSaveDialog()
+        {
+            openFileDialog.Title = "Выберите файл";
+            openFileDialog.DefaultExt = "*.rtf";
+            openFileDialog.Filter = "RTF Files|*.rtf";
+            openFileDialog.AddExtension = true;
+        }
         private void InitializeFonts()
         {
             InstalledFontCollection fontFamilies = new InstalledFontCollection();
@@ -187,9 +195,12 @@ namespace DarkNotes
             richTextBox1.ResetForeColor();
             richTextBox1.ForeColor = Color.White;
 
-            //AppearanceService.SetIndents(richTextBox1);
+            //ToDo: исправить
+            AppearanceService.SetIndents(richTextBox1);
 
-            refreshCurrFontInCombobox(0, 1);
+            takeTextSample(0, 1);
+            toolStripTextBox1.Text = richTextBox1.SelectionFont.Size.ToString();
+            richTextBox1.DeselectAll();
         }
 
         //TODo: void refresh settings for refreshing of _currents' and form values
@@ -296,6 +307,8 @@ namespace DarkNotes
             richTextBox1.SelectionFont = fontDialog.Font;
             richTextBox1.SelectionColor = fontDialog.Color;
             richTextBox1.DeselectAll();
+
+            takeTextSample(0, 1);
         }
 
         /// <summary>
