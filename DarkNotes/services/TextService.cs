@@ -14,14 +14,14 @@ namespace DarkNotes
             _richTextBox = richTextBox;
         }
 
-        private void Select(char s)
+        private void SelectMaxWord()
         {
             int index = _richTextBox.SelectionStart;
-            int rightBorder = _richTextBox.Find(new char[] {s}, index);
+            int rightBorder = _richTextBox.Find(new char[] {' '}, index);
             int i = 0;
             foreach (char symbol in _richTextBox.Text.Substring(0, index).Reverse())
             {
-                if (symbol == s)
+                if (symbol == ' ')
                 {
                     break;
                 }
@@ -31,16 +31,6 @@ namespace DarkNotes
 
             int leftDot = index + i;
             _richTextBox.Select(leftDot, rightBorder - leftDot);
-        }
-
-        private void SelectMaxWord()
-        {
-            Select(' ');
-        }
-
-        private void SelectMaxParagraph()
-        {
-            Select('.');
         }
 
         public void SetFontStyle(FontStyle style)
@@ -59,12 +49,12 @@ namespace DarkNotes
                     _richTextBox.SelectionFont.Size,
                     style);
             }
+            // ToDO: убрать этот говнокод тоже
+            _richTextBox.DeselectAll();
         }
 
         public void SetAlignment(HorizontalAlignment alignment)
         {
-            if (_richTextBox.SelectionLength == 0)
-                SelectMaxParagraph();
             _richTextBox.SelectionAlignment = alignment;
         }
 
