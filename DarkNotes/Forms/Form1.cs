@@ -64,18 +64,24 @@ namespace DarkNotes
             InstalledFontCollection fontFamilies = new InstalledFontCollection();
             foreach (FontFamily family in fontFamilies.Families)
             {
-                //toolStripComboBox1.Font = new Font(family.Name, 14);
                 toolStripComboBox1.Items.Add(family.Name);
             }
 
-            takeSample();
-            int ind = toolStripComboBox1.Items.IndexOf(richTextBox1.SelectionFont);
-            toolStripComboBox1.Text = toolStripComboBox1.Items[ind].ToString();
+            Int32 i = toolStripComboBox1.Items.IndexOf("Century");
+            toolStripComboBox1.SelectedIndex = i;
         }
 
-        private void takeSample()
+        private void takeTextSample(Int32 first, Int32 second)
         {
-            richTextBox1.Select(0, 1);
+            richTextBox1.Select(first, second);
+        }
+
+        private void refreshCurrFontInCombobox(Int32 first, Int32 second)
+        {
+            takeTextSample(first, second);
+            int ind = toolStripComboBox1.Items.IndexOf(richTextBox1.SelectionFont.Name);
+            richTextBox1.DeselectAll();
+            toolStripComboBox1.SelectedItem = toolStripComboBox1.Items[ind].ToString();
         }
 
         private void richTextBox1_TextChanged(object sender, EventArgs e)
@@ -113,7 +119,6 @@ namespace DarkNotes
         /// <param name="e"></param>
         private void toolStripButton1_Click(object sender, EventArgs e)
         {
-            // ToDo: make styles combinated
             TextService.SetFontStyle(FontStyle.Bold);
         }
 
@@ -189,6 +194,9 @@ namespace DarkNotes
         private void toolStripMenuItem2_Click(object sender, EventArgs e)
         {
             FileService.OpenFile(richTextBox1);
+            refreshCurrFontInCombobox(0, 1);
+            // Int32 position = richTextBox1.GetCharIndexFromPosition(richTextBox1.Cursor.HotSpot);
+            // richTextBox1.Select(position, position+1);
             //TODo: void refresh settings for refreshing of _currents' and form values
         }
 
@@ -264,6 +272,7 @@ namespace DarkNotes
         /// <param name="e"></param>
         private void toolStripComboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
+            // TODO: решить проблему с выделениями
             TextService.SetFont(toolStripComboBox1.SelectedItem.ToString());
         }
 

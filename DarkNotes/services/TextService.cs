@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace DarkNotes
@@ -15,7 +16,24 @@ namespace DarkNotes
 
         private void SelectMaxWord()
         {
-            MessageBox.Show("SelectMaxWord");
+            int index = _richTextBox.SelectionStart;
+            int rightSpace = _richTextBox.Find(new char[] {' '}, index);
+            int i = 0;
+            foreach (char symbol in _richTextBox.Text.Substring(0, index).Reverse())
+            {
+                if (symbol == ' ')
+                {
+                    break;
+                }
+                else
+                {
+                    i--;
+                }
+            }
+
+            int leftSpace = index + i;
+            //ToDO: _richTextBox.HideSelection = true;
+            _richTextBox.Select(leftSpace, rightSpace - leftSpace);
         }
 
         private void SelectMaxParagraph()
@@ -53,6 +71,8 @@ namespace DarkNotes
             if (_richTextBox.SelectionLength == 0)
                 SelectMaxWord();
             _richTextBox.SelectionFont = new Font(fontName, _richTextBox.SelectionFont.Size);
+            // ToDO: убрать этот говнокод
+            _richTextBox.DeselectAll();
         }
 
         public void SetSize(String value, KeyEventArgs e)
