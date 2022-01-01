@@ -87,7 +87,6 @@ namespace DarkNotes
         ///</summary>
         private void toolStripTextBox1_KeyDown(object sender, KeyEventArgs e)
         {
-            // ToDo: fix bug that when you click into the textbox for size the visual of picked text goes back to unpicked.
             TextService.SetSize(toolStripTextBox1.Text.Trim(), e);
         }
 
@@ -145,8 +144,7 @@ namespace DarkNotes
         {
             TextService.SetFontStyle(FontStyle.Strikeout);
         }
-
-        //ToDo: don't lose! --> richTextBox1.GetFirstCharIndexOfCurrentLine()
+        
         /// <summary>
         /// Sets left alignment to picked text
         /// </summary>
@@ -263,7 +261,6 @@ namespace DarkNotes
         /// <param name="e"></param>
         private void toolStripComboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            // TODO: решить проблему с выделениями
             TextService.SetFont(toolStripComboBox1.SelectedItem.ToString());
         }
 
