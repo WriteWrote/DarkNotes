@@ -30,23 +30,7 @@ namespace DarkNotes
         {
         }
 
-/*
-        /// <summary>
-        /// Required method for Designer support - do not modify
-        /// the contents of this method with the code editor.
-        /// </summary>
-        private void InitializeComponent()
-        {
-            this.SuspendLayout();
-            // 
-            // IndentsForm
-            // 
-            this.ClientSize = new System.Drawing.Size(282, 253);
-            this.Name = "IndentsForm";
-            this.Load += new System.EventHandler(this.IndentsForm_Load);
-            this.ResumeLayout(false);
-        }*/
-        /// <summary>
+      /// <summary>
         /// Closes the IndentForm.
         /// </summary>
         /// <param name="sender"></param>
@@ -56,7 +40,14 @@ namespace DarkNotes
             this.Close();
         }
 
-        private void SetIndentation()
+        private void SetIndentation(Int32 left, Int32 right)
+        {
+            _appearanceService.LeftInd = left;
+            _appearanceService.RightInd = right;
+            _appearanceService.SetIndents(_richTextBox);
+        }
+
+        private void button1_Click(object sender, EventArgs e)
         {
             Int32 left = Convert.ToInt32(textBox4.Text.Trim());
             Int32 right = Convert.ToInt32(textBox3.Text.Trim());
@@ -66,15 +57,8 @@ namespace DarkNotes
             // ToDo: those below we must get from the IndentsForm
             //Int32 redLine = _linkToTextBox.SelectionHangingIndent;
             //Int32 lineIndent = 0;
-
-            _appearanceService.LeftInd = left;
-            _appearanceService.RightInd = right;
-            _appearanceService.SetIndents(_richTextBox);
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            this.SetIndentation();
+            
+            this.SetIndentation(left, right);
             this.Close();
         }
 

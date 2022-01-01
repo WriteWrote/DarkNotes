@@ -14,31 +14,33 @@ namespace DarkNotes
             _richTextBox = richTextBox;
         }
 
-        private void SelectMaxWord()
+        private void Select(char s)
         {
             int index = _richTextBox.SelectionStart;
-            int rightSpace = _richTextBox.Find(new char[] {' '}, index);
+            int rightBorder = _richTextBox.Find(new char[] {s}, index);
             int i = 0;
             foreach (char symbol in _richTextBox.Text.Substring(0, index).Reverse())
             {
-                if (symbol == ' ')
+                if (symbol == s)
                 {
                     break;
                 }
-                else
-                {
-                    i--;
-                }
+
+                i--;
             }
 
-            int leftSpace = index + i;
-            //ToDO: _richTextBox.HideSelection = true;
-            _richTextBox.Select(leftSpace, rightSpace - leftSpace);
+            int leftDot = index + i;
+            _richTextBox.Select(leftDot, rightBorder - leftDot);
+        }
+
+        private void SelectMaxWord()
+        {
+            Select(' ');
         }
 
         private void SelectMaxParagraph()
         {
-            MessageBox.Show("SelectMaxParagraph");
+            Select('.');
         }
 
         public void SetFontStyle(FontStyle style)
