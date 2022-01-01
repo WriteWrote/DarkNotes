@@ -61,8 +61,8 @@ namespace DarkNotes
 
         public void SetFont(String fontName)
         {
-            if (_richTextBox.SelectionLength == 0)
-                SelectMaxWord();
+            // if (_richTextBox.SelectionLength == 0)
+            //     SelectMaxWord();
             try
             {
                 _richTextBox.SelectionFont = new Font(fontName, _richTextBox.SelectionFont.Size);
@@ -74,7 +74,7 @@ namespace DarkNotes
                 MessageBox.Show("Что-то пошло не так. Вам точно нужен этот шрифт? Может, выберете что-то попроще?");
             }
             // ToDO: убрать этот говнокод
-            _richTextBox.DeselectAll();
+            //_richTextBox.DeselectAll();
         }
 
         public void SetSize(String value, KeyEventArgs e)
