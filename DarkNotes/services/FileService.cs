@@ -12,12 +12,16 @@ namespace DarkNotes
 
         private String _currentText = "";
 
+        private RichTextBox _richTextBox;
+
         //private FileDialog _fileDialog;
-        public FileService(string currentFilename, SaveFileDialog saveFileDialog, OpenFileDialog openFileDialog)
+        public FileService(string currentFilename, SaveFileDialog saveFileDialog,
+            OpenFileDialog openFileDialog, RichTextBox richTextBox)
         {
             _currentFilename = currentFilename;
             _saveFileDialog = saveFileDialog;
             _openFileDialog = openFileDialog;
+            _richTextBox = richTextBox;
         }
 
         public string CurrentText
@@ -40,8 +44,10 @@ namespace DarkNotes
             // richTextBox1.DeselectAll();
         }
 
-        private void Save()
+        private void Save(Color prev, Color next)
         {
+            this.InvertColors(prev, next);
+            _richTextBox.SaveFile(_currentFilename);
         }
 
         public void SaveAsFile()
@@ -49,17 +55,15 @@ namespace DarkNotes
             if (_saveFileDialog.ShowDialog() == DialogResult.Cancel)
                 return;
 
-            _currentFilename = _saveFileDialog.FileName;
+            _currentFilename = _saveFileDialog.FileName.Trim();
 
             if (!_currentFilename.Contains(".rtf"))
             {
-                _currentFilename = _currentFilename.Trim();
                 _currentFilename += ".rtf";
             }
-
-            this.InvertColors(Color.Black, Color.White);
-            this.Save();
-            MessageBox.Show("Your text's safe! Don't forget the new name of file now and don't lose it");
+            
+            this.Save(Color.Black, Color.White);
+            MessageBox.Show("Your text's safe! Don't forget the new name of file now and don't lose it", "Saving file");
         }
 
         public void SaveFile()
@@ -70,18 +74,16 @@ namespace DarkNotes
             }
             else
             {
-                this.InvertColors(Color.Black, Color.White);
-                this.Save();
-
-                MessageBox.Show("Your text is safe now!");
+                this.Save(Color.Black, Color.White);
+                MessageBox.Show("Your text is safe now!", "Saving file");
             }
         }
 
-        public void OpenFile(RichTextBox richTextBox1)
+        public void OpenFile()
         {
-            if (!"".Equals(_currentFilename) || 
+            if (!"".Equals(_currentFilename) ||
                 //!"".Equals(_currentText) || 
-                richTextBox1.TextLength > 0)
+                _richTextBox.TextLength > 0)
             {
                 DialogResult result = MessageBox.Show("Do you want to save all of your valuable writing?",
                     "Opening new file", MessageBoxButtons.YesNoCancel);
@@ -97,15 +99,15 @@ namespace DarkNotes
                 return;
 
             _currentFilename = _openFileDialog.FileName;
-            richTextBox1.LoadFile(_currentFilename);
+            _richTextBox.LoadFile(_currentFilename);
         }
 
-        public void NewFile(RichTextBox richTextBox1)
+        public void NewFile()
         {
-            if (richTextBox1.TextLength > 0)
+            if (_richTextBox.TextLength > 0)
             {
                 DialogResult result = MessageBox.Show("Do you want to save all of your valuable writing?",
-                    "Closing the app", MessageBoxButtons.YesNoCancel);
+                    "Creating new file", MessageBoxButtons.YesNoCancel);
                 if (result == DialogResult.Yes)
                 {
                     this.SaveFile();
@@ -114,10 +116,8 @@ namespace DarkNotes
                     return;
             }
 
-            richTextBox1.Clear();
+            _richTextBox.Clear();
             _currentFilename = "";
-            
-            // reset to default
         }
     }
 }

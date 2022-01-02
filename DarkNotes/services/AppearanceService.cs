@@ -34,19 +34,16 @@ namespace DarkNotes
             richTextBox1.SelectionRightIndent = _rightInd;
         }
 
-        public void SetOpacity(String s, KeyEventArgs e, Form1 app)
+        public void SetOpacity(String s, Form1 app)
         {
-            if (e.KeyCode == Keys.Enter)
+            try
             {
-                try
-                {
-                    Double opacity = Convert.ToDouble(s.Trim());
-                    app.Opacity = opacity / 100;
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("This is not a number. Or smth is just wrong, I dunno? Try int there \n" + ex);
-                }
+                Double opacity = Convert.ToDouble(s);
+                app.Opacity = opacity / 100;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("This is not a number. Or smth is just wrong, I dunno? Try int there \n" + ex);
             }
         }
 

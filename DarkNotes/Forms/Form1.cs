@@ -22,7 +22,7 @@ namespace DarkNotes
             InitializeComponent();
             AppearanceService = new AppearanceService();
             AppService = new AppService(this);
-            FileService = new FileService("", saveFileDialog, openFileDialog);
+            FileService = new FileService("", saveFileDialog, openFileDialog, richTextBox1);
             TextService = new TextService(richTextBox1);
         }
 
@@ -31,7 +31,7 @@ namespace DarkNotes
         {
             // sets the ability to choose color of font from font dialog
             fontDialog.ShowColor = true;
-            
+
             InitializeOpenDialog();
             InitializeSaveDialog();
 
@@ -58,6 +58,7 @@ namespace DarkNotes
             openFileDialog.Filter = "RTF Files|*.rtf";
             openFileDialog.AddExtension = true;
         }
+
         private void InitializeFonts()
         {
             InstalledFontCollection fontFamilies = new InstalledFontCollection();
@@ -75,11 +76,18 @@ namespace DarkNotes
             richTextBox1.Select(first, second);
         }
 
-        private void refreshCurrFontInCombobox(Int32 first, Int32 second)
+        private Font takeFontSample(Int32 first, Int32 second)
         {
             takeTextSample(first, second);
-            int ind = toolStripComboBox1.Items.IndexOf(richTextBox1.SelectionFont.Name);
+            Font f = richTextBox1.Font;
             richTextBox1.DeselectAll();
+            return f;
+        }
+
+        private void refreshCurrFontInCombobox(Int32 first, Int32 second)
+        {
+            Font f = takeFontSample(first, second);
+            int ind = toolStripComboBox1.Items.IndexOf(f.Name);
             toolStripComboBox1.SelectedItem = toolStripComboBox1.Items[ind].ToString();
         }
 
@@ -95,7 +103,10 @@ namespace DarkNotes
         ///</summary>
         private void toolStripTextBox1_KeyDown(object sender, KeyEventArgs e)
         {
-            TextService.SetSize(toolStripTextBox1.Text.Trim(), e);
+            if (e.KeyCode == Keys.Enter)
+            {
+                TextService.SetSize(toolStripTextBox1.Text.Trim());
+            }
         }
 
         /// <summary>
@@ -106,7 +117,10 @@ namespace DarkNotes
         /// <param name="e"></param>
         private void toolStripTextBox2_KeyDown(object sender, KeyEventArgs e)
         {
-            AppearanceService.SetOpacity(toolStripTextBox2.Text.Trim(), e, this);
+            if (e.KeyCode == Keys.Enter)
+            {
+                AppearanceService.SetOpacity(toolStripTextBox2.Text.Trim(), this);
+            }
         }
 
         /// <summary>
@@ -190,20 +204,18 @@ namespace DarkNotes
         /// <param name="e"></param>
         private void toolStripMenuItem2_Click(object sender, EventArgs e)
         {
-            FileService.OpenFile(richTextBox1);
+            FileService.OpenFile();
 
-            richTextBox1.ResetForeColor();
-            richTextBox1.ForeColor = Color.White;
-
-            //ToDo: исправить
+            // richTextBox1.ResetForeColor();
+            // richTextBox1.ForeColor = Color.White;
+            //TODO: take redline from opened file and indents too
             AppearanceService.SetIndents(richTextBox1);
 
-            takeTextSample(0, 1);
-            toolStripTextBox1.Text = richTextBox1.SelectionFont.Size.ToString();
-            richTextBox1.DeselectAll();
+            Font f = takeFontSample(0, 1);
+            int ind = toolStripComboBox1.Items.IndexOf(f.Name);
+            toolStripComboBox1.SelectedItem = toolStripComboBox1.Items[ind];
         }
-
-        //TODo: void refresh settings for refreshing of _currents' and form values
+        
         /// <summary>
         /// Saves current file. Can invoke "save as" method
         /// </summary>
@@ -308,7 +320,8 @@ namespace DarkNotes
             richTextBox1.SelectionColor = fontDialog.Color;
             richTextBox1.DeselectAll();
 
-            takeTextSample(0, 1);
+            takeFontSample(0, 1);
+            toolStripTextBox1.Text = richTextBox1.SelectionFont.Size.ToString();
         }
 
         /// <summary>
@@ -335,8 +348,6 @@ namespace DarkNotes
         /// <param name="e"></param>
         private void toolStripTextBox4_KeyDown(object sender, KeyEventArgs e)
         {
-            //Todo: вызывать метод, мать его. Где он вот?
-            //AppearanceService.SetIndents(richTextBox1);
             if (e.KeyCode == Keys.Enter)
             {
                 String s = toolStripTextBox4.Text;
@@ -363,7 +374,7 @@ namespace DarkNotes
         /// <param name="e"></param>
         private void newToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FileService.NewFile(richTextBox1);
+            FileService.NewFile();
         }
 
         /// <summary>

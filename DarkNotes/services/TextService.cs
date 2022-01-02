@@ -72,25 +72,22 @@ namespace DarkNotes
             }
         }
 
-        public void SetSize(String value, KeyEventArgs e)
+        public void SetSize(String value)
         {
-            if (e.KeyCode == Keys.Enter)
+            try
             {
-                try
+                Int32 size = Convert.ToInt32(value.Trim());
+                if (_richTextBox.SelectionLength == 0)
                 {
-                    Int32 size = Convert.ToInt32(value.Trim());
-                    if (_richTextBox.SelectionLength == 0)
-                    {
-                        //ToDo: fix things
-                        SelectMaxWord();
-                    }
+                    //ToDo: fix things
+                    SelectMaxWord();
+                }
 
-                    _richTextBox.SelectionFont = new Font(_richTextBox.SelectionFont.Name, size);
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("This is not a number. Or smth is just wrong, I dunno? Please use int \n");
-                }
+                _richTextBox.SelectionFont = new Font(_richTextBox.SelectionFont.Name, size);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("This is not a number. Or smth is just wrong, I dunno? Please use int \n");
             }
         }
     }
