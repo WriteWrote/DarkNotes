@@ -17,11 +17,11 @@ namespace DarkNotes
         private void SelectMaxWord()
         {
             int index = _richTextBox.SelectionStart;
-            int rightBorder = _richTextBox.Find(new char[] {' '}, index);
+            int rightBorder = _richTextBox.Find(new char[] {' ', '\n', '\r'}, index);
             int i = 0;
             foreach (char symbol in _richTextBox.Text.Substring(0, index).Reverse())
             {
-                if (symbol == ' ' || symbol == '\n' || symbol == '\r')
+                if (symbol == ' ' || symbol == '\n' || symbol == '\r' || symbol == '\t')
                 {
                     break;
                 }
