@@ -33,12 +33,6 @@ namespace DarkNotes
 
         private String InvertColors(Color prevColor, Color newColor, String rtf)
         {
-            // string rtf = _richTextBox.Rtf;
-
-            // rtf = rtf.Replace("red" + prevColor.R.ToString(), "red" + newColor.R.ToString());
-            // rtf = rtf.Replace("green" + prevColor.G.ToString(), "green" + newColor.G.ToString());
-            // rtf = rtf.Replace("blue" + prevColor.B.ToString(), "blue" + newColor.B.ToString());
-
             String prev = "red" + prevColor.R.ToString() + "\\green" +
                           prevColor.G.ToString() + "\\blue" +
                           prevColor.B.ToString();
@@ -106,10 +100,14 @@ namespace DarkNotes
                 return;
 
             _currentFilename = _openFileDialog.FileName;
+            
             String text = System.IO.File.ReadAllText(_currentFilename);
             text = this.InvertColors(Color.Black, Color.White, text);
+            
             _richTextBox.Rtf = text;
-            //_richTextBox.LoadFile(_currentFilename);
+
+            //ToDo: место для первой загрузки сериализованной версии
+            //ToDo: выяснить, в чем прикол с DSR
         }
 
         public void NewFile()

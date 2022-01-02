@@ -1,10 +1,7 @@
 ﻿using System;
 using System.Drawing;
 using System.Drawing.Text;
-using System.Security.Cryptography;
 using System.Windows.Forms;
-using System.Windows.Input;
-using Color = System.Drawing.Color;
 using Font = System.Drawing.Font;
 using KeyEventArgs = System.Windows.Forms.KeyEventArgs;
 
@@ -58,10 +55,11 @@ namespace DarkNotes
 
         private void InitializeSaveDialog()
         {
-            // openFileDialog.Title = "Выберите файл";
-            // openFileDialog.DefaultExt = "*.rtf";
-            // openFileDialog.Filter = "RTF Files|*.rtf";
-            // openFileDialog.AddExtension = true;
+            saveFileDialog.CheckPathExists = true;
+            saveFileDialog.Title = "Сохранение";
+            saveFileDialog.DefaultExt = "*.rtf";
+            saveFileDialog.Filter = "RTF Files|*.rtf";
+            saveFileDialog.AddExtension = true;
         }
 
         private void InitializeFonts()
@@ -211,9 +209,6 @@ namespace DarkNotes
         {
             FileService.OpenFile();
 
-            // richTextBox1.ResetForeColor();
-            // richTextBox1.ForeColor = Color.White;
-            
             //TODO: take redline from opened file and indents too
             AppearanceService.SetIndents(richTextBox1);
 
@@ -327,8 +322,11 @@ namespace DarkNotes
             richTextBox1.SelectionColor = fontDialog.Color;
             richTextBox1.DeselectAll();
 
-            takeFontSample(0, 1);
-            toolStripTextBox1.Text = richTextBox1.SelectionFont.Size.ToString();
+            //ToDo: проверить отображение корректных параметров взятого образца шрифта.
+            Font f = takeFontSample(0, 1);
+            toolStripTextBox1.Text = f.Size.ToString();
+            int ind = toolStripComboBox1.Items.IndexOf(f.Name);
+            toolStripComboBox1.SelectedItem = toolStripComboBox1.Items[ind];
         }
 
         /// <summary>

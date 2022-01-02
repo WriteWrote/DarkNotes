@@ -30,7 +30,7 @@ namespace DarkNotes
         {
         }
 
-      /// <summary>
+        /// <summary>
         /// Closes the IndentForm.
         /// </summary>
         /// <param name="sender"></param>
@@ -47,6 +47,11 @@ namespace DarkNotes
             _appearanceService.SetIndents(_richTextBox);
         }
 
+        /// <summary>
+        /// button Apply the indents
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button1_Click(object sender, EventArgs e)
         {
             Int32 left = Convert.ToInt32(textBox4.Text.Trim());
@@ -57,14 +62,9 @@ namespace DarkNotes
             // ToDo: those below we must get from the IndentsForm
             //Int32 redLine = _linkToTextBox.SelectionHangingIndent;
             //Int32 lineIndent = 0;
-            
+
             this.SetIndentation(left, right);
             this.Close();
-        }
-
-        private void textBox4_KeyDown(object sender, KeyEventArgs e)
-        {
-            throw new System.NotImplementedException();
         }
     }
 }
