@@ -32,6 +32,17 @@ namespace DarkNotes
 
         private void InvertColors(Color prevColor, Color newColor)
         {
+            string rtf = _richTextBox.Rtf;
+
+            String s1 = "red" + prevColor.R.ToString();
+            String s2 = "green" + prevColor.G.ToString();
+            String s3 = "blue" + prevColor.B.ToString();
+            rtf = rtf.Replace("red" + prevColor.R.ToString(), "red" + newColor.R.ToString());
+            rtf = rtf.Replace("green" + prevColor.G.ToString(), "green" + newColor.G.ToString());
+            rtf = rtf.Replace("blue" + prevColor.B.ToString(), "blue" + newColor.B.ToString());
+            
+            
+
             // richTextBox1.SelectAll();
             // richTextBox1.ForeColor = left;
             // richTextBox1.SelectionIndent = -richTextBox1.SelectionHangingIndent;
@@ -47,7 +58,7 @@ namespace DarkNotes
         private void Save(Color prev, Color next)
         {
             this.InvertColors(prev, next);
-            _richTextBox.SaveFile(_currentFilename);
+            //_richTextBox.SaveFile(_currentFilename);
         }
 
         public void SaveAsFile()
@@ -61,8 +72,8 @@ namespace DarkNotes
             {
                 _currentFilename += ".rtf";
             }
-            
-            this.Save(Color.Black, Color.White);
+
+            this.Save(Color.White, Color.Black);
             MessageBox.Show("Your text's safe! Don't forget the new name of file now and don't lose it", "Saving file");
         }
 
@@ -74,7 +85,7 @@ namespace DarkNotes
             }
             else
             {
-                this.Save(Color.Black, Color.White);
+                this.Save(Color.White, Color.Black);
                 MessageBox.Show("Your text is safe now!", "Saving file");
             }
         }
@@ -86,7 +97,8 @@ namespace DarkNotes
                 _richTextBox.TextLength > 0)
             {
                 DialogResult result = MessageBox.Show("Do you want to save all of your valuable writing?",
-                    "Opening new file", MessageBoxButtons.YesNoCancel);
+                    "Opening new file",
+                    MessageBoxButtons.YesNoCancel);
                 if (result == DialogResult.Yes)
                 {
                     this.SaveFile();

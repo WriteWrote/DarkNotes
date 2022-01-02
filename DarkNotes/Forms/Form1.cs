@@ -206,11 +206,13 @@ namespace DarkNotes
         {
             FileService.OpenFile();
 
-            // richTextBox1.ResetForeColor();
-            // richTextBox1.ForeColor = Color.White;
+            richTextBox1.ResetForeColor();
+            richTextBox1.ForeColor = Color.White;
+            
             //TODO: take redline from opened file and indents too
             AppearanceService.SetIndents(richTextBox1);
 
+            // set picked font to the combobox
             Font f = takeFontSample(0, 1);
             int ind = toolStripComboBox1.Items.IndexOf(f.Name);
             toolStripComboBox1.SelectedItem = toolStripComboBox1.Items[ind];

@@ -50,6 +50,7 @@ namespace DarkNotes
         public void FindSubstring()
         {
             MessageBox.Show("finding substring");
+            //richTextBox1.Find("Text", RichTextBoxFinds.MatchCase);
         }
     }
 }
