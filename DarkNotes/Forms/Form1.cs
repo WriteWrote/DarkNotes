@@ -49,14 +49,19 @@ namespace DarkNotes
             openFileDialog.CheckFileExists = true;
             openFileDialog.CheckPathExists = true;
             openFileDialog.Multiselect = false;
-        }
-
-        private void InitializeSaveDialog()
-        {
+            
             openFileDialog.Title = "Выберите файл";
             openFileDialog.DefaultExt = "*.rtf";
             openFileDialog.Filter = "RTF Files|*.rtf";
             openFileDialog.AddExtension = true;
+        }
+
+        private void InitializeSaveDialog()
+        {
+            // openFileDialog.Title = "Выберите файл";
+            // openFileDialog.DefaultExt = "*.rtf";
+            // openFileDialog.Filter = "RTF Files|*.rtf";
+            // openFileDialog.AddExtension = true;
         }
 
         private void InitializeFonts()
@@ -206,8 +211,8 @@ namespace DarkNotes
         {
             FileService.OpenFile();
 
-            richTextBox1.ResetForeColor();
-            richTextBox1.ForeColor = Color.White;
+            // richTextBox1.ResetForeColor();
+            // richTextBox1.ForeColor = Color.White;
             
             //TODO: take redline from opened file and indents too
             AppearanceService.SetIndents(richTextBox1);

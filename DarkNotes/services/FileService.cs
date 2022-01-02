@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Drawing;
+using System.Text;
 using System.Windows.Forms;
 
 namespace DarkNotes
@@ -30,35 +31,29 @@ namespace DarkNotes
             set => _currentText = value;
         }
 
-        private void InvertColors(Color prevColor, Color newColor)
+        private String InvertColors(Color prevColor, Color newColor, String rtf)
         {
-            string rtf = _richTextBox.Rtf;
+            // string rtf = _richTextBox.Rtf;
 
-            String s1 = "red" + prevColor.R.ToString();
-            String s2 = "green" + prevColor.G.ToString();
-            String s3 = "blue" + prevColor.B.ToString();
-            rtf = rtf.Replace("red" + prevColor.R.ToString(), "red" + newColor.R.ToString());
-            rtf = rtf.Replace("green" + prevColor.G.ToString(), "green" + newColor.G.ToString());
-            rtf = rtf.Replace("blue" + prevColor.B.ToString(), "blue" + newColor.B.ToString());
-            
-            
+            // rtf = rtf.Replace("red" + prevColor.R.ToString(), "red" + newColor.R.ToString());
+            // rtf = rtf.Replace("green" + prevColor.G.ToString(), "green" + newColor.G.ToString());
+            // rtf = rtf.Replace("blue" + prevColor.B.ToString(), "blue" + newColor.B.ToString());
 
-            // richTextBox1.SelectAll();
-            // richTextBox1.ForeColor = left;
-            // richTextBox1.SelectionIndent = -richTextBox1.SelectionHangingIndent;
-            // richTextBox1.SelectionRightIndent = 0;
-            //
-            // richTextBox1.SaveFile(_currentFilename);
-            //
-            // richTextBox1.ForeColor = right;
-            // SetIndents();
-            // richTextBox1.DeselectAll();
+            String prev = "red" + prevColor.R.ToString() + "\\green" +
+                          prevColor.G.ToString() + "\\blue" +
+                          prevColor.B.ToString();
+            String next = "red" + newColor.R.ToString() + "\\green" +
+                          newColor.G.ToString() + "\\blue" +
+                          newColor.B.ToString();
+            rtf = rtf.Replace(prev, next);
+            
+            return rtf;
         }
 
-        private void Save(Color prev, Color next)
+        private void Save(Color prev, Color next, String rtf)
         {
-            this.InvertColors(prev, next);
-            //_richTextBox.SaveFile(_currentFilename);
+            String invertedRtf = this.InvertColors(prev, next, rtf);
+            System.IO.File.WriteAllText(_currentFilename, invertedRtf);
         }
 
         public void SaveAsFile()
@@ -73,7 +68,7 @@ namespace DarkNotes
                 _currentFilename += ".rtf";
             }
 
-            this.Save(Color.White, Color.Black);
+            this.Save(Color.White, Color.Black, _richTextBox.Rtf);
             MessageBox.Show("Your text's safe! Don't forget the new name of file now and don't lose it", "Saving file");
         }
 
@@ -85,7 +80,7 @@ namespace DarkNotes
             }
             else
             {
-                this.Save(Color.White, Color.Black);
+                this.Save(Color.White, Color.Black, _richTextBox.Rtf);
                 MessageBox.Show("Your text is safe now!", "Saving file");
             }
         }
@@ -111,7 +106,10 @@ namespace DarkNotes
                 return;
 
             _currentFilename = _openFileDialog.FileName;
-            _richTextBox.LoadFile(_currentFilename);
+            String text = System.IO.File.ReadAllText(_currentFilename);
+            text = this.InvertColors(Color.Black, Color.White, text);
+            _richTextBox.Rtf = text;
+            //_richTextBox.LoadFile(_currentFilename);
         }
 
         public void NewFile()
