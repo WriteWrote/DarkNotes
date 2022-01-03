@@ -7,19 +7,19 @@ namespace DarkNotes
 {
     public class TextService
     {
-        private RichTextBox _richTextBox;
+        private RichTextBox _rtb;
 
-        public TextService(RichTextBox richTextBox)
+        public TextService(RichTextBox rtb)
         {
-            _richTextBox = richTextBox;
+            _rtb = rtb;
         }
 
         private void SelectMaxWord()
         {
-            int index = _richTextBox.SelectionStart;
-            int rightBorder = _richTextBox.Find(new char[] {' ', '\n', '\r', '\t'}, index);
+            int index = _rtb.SelectionStart;
+            int rightBorder = _rtb.Find(new char[] {' ', '\n', '\r', '\t'}, index);
             int i = 0;
-            foreach (char symbol in _richTextBox.Text.Substring(0, index).Reverse())
+            foreach (char symbol in _rtb.Text.Substring(0, index).Reverse())
             {
                 if (symbol == ' ' || symbol == '\n' || symbol == '\r' || symbol == '\t')
                 {
@@ -30,36 +30,39 @@ namespace DarkNotes
             }
 
             int leftDot = index + i;
-            _richTextBox.Select(leftDot, rightBorder - leftDot);
+            _rtb.Select(leftDot, rightBorder - leftDot);
         }
 
         public void SetFontStyle(FontStyle style)
         {
-            if (_richTextBox.SelectionLength == 0)
+            if (_rtb.SelectionLength == 0)
                 SelectMaxWord();
             //ToDo: пересмотреть это условие, в нем вся проблема
-            if (_richTextBox.SelectionFont.Style.Equals(style))
+            //if (_richTextBox.SelectionFont.Style.Equals(style))
+            
+            if (_rtb.SelectionFont.Style.ToString().Contains(style.ToString()))
             {
-                _richTextBox.SelectionFont = new Font(_richTextBox.SelectionFont.Name,
-                    _richTextBox.SelectionFont.Size,
-                    _richTextBox.SelectionFont.Style & ~style);
+                _rtb.SelectionFont = new Font(_rtb.SelectionFont.Name,
+                    _rtb.SelectionFont.Size,
+                    _rtb.SelectionFont.Style & ~style);
             }
             else
             {
-                _richTextBox.SelectionFont = new Font(_richTextBox.SelectionFont.Name,
-                    _richTextBox.SelectionFont.Size,
-                    _richTextBox.SelectionFont.Style | style);
+                _rtb.SelectionFont = new Font(_rtb.SelectionFont.Name,
+                    _rtb.SelectionFont.Size,
+                    _rtb.SelectionFont.Style | style);
             }
 
             // ToDO: убрать этот говнокод тоже
             //_richTextBox.DeselectAll();
         }
+
         //TODO: реструктурировать код Form1.cs с region
         public void SetAlignment(HorizontalAlignment alignment)
         {
             try
             {
-                _richTextBox.SelectionAlignment = alignment;
+                _rtb.SelectionAlignment = alignment;
             }
             catch (Exception e)
             {
@@ -71,8 +74,8 @@ namespace DarkNotes
         {
             try
             {
-                _richTextBox.SelectionFont = new Font(fontName, _richTextBox.SelectionFont.Size,
-                    _richTextBox.SelectionFont.Style);
+                _rtb.SelectionFont = new Font(fontName, _rtb.SelectionFont.Size,
+                    _rtb.SelectionFont.Style);
             }
             catch (Exception ex)
             {
@@ -86,14 +89,14 @@ namespace DarkNotes
             try
             {
                 Int32 size = Convert.ToInt32(value.Trim());
-                if (_richTextBox.SelectionLength == 0)
+                if (_rtb.SelectionLength == 0)
                 {
                     //ToDo: fix things
                     SelectMaxWord();
                 }
 
-                _richTextBox.SelectionFont =
-                    new Font(_richTextBox.SelectionFont.Name, size, _richTextBox.SelectionFont.Style);
+                _rtb.SelectionFont =
+                    new Font(_rtb.SelectionFont.Name, size, _rtb.SelectionFont.Style);
             }
             catch (Exception ex)
             {
