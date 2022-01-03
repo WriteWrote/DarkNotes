@@ -14,14 +14,25 @@ namespace DarkNotes
             _rtb = rtb;
         }
 
+        /// <summary>
+        /// Selects the string wrapped w/ spaces (other stop-symbols), starting from the current position of cursor.
+        /// \x020 -- space
+        /// \n -- Enter
+        /// \r -- возврат каретки
+        /// \t -- Tab
+        /// </summary>
         private void SelectMaxWord()
         {
             int index = _rtb.SelectionStart;
-            int rightBorder = _rtb.Find(new char[] {' ', '\n', '\r', '\t'}, index);
+
+            int rightBorder = _rtb.Find(new char[] {'\x020', '\n', '\r', '\t'}, index);
+            if (rightBorder == -1)
+                rightBorder = _rtb.TextLength;
+
             int i = 0;
             foreach (char symbol in _rtb.Text.Substring(0, index).Reverse())
             {
-                if (symbol == ' ' || symbol == '\n' || symbol == '\r' || symbol == '\t')
+                if (symbol == '\x020' || symbol == '\n' || symbol == '\t')
                 {
                     break;
                 }
@@ -37,9 +48,7 @@ namespace DarkNotes
         {
             if (_rtb.SelectionLength == 0)
                 SelectMaxWord();
-            //ToDo: пересмотреть это условие, в нем вся проблема
-            //if (_richTextBox.SelectionFont.Style.Equals(style))
-            
+
             if (_rtb.SelectionFont.Style.ToString().Contains(style.ToString()))
             {
                 _rtb.SelectionFont = new Font(_rtb.SelectionFont.Name,
@@ -79,7 +88,6 @@ namespace DarkNotes
             }
             catch (Exception ex)
             {
-                // ToDo: разобраться
                 MessageBox.Show("Что-то пошло не так." + ex);
             }
         }
@@ -91,7 +99,6 @@ namespace DarkNotes
                 Int32 size = Convert.ToInt32(value.Trim());
                 if (_rtb.SelectionLength == 0)
                 {
-                    //ToDo: fix things
                     SelectMaxWord();
                 }
 
