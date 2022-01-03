@@ -17,7 +17,7 @@ namespace DarkNotes
         private void SelectMaxWord()
         {
             int index = _richTextBox.SelectionStart;
-            int rightBorder = _richTextBox.Find(new char[] {' ', '\n', '\r'}, index);
+            int rightBorder = _richTextBox.Find(new char[] {' ', '\n', '\r', '\t'}, index);
             int i = 0;
             foreach (char symbol in _richTextBox.Text.Substring(0, index).Reverse())
             {
@@ -63,12 +63,12 @@ namespace DarkNotes
         {
             try
             {
-                _richTextBox.SelectionFont = new Font(fontName, _richTextBox.SelectionFont.Size);
+                _richTextBox.SelectionFont = new Font(fontName, _richTextBox.SelectionFont.Size, _richTextBox.SelectionFont.Style);
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
                 // ToDo: разобраться
-                MessageBox.Show("Что-то пошло не так.");
+                MessageBox.Show("Что-то пошло не так." + ex);
             }
         }
 
@@ -83,11 +83,11 @@ namespace DarkNotes
                     SelectMaxWord();
                 }
 
-                _richTextBox.SelectionFont = new Font(_richTextBox.SelectionFont.Name, size);
+                _richTextBox.SelectionFont = new Font(_richTextBox.SelectionFont.Name, size, _richTextBox.SelectionFont.Style);
             }
             catch (Exception ex)
             {
-                MessageBox.Show("This is not a number. Or smth is just wrong, I dunno? Please use int \n");
+                MessageBox.Show("This is not a number. Or smth is just wrong, I dunno? Please use int \n" + ex);
             }
         }
     }
