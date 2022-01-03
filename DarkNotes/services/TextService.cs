@@ -37,33 +37,42 @@ namespace DarkNotes
         {
             if (_richTextBox.SelectionLength == 0)
                 SelectMaxWord();
+            //ToDo: пересмотреть это условие, в нем вся проблема
             if (_richTextBox.SelectionFont.Style.Equals(style))
             {
                 _richTextBox.SelectionFont = new Font(_richTextBox.SelectionFont.Name,
                     _richTextBox.SelectionFont.Size,
-                    FontStyle.Regular);
+                    _richTextBox.SelectionFont.Style & ~style);
             }
             else
             {
                 _richTextBox.SelectionFont = new Font(_richTextBox.SelectionFont.Name,
                     _richTextBox.SelectionFont.Size,
-                    style);
+                    _richTextBox.SelectionFont.Style | style);
             }
 
             // ToDO: убрать этот говнокод тоже
             //_richTextBox.DeselectAll();
         }
-
+        //TODO: реструктурировать код Form1.cs с region
         public void SetAlignment(HorizontalAlignment alignment)
         {
-            _richTextBox.SelectionAlignment = alignment;
+            try
+            {
+                _richTextBox.SelectionAlignment = alignment;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.ToString());
+            }
         }
 
         public void SetFont(String fontName)
         {
             try
             {
-                _richTextBox.SelectionFont = new Font(fontName, _richTextBox.SelectionFont.Size, _richTextBox.SelectionFont.Style);
+                _richTextBox.SelectionFont = new Font(fontName, _richTextBox.SelectionFont.Size,
+                    _richTextBox.SelectionFont.Style);
             }
             catch (Exception ex)
             {
@@ -83,7 +92,8 @@ namespace DarkNotes
                     SelectMaxWord();
                 }
 
-                _richTextBox.SelectionFont = new Font(_richTextBox.SelectionFont.Name, size, _richTextBox.SelectionFont.Style);
+                _richTextBox.SelectionFont =
+                    new Font(_richTextBox.SelectionFont.Name, size, _richTextBox.SelectionFont.Style);
             }
             catch (Exception ex)
             {

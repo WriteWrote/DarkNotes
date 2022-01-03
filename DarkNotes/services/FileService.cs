@@ -107,7 +107,6 @@ namespace DarkNotes
             _richTextBox.Rtf = text;
 
             //ToDo: место для первой загрузки сериализованной версии
-            //ToDo: выяснить, в чем прикол с DSR
         }
 
         public void NewFile()
