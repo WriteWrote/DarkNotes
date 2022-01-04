@@ -8,7 +8,6 @@ D:\XXX\WorkingFiles\C#_2021\DarkNotes\DarkNotes\obj\Debug\DarkNotes.csproj.Gener
 D:\XXX\WorkingFiles\C#_2021\DarkNotes\DarkNotes\obj\Debug\DarkNotes.csproj.CoreCompileInputs.cache
 D:\XXX\WorkingFiles\C#_2021\DarkNotes\DarkNotes\obj\Debug\DarkNotes.exe
 D:\XXX\WorkingFiles\C#_2021\DarkNotes\DarkNotes\obj\Debug\DarkNotes.pdb
-D:\XXX\WorkingFiles\C#_2021\DarkNotes\DarkNotes\obj\Debug\DarkNotes.Form1.resources
 D:\XXX\WorkingFiles\C#_2021\DarkNotes\DarkNotes\obj\Debug\DarkNotes.IndentsForm.resources
 D:\XXX\WorkingFiles\C#_2021\DarkNotes\DarkNotes\bin\Debug\Syncfusion.Compression.Portable.dll
 D:\XXX\WorkingFiles\C#_2021\DarkNotes\DarkNotes\bin\Debug\Syncfusion.Licensing.dll
@@ -19,3 +18,4 @@ D:\XXX\WorkingFiles\C#_2021\DarkNotes\DarkNotes\bin\Debug\Syncfusion.OfficeChart
 D:\XXX\WorkingFiles\C#_2021\DarkNotes\DarkNotes\bin\Debug\Syncfusion.Presentation.Portable.xml
 D:\XXX\WorkingFiles\C#_2021\DarkNotes\DarkNotes\obj\Debug\DarkNotes.exe.config
 D:\XXX\WorkingFiles\C#_2021\DarkNotes\DarkNotes\obj\Debug\DarkNotes.csproj.CopyComplete
+D:\XXX\WorkingFiles\C#_2021\DarkNotes\DarkNotes\obj\Debug\DarkNotes.Forms.Form1.resources

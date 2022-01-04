@@ -5,7 +5,7 @@ using System.Windows.Forms;
 using Font = System.Drawing.Font;
 using KeyEventArgs = System.Windows.Forms.KeyEventArgs;
 
-namespace DarkNotes
+namespace DarkNotes.Forms
 {
     public partial class Form1 : Form
     {
@@ -46,7 +46,7 @@ namespace DarkNotes
             openFileDialog.CheckFileExists = true;
             openFileDialog.CheckPathExists = true;
             openFileDialog.Multiselect = false;
-            
+
             openFileDialog.Title = "Выберите файл";
             openFileDialog.DefaultExt = "*.rtf";
             openFileDialog.Filter = "RTF Files|*.rtf";
@@ -74,24 +74,12 @@ namespace DarkNotes
             toolStripComboBox1.SelectedIndex = i;
         }
 
-        private void takeTextSample(Int32 first, Int32 second)
+        private void refreshFont()
         {
-            richTextBox1.Select(first, second);
-        }
-
-        private Font takeFontSample(Int32 first, Int32 second)
-        {
-            takeTextSample(first, second);
-            Font f = richTextBox1.Font;
-            richTextBox1.DeselectAll();
-            return f;
-        }
-
-        private void refreshCurrFontInCombobox(Int32 first, Int32 second)
-        {
-            Font f = takeFontSample(first, second);
-            int ind = toolStripComboBox1.Items.IndexOf(f.Name);
-            toolStripComboBox1.SelectedItem = toolStripComboBox1.Items[ind].ToString();
+            Font f = richTextBox1.SelectionFont;
+            toolStripTextBox1.Text = f.Size.ToString();
+            toolStripComboBox1.SelectedItem =
+                toolStripComboBox1.Items[toolStripComboBox1.Items.IndexOf(f.Name)];
         }
 
         private void richTextBox1_TextChanged(object sender, EventArgs e)
@@ -213,11 +201,9 @@ namespace DarkNotes
             AppearanceService.SetIndents(richTextBox1);
 
             // set picked font to the combobox
-            Font f = takeFontSample(0, 1);
-            int ind = toolStripComboBox1.Items.IndexOf(f.Name);
-            toolStripComboBox1.SelectedItem = toolStripComboBox1.Items[ind];
+            refreshFont();
         }
-        
+
         /// <summary>
         /// Saves current file. Can invoke "save as" method
         /// </summary>
@@ -293,7 +279,6 @@ namespace DarkNotes
             TextService.SetFont(toolStripComboBox1.SelectedItem.ToString());
         }
 
-        //ToDo: сделать так, чтобы при переходе по строкам/ буквам в комбобокс показывался шрифт
         /// <summary>
         /// Invokes method for changing font of text/picked text, if user taps Enter in font-combobox.
         /// </summary>
@@ -322,11 +307,7 @@ namespace DarkNotes
             richTextBox1.SelectionColor = fontDialog.Color;
             richTextBox1.DeselectAll();
 
-            //ToDo: проверить отображение корректных параметров взятого образца шрифта.
-            Font f = takeFontSample(0, 1);
-            toolStripTextBox1.Text = f.Size.ToString();
-            int ind = toolStripComboBox1.Items.IndexOf(f.Name);
-            toolStripComboBox1.SelectedItem = toolStripComboBox1.Items[ind];
+            refreshFont();
         }
 
         /// <summary>
@@ -366,7 +347,8 @@ namespace DarkNotes
                 catch (Exception ex)
                 {
                     MessageBox.Show(
-                        "This is not a number. Or smth is just wrong, I dunno? Try int there. Those are pixels, not sms");
+                        "This is not a number. Or smth is just wrong, I dunno? Try int there. Those are pixels, not sms" +
+                        ex);
                 }
             }
         }
@@ -432,6 +414,12 @@ namespace DarkNotes
             //     if (Keyboard.IsKeyDown(Key.R))
             //         toolStripButton12_Click(sender, e);
             //}
+        }
+
+        private void richTextBox1_KeyDown(object sender, KeyEventArgs e)
+        {
+            // ToDo: пофиксить баг с переходом на строки вверх-вниз и с задержкой определения параметров
+            refreshFont();
         }
     }
 }

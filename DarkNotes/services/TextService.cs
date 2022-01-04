@@ -49,6 +49,7 @@ namespace DarkNotes
             if (_rtb.SelectionLength == 0)
                 SelectMaxWord();
 
+            // ToDo: какие-то проблемы
             if (_rtb.SelectionFont.Style.ToString().Contains(style.ToString()))
             {
                 _rtb.SelectionFont = new Font(_rtb.SelectionFont.Name,
@@ -61,9 +62,6 @@ namespace DarkNotes
                     _rtb.SelectionFont.Size,
                     _rtb.SelectionFont.Style | style);
             }
-
-            // ToDO: убрать этот говнокод тоже
-            //_richTextBox.DeselectAll();
         }
 
         //TODO: реструктурировать код Form1.cs с region
