@@ -54,17 +54,23 @@ namespace DarkNotes
         /// <param name="e"></param>
         private void button1_Click(object sender, EventArgs e)
         {
-            Int32 left = Convert.ToInt32(textBox4.Text.Trim());
-            Int32 right = Convert.ToInt32(textBox3.Text.Trim());
-            Int32 up = Convert.ToInt32(textBox1.Text.Trim());
-            Int32 down = Convert.ToInt32(textBox2.Text.Trim());
+            try
+            {
+                Int32 left = Convert.ToInt32(textBox4.Text.Trim());
+                Int32 right = Convert.ToInt32(textBox3.Text.Trim());
+                // Int32 up = Convert.ToInt32(textBox1.Text.Trim());
+                // Int32 down = Convert.ToInt32(textBox2.Text.Trim());
 
-            // ToDo: those below we must get from the IndentsForm
-            //Int32 redLine = _linkToTextBox.SelectionHangingIndent;
-            //Int32 lineIndent = 0;
-
-            this.SetIndentation(left, right);
-            this.Close();
+                // Int32 redLine = Convert.ToInt32(textBox5.Text.Trim());
+                // Int32 lineIndent = Convert.ToInt32(textBox6.Text.Trim());
+                
+                this.SetIndentation(left, right);
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Something went wrong:\n" + ex);
+            }
         }
     }
 }

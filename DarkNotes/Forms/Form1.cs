@@ -402,7 +402,8 @@ namespace DarkNotes.Forms
         /// <param name="e"></param>
         private void richTextBox1_KeyPress(object sender, KeyPressEventArgs e)
         {
-            //BUG
+            // BUG: клавиатурные сокращения ломают вид формы
+            //ToDo: сделать словарь или что-то вроде того для них
             // if (Keyboard.IsKeyDown(Key.LeftCtrl) || Keyboard.IsKeyDown(Key.RightCtrl))
             // {
             //     // save, save as, open, new
