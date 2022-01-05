@@ -63,8 +63,6 @@ namespace DarkNotes
                     _rtb.SelectionFont.Style | style);
             }
         }
-
-        //TODO: реструктурировать код Form1.cs с region
         public void SetAlignment(HorizontalAlignment alignment)
         {
             try

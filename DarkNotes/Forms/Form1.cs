@@ -41,6 +41,8 @@ namespace DarkNotes.Forms
             AppearanceService.SetIndents(richTextBox1);
         }
 
+        #region InitialisingMethods
+
         private void InitializeOpenDialog()
         {
             openFileDialog.CheckFileExists = true;
@@ -82,8 +84,31 @@ namespace DarkNotes.Forms
                 toolStripComboBox1.Items[toolStripComboBox1.Items.IndexOf(f.Name)];
         }
 
-        private void richTextBox1_TextChanged(object sender, EventArgs e)
+        #endregion
+
+        #region TextProperties
+
+        /// <summary>
+        /// Changes font of text/picked text. Picks the font from combobox (from toolbox)
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void toolStripComboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
+            TextService.SetFont(toolStripComboBox1.SelectedItem.ToString());
+        }
+
+        /// <summary>
+        /// Invokes method for changing font of text/picked text, if user taps Enter in font-combobox.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void toolStripComboBox1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                TextService.SetFont(toolStripComboBox1.SelectedItem.ToString());
+            }
         }
 
         ///<summary>
@@ -101,18 +126,24 @@ namespace DarkNotes.Forms
         }
 
         /// <summary>
-        /// Changes opacity of form
-        /// Receives number from textbox2, toolstrip1
+        /// Opens FontDialog for settings
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void toolStripTextBox2_KeyDown(object sender, KeyEventArgs e)
+        private void toolStripMenuItem10_Click(object sender, EventArgs e)
         {
-            if (e.KeyCode == Keys.Enter)
-            {
-                AppearanceService.SetOpacity(toolStripTextBox2.Text.Trim(), this);
-            }
+            if (fontDialog.ShowDialog() == DialogResult.Cancel)
+                return;
+
+            richTextBox1.SelectAll();
+            richTextBox1.SelectionFont = fontDialog.Font;
+            richTextBox1.SelectionColor = fontDialog.Color;
+            richTextBox1.DeselectAll();
+
+            refreshFont();
         }
+
+        #region FontStyle
 
         /// <summary>
         /// Sets text into bold.
@@ -158,6 +189,12 @@ namespace DarkNotes.Forms
             TextService.SetFontStyle(FontStyle.Strikeout);
         }
 
+        #endregion
+
+        #endregion
+
+        #region Alignment
+
         /// <summary>
         /// Sets left alignment to picked text
         /// </summary>
@@ -187,6 +224,58 @@ namespace DarkNotes.Forms
         {
             TextService.SetAlignment(HorizontalAlignment.Right);
         }
+
+        /// <summary>
+        /// Sets red line to text
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void toolStripTextBox4_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                String s = toolStripTextBox4.Text;
+                try
+                {
+                    Int32 redLine = Convert.ToInt32(s.Trim());
+
+                    AppearanceService.RedLine = redLine;
+                    AppearanceService.SetIndents(richTextBox1);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(
+                        "This is not a number. Or smth is just wrong, I dunno? Try int there. Those are pixels, not sms" +
+                        ex);
+                }
+            }
+        }
+
+        #region Indentation
+
+        private void toolStripButton9_Click(object sender, EventArgs e)
+        {
+            // ToDo: место для междустрочного интервала
+            /*
+            richTextBox1.ScrollToCaret();
+            richTextBox1.CanUndo = true;
+            //richTextBox1.Rtf/richTextBox1.SelectedRtf
+            //richTextBox1.SaveFile();/richTextBox1.LoadFile();
+            //richTextBox1.Find()
+            richTextBox1.Paste();
+            richTextBox1.SelectAll();*/
+        }
+
+        private void toolStripTextBox3_KeyDown(object sender, KeyEventArgs e)
+        {
+            // ToDo: место для междустрочного интервала
+        }
+
+        #endregion
+
+        #endregion
+
+        #region WorkWithFiles
 
         /// <summary>
         /// Opens & displays new file
@@ -224,18 +313,20 @@ namespace DarkNotes.Forms
             FileService.SaveAsFile();
         }
 
-        private void toolStripButton9_Click(object sender, EventArgs e)
+        /// <summary>
+        /// Clears the text-panel.
+        /// If needed, invokes message dialog and save-method.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void newToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            // ToDo: место для междустрочного интервала
-            /*
-            richTextBox1.ScrollToCaret();
-            richTextBox1.CanUndo = true;
-            //richTextBox1.Rtf/richTextBox1.SelectedRtf
-            //richTextBox1.SaveFile();/richTextBox1.LoadFile();
-            //richTextBox1.Find()
-            richTextBox1.Paste();
-            richTextBox1.SelectAll();*/
+            FileService.NewFile();
         }
+
+        #endregion
+
+        #region BasicAppFunction
 
         /// <summary>
         /// Closes the app. Invokes "save" method if there is text in the form.
@@ -270,45 +361,22 @@ namespace DarkNotes.Forms
         }
 
         /// <summary>
-        /// Changes font of text/picked text. Picks the font from combobox (from toolbox)
+        /// Changes opacity of form
+        /// Receives number from textbox2, toolstrip1
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void toolStripComboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            TextService.SetFont(toolStripComboBox1.SelectedItem.ToString());
-        }
-
-        /// <summary>
-        /// Invokes method for changing font of text/picked text, if user taps Enter in font-combobox.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void toolStripComboBox1_KeyDown(object sender, KeyEventArgs e)
+        private void toolStripTextBox2_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
-                TextService.SetFont(toolStripComboBox1.SelectedItem.ToString());
+                AppearanceService.SetOpacity(toolStripTextBox2.Text.Trim(), this);
             }
         }
 
-        /// <summary>
-        /// Opens FontDialog for settings
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void toolStripMenuItem10_Click(object sender, EventArgs e)
-        {
-            if (fontDialog.ShowDialog() == DialogResult.Cancel)
-                return;
+        #endregion
 
-            richTextBox1.SelectAll();
-            richTextBox1.SelectionFont = fontDialog.Font;
-            richTextBox1.SelectionColor = fontDialog.Color;
-            richTextBox1.DeselectAll();
-
-            refreshFont();
-        }
+        #region FormsCalls
 
         /// <summary>
         /// Invokes IndentsForm to set boundaries and indents.
@@ -322,47 +390,9 @@ namespace DarkNotes.Forms
             newForm.Show();
         }
 
-        private void toolStripTextBox3_KeyDown(object sender, KeyEventArgs e)
-        {
-            // ToDo: место для междустрочного интервала
-        }
+        #endregion
 
-        /// <summary>
-        /// Sets red line to text
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void toolStripTextBox4_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                String s = toolStripTextBox4.Text;
-                try
-                {
-                    Int32 redLine = Convert.ToInt32(s.Trim());
-
-                    AppearanceService.RedLine = redLine;
-                    AppearanceService.SetIndents(richTextBox1);
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(
-                        "This is not a number. Or smth is just wrong, I dunno? Try int there. Those are pixels, not sms" +
-                        ex);
-                }
-            }
-        }
-
-        /// <summary>
-        /// Clears the text-panel.
-        /// If needed, invokes message dialog and save-method.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void newToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            FileService.NewFile();
-        }
+        #region KeyboardEvents
 
         /// <summary>
         /// Hot keys.
@@ -421,5 +451,7 @@ namespace DarkNotes.Forms
             // ToDo: пофиксить баг с переходом на строки вверх-вниз и с задержкой определения параметров
             refreshFont();
         }
+
+        #endregion
     }
 }
