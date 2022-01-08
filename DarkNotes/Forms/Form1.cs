@@ -285,10 +285,7 @@ namespace DarkNotes.Forms
         private void toolStripMenuItem2_Click(object sender, EventArgs e)
         {
             FileService.OpenFile();
-
-            //TODO: take redline from opened file and indents too
             AppearanceService.SetIndents(richTextBox1);
-
             // set picked font to the combobox
             refreshFont();
         }
@@ -450,7 +447,7 @@ namespace DarkNotes.Forms
         private void richTextBox1_KeyDown(object sender, KeyEventArgs e)
         {
             // ToDo: пофиксить баг с переходом на строки вверх-вниз и с задержкой определения параметров
-            refreshFont();
+            //refreshFont();
         }
 
         #endregion

@@ -22,7 +22,7 @@ namespace DarkNotes
         /// \t -- Tab
         /// </summary>
         private void SelectMaxWord()
-        {
+        { // ToDo: сделать быстрое посимвольное изменение шрифта
             int index = _rtb.SelectionStart;
 
             int rightBorder = _rtb.Find(new char[] {'\x020', '\n', '\r', '\t'}, index);
@@ -48,8 +48,6 @@ namespace DarkNotes
         {
             if (_rtb.SelectionLength == 0)
                 SelectMaxWord();
-
-            // ToDo: какие-то проблемы
             if (_rtb.SelectionFont.Style.ToString().Contains(style.ToString()))
             {
                 _rtb.SelectionFont = new Font(_rtb.SelectionFont.Name,
@@ -78,7 +76,7 @@ namespace DarkNotes
         public void SetFont(String fontName)
         {
             try
-            {
+            { // ToDo: сделать быстрое посимвольное изменение шрифта
                 _rtb.SelectionFont = new Font(fontName, _rtb.SelectionFont.Size,
                     _rtb.SelectionFont.Style);
             }
@@ -90,6 +88,7 @@ namespace DarkNotes
 
         public void SetSize(String value)
         {
+             // ToDo: сделать быстрое посимвольное изменение шрифта
             try
             {
                 Int32 size = Convert.ToInt32(value.Trim());
