@@ -447,7 +447,7 @@ namespace DarkNotes.Forms
         private void richTextBox1_KeyDown(object sender, KeyEventArgs e)
         {
             // ToDo: пофиксить баг с переходом на строки вверх-вниз и с задержкой определения параметров
-            //refreshFont();
+            refreshFont();
         }
 
         #endregion
